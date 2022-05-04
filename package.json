@@ -2,9 +2,9 @@
   "name": "2800-202210-dtc02",
   "version": "1.0.0",
   "description": "* [General info](#general-info)\r * [Technologies](#technologies)\r * [Contents](#content)",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",

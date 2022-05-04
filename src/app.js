@@ -3,7 +3,8 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const authController = require("./controllers/authController");
-const indexController = require("./controllers/indexController")
+const indexController = require("./controllers/indexController");
+const db = require("../config/database");
 
 const app = express();
 
@@ -14,8 +15,13 @@ app.set("view engine", "ejs");
 app.get("/auth/login", authController.loginPage);
 app.post("/auth/register", authController.registerUser);
 app.post("/auth/login", authController.loginUser);
+
 app.get("/home", indexController.homePage);
 
-app.listen(3000, () => {
-  console.log(`App listening on port 3000.`);
-});
+db.connect("mongo_url")
+  .then(() =>
+    app.listen(3000, () => {
+      console.log(`App listening on port 3000.`);
+    })
+  )
+  .catch((err) => console.log("Unable to start the server: " + err));

@@ -12,7 +12,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
+        </script>
 
     <!-- FontAwesome Library -->
     <script src="https://kit.fontawesome.com/3972ff60ea.js" crossorigin="anonymous"></script>
@@ -27,31 +27,25 @@
 </head>
 
 <body>
-    <!-- LOGIN FORM -->
     <div class="login_form">
-        <form class="needs-validation" novalidate>
+        <!-- LOGIN FORM -->
+        <form class="needs-validation">
             <div class="form-title mb-3">
                 <h3>Login</h3>
             </div>
 
             <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="login_email" placeholder="Email">
+                <input type="email" class="form-control" id="login_email" placeholder="Email" required="required">
                 <label for="login_email" class="form-label">Email address</label>
-                <div class="invalid-feedback">
-                    Please enter a valid email address
-                </div>
             </div>
 
             <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="login_password" placeholder="Password">
+                <input type="password" class="form-control" id="login_password" placeholder="Password" required="required">
                 <label for="login_password" class="form-label">Password</label>
             </div>
 
             <div class="d-grid gap-2">
                 <button type="submit" class="btn btn-primary btn-block">Log in</button>
-                <div class="invalid-feedback">
-                    The email and/or password doesn't exist, please try again
-                </div>
             </div>
 
             <br>

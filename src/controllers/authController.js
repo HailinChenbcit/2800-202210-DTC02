@@ -7,13 +7,13 @@ const authController = {
   },
 
   registerUser: async (req, res) => {
+    console.log(req.body)
     const { firstname, lastname, email, password } = req.body;
     try {
       const newUser = new User({ firstname, lastname, email, password });
       await newUser.save();
     } catch (err) {
-      console.log(err);
-      throw err;
+      console.log(err.message);
     }
 
     res.send("home");

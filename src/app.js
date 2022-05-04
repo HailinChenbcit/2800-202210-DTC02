@@ -18,7 +18,7 @@ app.post("/auth/login", authController.loginUser);
 
 app.get("/home", indexController.homePage);
 
-db.connect("mongo_url")
+db.connect("mongodb://localhost:27017")
   .then(() =>
     app.listen(3000, () => {
       console.log(`App listening on port 3000.`);

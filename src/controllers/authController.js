@@ -1,17 +1,39 @@
+const User = require("../models/User");
+
 const authController = {
   loginPage: (req, res) => {
-    res.send("login page")
+    res.send("login page");
     // res.render("auth/login");
   },
 
-  registerUser: (req, res) => {
-    const body = req.body;
-    res.send("register user")
+  registerUser: async (req, res) => {
+    const { firstname, lastname, email, password } = req.body;
+    try {
+      const newUser = new User({ firstname, lastname, email, password });
+      await newUser.save();
+    } catch (err) {
+      console.log(err);
+      throw err;
+    }
+
+    res.send("home");
   },
 
-  loginUser: (req, res) => {
+  loginUser: async (req, res) => {
     // authenticate user and render home page
-    res.send("login user");
+    const { email, password } = req.body;
+    let user;
+    try {
+      user = await User.findOne({ email });
+    } catch (err) {
+      console.log(err);
+      throw err;
+    }
+    if (user.password === password) {
+      res.send("user logged in");
+    } else {
+      res.send("User login failed");
+    }
   },
 };
 

@@ -11,6 +11,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: false }));
 app.set("view engine", "ejs");
+app.set("views", path.resolve(__dirname, "views"));
 
 app.get("/auth/login", authController.loginPage);
 app.post("/auth/register", authController.registerUser);

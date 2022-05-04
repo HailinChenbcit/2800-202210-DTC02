@@ -193,7 +193,7 @@
 /* Hero Section*/
 
 .title {
-    background-image: url('home_page_background.jpg');
+    background-image: url('../img/landing_page_background.jpg');
     background-size: 100rem;
     padding: 200px 0;
 }
@@ -444,7 +444,7 @@
     flex-direction: column;
     justify-content: center;
     color: #e7daff;
-    background-image: url("main_card_background.jpg");
+    background-image: url("../img/main_card_background.jpg");
 }
 
 .fa-book{

@@ -21,7 +21,7 @@ app.get("/home", indexController.homePage);
 db.connect("mongodb://localhost:27017")
   .then(() =>
     app.listen(3000, () => {
-      console.log(`App listening on port 3000.`);
+      console.log(`App listening on port 3000. | ${__dirname}!`);
     })
   )
   .catch((err) => console.log("Unable to start the server: " + err));

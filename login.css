@@ -46,6 +46,10 @@ body{
     padding: 1rem;
 }
 
+#forgot>a, #signup>a, #login>a, #privacy>a{
+    text-decoration: none;
+}
+
 .fa-facebook{
     color: #3b5998;
 }

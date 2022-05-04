@@ -1,7 +1,11 @@
 const indexController = {
   homePage: (req, res) => {
-    res.send("home");
+    res.render("home");
+  },
+  accountsPage: (req, res) => {
+    res.render("accounts");
   },
 };
 
 module.exports = indexController;
+

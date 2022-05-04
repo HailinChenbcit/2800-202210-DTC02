@@ -18,6 +18,7 @@ app.post("/auth/register", authController.registerUser);
 app.post("/auth/login", authController.loginUser);
 
 app.get("/home", indexController.homePage);
+app.get("/accounts", indexController.accountsPage)
 
 db.connect("mongodb://localhost:27017")
   .then(() =>

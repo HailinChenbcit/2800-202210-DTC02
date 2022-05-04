@@ -1,16 +1,37 @@
+/* GOOGLE FONTS Library */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500&display=swap');
+
+
 body{
     background-color: azure;
-
+    display: flex;
+    align-content: center;
+    justify-content: center
 }
 
 .login_form{
     width: 400px;
     max-width: 400px;
-    margin: 1rem;
-    padding: 2rem;
+    margin: 2rem;
+    padding: 1.5rem;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
+    border-radius: 12px;
     background-color: white;
+}
+
+.form-title{
+    font: 500 1rem;
+    font-family: 'Nunito', sans-serif;
+    text-align: center;
+}
+
+.btn{
+    font: 500 1rem;
+    font-family: 'Nunito', sans-serif;
+}
+
+.btn:active{
+    transform: scale(0.95);
 }
 
 .social_login{

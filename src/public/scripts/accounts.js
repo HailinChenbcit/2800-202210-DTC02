@@ -67,13 +67,24 @@ function populatePage(users) {
             admin_sect = `<span class="badge bg-secondary h-50">Admin</span>`;
         }
 
-        let options_sect = `<button type="button" class="btn" id=${i}>
-                            <span class="material-symbols-outlined">more_vert</span>
-                            </button>`;
+        let optionsbtn_sect = `<button type="button" class="btn" id="${i}" data-bs-toggle="collapse" data-bs-target="#collapse${i}" aria-expanded="false" aria-controls="collapseExample">
+                                <span class="material-symbols-outlined">more_vert</span>
+                               </button>`;
+        
+        let options_sect = `<div class="collapse" id="collapse${i}">
+                                <div class="form-check form-switch">
+                                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                  <label class="form-check-label" for="flexSwitchCheckDefault">Admin Privileges</label>
+                                </div>
+                                <button type="button" class="btn btn-reset">Reset Password</button>
+                                <button type="button" class="btn btn-del">
+                                    <span class="material-symbols-outlined">delete</span>
+                                </button>
+                            </div>`;
         
         let single_cell = document.createElement("LI");
         single_cell.classList.add("list-group-item");
-        single_cell.innerHTML = `<div class="singlecell">${email_sect + admin_sect + options_sect}</div>`;
+        single_cell.innerHTML = `<div class="singlecell">${email_sect + admin_sect + optionsbtn_sect + options_sect}</div>`;
 
         users_div.appendChild(single_cell);
         i++;

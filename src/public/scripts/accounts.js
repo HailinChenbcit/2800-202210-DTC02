@@ -64,26 +64,33 @@ const userArr = [
 
 function initResetBtn(btnID) {
     document.querySelector(`#${btnID}`).addEventListener("touchend", () => {
-        console.log(`pushed ${btnID}`)
+        // console.log(`pushed ${btnID}`)
     });
 }
 
 function initDelBtn(btnID) {
     document.querySelector(`#${btnID}`).addEventListener("touchend", () => {
-        console.log(`pushed ${btnID}`)
+        // console.log(`pushed ${btnID}`)
     });
 }
 
 function initDotMenuBtn(btnID, container) {
-    document.querySelector(`#${btnID}`).addEventListener("touchend", () => {
-        console.log(`pushed ${btnID}`)
-        console.log(container.getElementsByClassName("list-group-item"));
+    let btn = document.querySelector(`#${btnID}`);
+    btn.addEventListener("touchend", () => {
+        let users = [...container.getElementsByClassName("list-group-item")];
+        // console.log(users);
+        users.forEach((user) => {
+            console.log(user.querySelector(`#${btnID}`), btnID);
+            if (!user.querySelector(`#${btnID}`)) {
+                user.querySelector(".collapse").classList.remove('show');
+            }
+        })
     });
 }
 
 function initSlider(btnID) {
     document.querySelector(`#${btnID}`).addEventListener("touchend", () => {
-        console.log(`pushed ${btnID}`)
+        // console.log(`pushed ${btnID}`)
     });
 }
 

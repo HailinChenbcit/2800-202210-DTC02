@@ -17,21 +17,27 @@
 
     <!-- My styles -->
     <link rel="stylesheet" href="../styles/accounts.css">
-    
+
     <!-- FAVICON -->
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
 </head>
 
 <body>
-    <header></header>
+    <header>
+        <nav class="navbar">
+            <a class="navbar-brand" href="#">
+              <img src="WorryLessIcon.png" width="30" height="30" class="d-inline-block align-top" alt=""> <span>WorryLess</span>
+            </a>
+          </nav>
+    </header>
     <main>
         <!-- Page title -->
-        <h1>Accounts</h1>
+        <h1>User Accounts</h1>
 
         <section id="accounts-list">
 
             <!-- List of accounts -->
-            <div>
+            <div id="accounts">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                         <div>
@@ -88,7 +94,7 @@
             </div>
 
             <!-- Pagination -->
-            <nav aria-label="Page navigation example">
+            <nav aria-label="Page navigation example" class="paging">
                 <ul class="pagination justify-content-center">
                     <li class="page-item disabled">
                         <a class="page-link disabled">
@@ -107,28 +113,28 @@
                     </li>
                 </ul>
             </nav>
-
-            <!-- Bottom Nav Bar -->
-            <footer id="nav" class="navbar justify-content-evenly fixed-bottom" style="height: 4em">
-                <a class="icon-btn" href="/">
-                    <i class="material-symbols-outlined">home</i>
-                    <p class="btm-btn-text">Home</p>
-                </a>
-                <a class="icon-btn" href="/">
-                    <i class="material-symbols-outlined">add_box</i>
-                    <p class="btm-btn-text">Journal</p>
-                </a>
-                <a class="icon-btn" href="/">
-                    <i class="material-symbols-outlined">alarm</i>
-                    <p class="btm-btn-text">Alarms</p>
-                </a>
-                <a class="icon-btn" href="/">
-                    <i class="material-symbols-outlined">person</i>
-                    <p class="btm-btn-text">Profile</p>
-                </a>
-            </footer>
         </section>
     </main>
+
+    <!-- Bottom Nav Bar -->
+    <footer id="nav" class="navbar justify-content-evenly fixed-bottom" style="height: 4em">
+        <a class="icon-btn" href="/">
+            <i class="material-symbols-outlined">home</i>
+            <p class="btm-btn-text">Home</p>
+        </a>
+        <a class="icon-btn" href="/">
+            <i class="material-symbols-outlined">add_box</i>
+            <p class="btm-btn-text">Journal</p>
+        </a>
+        <a class="icon-btn" href="/">
+            <i class="material-symbols-outlined">alarm</i>
+            <p class="btm-btn-text">Alarms</p>
+        </a>
+        <a class="icon-btn" href="/">
+            <i class="material-symbols-outlined">person</i>
+            <p class="btm-btn-text">Profile</p>
+        </a>
+    </footer>
 
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

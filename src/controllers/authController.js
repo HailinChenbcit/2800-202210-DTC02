@@ -1,5 +1,11 @@
 const User = require("../models/User");
 
+function login(req, user) {
+  req.session.isAuth = true;
+  req.session.user = user;
+}
+
+
 const authController = {
   loginPage: (req, res) => {
     res.render("login");
@@ -8,17 +14,22 @@ const authController = {
     res.render("register");
   },
 
+  registerPage: (req, res) => {
+    res.send("register");
+  },
+
   registerUser: async (req, res) => {
-    console.log(req.body)
+    console.log(req.body);
     const { firstname, lastname, email, password } = req.body;
     try {
       const newUser = new User({ firstname, lastname, email, password });
       await newUser.save();
+      login(req, newUser);
     } catch (err) {
       console.log(err.message);
+      res.redirect("/auth/register");
     }
-
-    res.send("home");
+    res.render("home");
   },
 
   loginUser: async (req, res) => {
@@ -31,8 +42,9 @@ const authController = {
       console.log(err);
       throw err;
     }
-    if (user.password === password) {
-      res.send("user logged in");
+    if (user && user.password === password) {
+      login(req, user);
+      res.render("home");
     } else {
       res.send("User login failed");
     }

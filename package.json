@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/HailinChenbcit/2800-202210-DTC02#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "connect-mongodb-session": "^3.1.1",
     "dotenv": "^16.0.0",
     "ejs": "^3.1.7",

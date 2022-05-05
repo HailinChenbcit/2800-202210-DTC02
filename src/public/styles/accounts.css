@@ -59,22 +59,90 @@ html, body {
 
 /* Accounts list */
 h1 {
-    background-color: #E7DAFF;
+    /* background-color: #E7DAFF; */
     color: #6545A4;
     padding: 20px;
 }
 
 main {
-    height: calc(100% - 64px);
-}
-
-section {
-    height: 80%;
+    height: calc(100% - (4em + 3rem + 0.625rem));
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.page-link {
-    background-color: #CEB5FF;
+section {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+/* Header */
+.navbar {
+    justify-content: flex-start;
+}
+
+/* Search bar */
+main form {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.list-group {
+    border-radius: 10%;
+}
+
+/* Single cell */
+.list-group-item {
+    padding: 0px;
+    background-color: rgb(251, 251, 251);
+}
+
+.singlecell {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0.5rem 1rem;
+    /* flex-basis: 1px; */
+}
+
+.singlecell .email {
+    flex-basis: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.singlecell .badge{
+    /* display: inline-block; */
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.singlecell .btn {
+    margin-left: auto;
+    width: fit-content;
+    /* background-color: #6545A4; */
+    padding: 0;
+}
+
+/* Pagination */
+.pagination {
+    justify-content: space-around;
+}
+
+.page-item.active .page-link{
+    background-color: #9062EA;
+    border-color: #9062EA;
+}
+
+.page-item.disabled .page-link{
+    display: none;
+}
+
+.page-item .page-link{
+    background-color: #E7DAFF;
+    border-color: #E7DAFF;
+    color: #6545A4;
 }

@@ -127,6 +127,7 @@ main form {
     margin-left: 10px;
     margin-right: 10px;
     grid-column: 2 / span 1;
+    width: fit-content;
 }
 
 .singlecell .btn {

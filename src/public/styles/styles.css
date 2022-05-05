@@ -30,19 +30,15 @@
     padding: 0 50px;
 }
 
+.navbar_container img {
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
 #navbar_logo {
-    background-color: #ff8177;
-    background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
-    background-size: 100%;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -moz-text-fill-color: transparent;
     display: flex;
     align-items: center;
     cursor: pointer;
-    text-decoration: none;
-    font-size: 2rem;
 }
 
 .navbar_menu {
@@ -85,15 +81,13 @@
     border: none;
     outline: none;
     border-radius: 4px;
-    background: #833ab4;
-    background: -webkit-linear-gradient(to right, #2A1AD8, #7231EC,  #B948FF);
-    background: linear-gradient(to right, #2A1AD8, #7231EC, #B948FF);
+    background: #ff5757;
     color: #6545a4;
     transition: all 0.3s ease;
 }
 
 .navbar_links:hover {
-    color: #9518fc;
+    color: #e7daff;
     transition: all 0.3s ease;
 }
 
@@ -121,7 +115,7 @@
     }
 
     .navbar_menu.active {
-        background: #833ab4;
+        background: #e7daff;
         top: 100%;
         opacity: 1;
         transition: all 0.5s ease;
@@ -190,11 +184,11 @@
     }
 }
 
-/* Hero Section*/
+/* Title Section*/
 
 .title {
     background-image: url('../img/landing_page_background.jpg');
-    background-size: 100rem;
+    background-size: 120rem;
     padding: 200px 0;
 }
 
@@ -218,9 +212,7 @@
 }
 
 .title_heading span {
-    background: #ee0979;
-    background: -webkit-linear-gradient(to right, #2A1AD8,  #B948FF);
-    background: linear-gradient(to right, #2A1AD8, #B948FF);
+    background: #ffffff;
     background-size: 100%;
     -webkit-background-clip: text;
     -moz-background-clip: text;
@@ -230,9 +222,7 @@
 
 .title_description {
     font-size: 60px;
-    background: #da22ff;
-    background: -webkit-linear-gradient(to right, #9114ff, #da22ff);
-    background: linear-gradient(to right, #8f0eff, #da22ff);
+    background: #ceb5ff;
     background-size: 100%;
     -webkit-background-clip: text;
     -moz-background-clip: text;
@@ -338,7 +328,7 @@
 
 .main {
     background-color: #e7daff;
-    padding: 10rem 0;
+    padding: 5rem 0;
 }
 
 .main_container {
@@ -390,9 +380,7 @@
 
 .main_btn {
     font-size: 1.8rem;
-    background: #833ab4;
-    background: -webkit-linear-gradient(to right, #2A1AD8, #7231EC,  #B948FF);
-    background: linear-gradient(to right, #2A1AD8, #7231EC,  #B948FF);
+    background: #ff5757;
     padding: 20px 60px;
     border: none;
     border-radius: 4px;

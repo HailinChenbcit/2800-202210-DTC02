@@ -1,0 +1,146 @@
+main {
+  margin-top: 30vw;
+  position:absolute;
+}
+
+html {
+  height: 100wh;
+}
+body {
+  height: 100vh;
+  width: 100vw;
+  background-color: #92a1d1;
+}
+
+/* Footer, Header */
+.material-symbols-outlined {
+  align-items: center;
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
+  }
+
+.icon-btn {
+  text-align: center;
+  text-decoration: none;
+}
+
+.navbar {
+  background-color: #e7daff;
+  width: 100vw;
+  height: 4em;
+}
+
+.navbar i, .navbar p {
+  color: #6545a4;
+}
+.navbar-brand img{
+  margin-left: 5vw;
+}
+
+.navbar-brand span{
+  color: #6545a4;
+}
+
+/* Calender */
+body {
+  display: flex;
+  justify-content: center;
+  background-color: #FFFCFF;
+}
+button {
+  width: 30vw;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  box-shadow: 0px 0px 2px gray;
+  border: none;
+  outline: none;
+}
+
+#calendar_header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  color: #d36c6c;
+  font-size: 1rem;
+  font-family: sans-serif;
+}
+#calendar_header button {
+  background-color:#92a1d1;
+}
+
+#calendar {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
+  margin-left: 15px;
+}
+#container {
+  width: 100%;
+}
+#weekdays {
+  width: 100%;
+  display: flex;
+  font-size: 0.9rem;
+  color: #9062ea;
+}
+#weekdays div {
+  width: 50px;
+  height: 100%;
+  padding: 25px;
+  margin-left: 5px;
+  text-align: center;
+}
+.day {
+  width: 45px;
+  padding: 10px;
+  height: 45px;
+  margin: 5px;
+  cursor: pointer;
+  box-sizing: border-box;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0px 0px 3px #CBD4C2;
+}
+.day:hover {
+  background-color: #e8faed;
+}
+
+.day + #currentDay {
+  background-color:#e8f4fa;
+}
+.event {
+  font-size: 10px;
+  padding: 3px;
+  border-radius: 5px;
+  max-height: 55px;
+  overflow: hidden;
+  background-color: #58bae4;
+  color: white;
+}
+.padding {
+  cursor: default !important;
+  background-color: #FFFCFF !important;
+  box-shadow: none !important;
+}
+
+.worryButton {
+  display: block;
+  width: 95%;
+  border: none;
+  background-color: #92a1d1;
+  color: #6545a4;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 100px;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}

@@ -11,6 +11,7 @@ const { Session } = require("inspector");
 // UserModel-Session
 const UserModel = require("./models/User")
 const session = require("express-session");
+const User = require("./models/User");
 const MongoDBSession = require('connect-mongodb-session')(session);
 
 
@@ -61,3 +62,21 @@ app.use(session(
     store: store,
   }
 ))
+
+app.post("/auth/register", async (req, res)=>{
+  const {username, email, password} = req.body;
+
+  let user = await UserModel.findOne({email});
+
+  if (user) return res.redirect("/auth/register")
+
+  user = new UserModel({
+    username,
+    email,
+    password,
+  })
+
+  await user.save()
+
+  res.redirect("/auth/login")
+})

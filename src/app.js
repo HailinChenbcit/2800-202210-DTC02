@@ -7,6 +7,11 @@ const session = require("express-session");
 const MongoDBSession = require("connect-mongodb-session")(session);
 const authController = require("./controllers/authController");
 const indexController = require("./controllers/indexController");
+const {
+  ensureAuthenticated,
+  forwardAuthenticated,
+  isAdmin,
+} = require("./middleware/checkAuth");
 const db = require("../config/database");
 
 const app = express();
@@ -30,22 +35,27 @@ app.use(
   session({
     secret: "secret",
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     store: store,
   })
 );
 
-app.use((req, _) => console.log(req.session));
+app.use((req, _, next) => {
+  console.log(req.url);
+  console.log(req.session);
+  console.log(req.body);
+  next();
+});
 
 // Routes for ejs views regarding logging in
-app.get("/auth/register", authController.registerPage);
-app.get("/auth/login", authController.loginPage);
+app.get("/auth/register", forwardAuthenticated, authController.registerPage);
+app.get("/auth/login", forwardAuthenticated, authController.loginPage);
 app.post("/auth/register", authController.registerUser);
 app.post("/auth/login", authController.loginUser);
 
 // Routes for ejs views
-app.get("/home", indexController.homePage);
-app.get("/accounts", indexController.accountsPage);
+app.get("/home", ensureAuthenticated, indexController.homePage);
+app.get("/accounts", ensureAuthenticated, isAdmin, indexController.accountsPage);
 
 // Starts the server
 app.listen(3000, () =>

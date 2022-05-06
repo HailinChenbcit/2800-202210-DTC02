@@ -1,0 +1,207 @@
+/* Bottom Navbar */
+.material-symbols-outlined {
+    align-items: center;
+      font-variation-settings:
+      'FILL' 1,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 48
+}
+  
+.icon-btn {
+    text-align: center;
+    text-decoration: none;
+}
+  
+.navbar {
+    background-color: #e7daff;
+}
+  
+.navbar i, .navbar p {
+    color: #6545a4;
+}
+
+/* Header */
+.material-symbols-outlined {
+    align-items: center;
+      font-variation-settings:
+      'FILL' 1,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 48
+}
+  
+.icon-btn {
+    text-align: center;
+    text-decoration: none;
+}
+  
+.navbar {
+    background-color: #e7daff;
+}
+  
+.navbar i, .navbar p {
+    color: #6545a4;
+}
+  
+.navbar-brand img{
+    margin-left: 20px;
+}
+  
+.navbar-brand span{
+    color: #6545a4;
+}
+
+/*  */
+html, body {
+    height: 100%;
+}
+
+/* Accounts list */
+h1 {
+    /* background-color: #E7DAFF; */
+    color: #6545A4;
+    padding: 20px;
+}
+
+main {
+    height: calc(100% - (4em + 3rem + 0.625rem));
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+section {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+/* Header */
+.navbar {
+    justify-content: flex-start;
+}
+
+/* Search bar */
+main form {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.list-group {
+    border-radius: 10%;
+}
+
+/* Single cell */
+.list-group-item {
+    padding: 0px;
+    background-color: rgb(251, 251, 251);
+}
+
+.singlecell {
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* justify-content: flex-start; */
+    /* align-items: center; */
+    margin: 0.5rem 1rem;
+    /* flex-basis: 1px; */
+    display: grid;
+    grid-template-columns: 70% 25% 5%;
+    align-items: center;
+    row-gap: 1rem;
+    /* justify-content: center; */
+}
+
+.singlecell .email {
+    /* flex-basis: 70%; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    grid-column: 1 / span 1;
+}
+
+.singlecell .badge{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    grid-column: 2 / span 1;
+    width: fit-content;
+}
+
+.singlecell .btn {
+    /* margin-left: auto; */
+    width: fit-content;
+    /* background-color: #6545A4; */
+    padding: 0;
+    grid-column: 3 / span 1;
+}
+
+.singlecell .collapse {
+    grid-column: 1 / span 3;
+}
+
+.singlecell .show {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+}
+
+.singlecell .show .form-check{
+    margin-right: auto;
+    color: #6545a4;
+}
+
+.form-check-input, .form-check-input:focus {
+    border-color: #9062EA;
+}
+
+.form-check-input:checked {
+    background-color: #6545a4;
+    border-color: #9062EA;
+}
+
+/* Pagination */
+.pagination {
+    justify-content: space-around;
+}
+
+.page-item.active .page-link{
+    background-color: #9062EA;
+    border-color: #9062EA;
+}
+
+.page-item.disabled .page-link{
+    display: none;
+}
+
+.page-item .page-link{
+    background-color: #E7DAFF;
+    border-color: #E7DAFF;
+    color: #6545A4;
+}
+
+/* Button */
+.btn-reset {
+    background-color: #9062EA;
+    border-color: #9062EA;
+    color: #E7DAFF;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+.btn-reset:focus, .btn-reset:active {
+    background-color: #6545A4;
+    border-color: #6545A4;
+    color: #E7DAFF;
+}
+
+.btn-del {
+    color: #FF5757;
+}
+
+.btn-del:focus, .btn-del:active {
+    color: #FF5757;
+}

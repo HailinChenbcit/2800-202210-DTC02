@@ -1,4 +1,5 @@
 const User = require("../models/User");
+
 const indexController = {
   homePage: (req, res) => {
     res.render("home");

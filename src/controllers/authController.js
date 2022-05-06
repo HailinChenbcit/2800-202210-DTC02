@@ -10,12 +10,9 @@ const authController = {
   loginPage: (req, res) => {
     res.render("login");
   },
+  
   registerPage: (req, res) =>{
     res.render("register");
-  },
-
-  registerPage: (req, res) => {
-    res.send("register");
   },
 
   registerUser: async (req, res) => {

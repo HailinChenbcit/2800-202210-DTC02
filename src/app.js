@@ -18,7 +18,7 @@ const app = express();
 
 // Route for static public folder
 app.use(express.static(path.join(__dirname, "public")));
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.set("views", path.resolve(__dirname, "views"));
 
@@ -41,7 +41,7 @@ app.use(
 );
 
 app.use((req, _, next) => {
-  console.log(req.url);
+  console.log(req.headers);
   console.log(req.session);
   console.log(req.body);
   next();

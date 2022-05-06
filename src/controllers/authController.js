@@ -10,13 +10,12 @@ const authController = {
   loginPage: (req, res) => {
     res.render("login");
   },
-  
+
   registerPage: (req, res) =>{
     res.render("register");
   },
 
   registerUser: async (req, res) => {
-    console.log(req.body);
     const { firstname, lastname, email, password } = req.body;
     try {
       const newUser = new User({ firstname, lastname, email, password });

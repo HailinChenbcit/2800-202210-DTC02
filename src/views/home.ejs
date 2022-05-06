@@ -24,33 +24,34 @@
 
     <!-- Calendar -->
     <main>
-        <div id="container">
-            <div id="calendar_header">
+        <div id="calendar-container">
+            <div id="calendar-header">
                 <div id="monthDisplayTitle"></div>
                 <div>
                     <button id="backButton">Back</button>
                     <button id="nextButton">Next</button>
                 </div>
             </div>
-
-            <div id="weekdays">
-                <div><span>Su</span></div>
-                <div><span>Mo</span></div>
-                <div><span>Tu</span></div>
-                <div><span>We</span></div>
-                <div><span>Th</span></div>
-                <div><span>Fr</span></div>
-                <div><span>Sa</span></div>
+            <div class="calendar-wrapper">      
+                <div id="weekdays">
+                    <div><span>Su</span></div>
+                    <div><span>Mo</span></div>
+                    <div><span>Tu</span></div>
+                    <div><span>We</span></div>
+                    <div><span>Th</span></div>
+                    <div><span>Fr</span></div>
+                    <div><span>Sa</span></div>
+                </div>
+    
+                <div id="calendar"></div>
             </div>
-
-            <div id="calendar"></div>
         </div>
 
+        
+            <!-- Button for Worries -->
+            <button type="button" class="worryButton">GO INTO WORRY TIME</button>
 
     </main>
-
-    <!-- Button for Worries -->
-    <button type="button" class="worryButton">GO INTO WORRY TIME</button>
 
     <!-- Footer -->
     <footer id="nav" class="navbar justify-content-evenly fixed-bottom" style="height: 4em">

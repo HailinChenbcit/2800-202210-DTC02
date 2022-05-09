@@ -55,6 +55,7 @@ app.post("/auth/login", authController.loginUser);
 
 // Routes for ejs views
 app.get("/home", ensureAuthenticated, indexController.homePage);
+app.get("/profile", ensureAuthenticated, indexController.profilePage);
 app.get("/accounts", ensureAuthenticated, isAdmin, indexController.accountsPage);
 
 // Starts the server

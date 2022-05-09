@@ -1,0 +1,13 @@
+.navbar {
+    background-color: #e7daff;
+    width: 100%;
+    height: 4em;
+  }
+  
+  .navbar-brand img{
+    margin-left: 5vw;
+  }
+  
+  .navbar-brand span{
+    color: #6545a4;
+  }

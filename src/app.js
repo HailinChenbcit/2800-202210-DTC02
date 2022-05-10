@@ -22,7 +22,6 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.set("views", path.resolve(__dirname, "views"));
 
-MONGO_URI='mongodb+srv://bosco:bosco1234@cluster0.eqqix.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 // connect to mongodb atlas
 db.connect(process.env.MONGO_URI);
 

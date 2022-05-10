@@ -10,7 +10,7 @@ const indexController = {
   },
   profilePage: (req, res) => {
     res.render("profile", {
-      "userProfile": req.session.user
+      "userProfile": req.user
     });
   }
 };

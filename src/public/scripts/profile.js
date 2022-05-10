@@ -1,19 +1,12 @@
-const moodLevel = new Map();
-moodLevel.set(1, "😰")
-moodLevel.set(2, "🙁")
-moodLevel.set(3, "😐")
-moodLevel.set(4, "🙂")
-moodLevel.set(5, "😃")
-
-function initMoodGraph(dest) {
-    const context = dest.getContext('2d');
+function initMoodGraph(destChild, dataArr, xAxisArr, yAxisMap) {
+    const context = destChild.getContext('2d');
     const moodGraph = new Chart(context, {
         type: 'line',
         data: {
-            labels: [`Jan 23`, `Jan 24`, `Jan 25`, `Jan 26`, `Jan 27`, `Jan 28`, `Jan 29`],
+            labels: xAxisArr,
             datasets: [{
-                label: `Your personal mood levels this month`,
-                data: [3, 3, 5, 4, 1, 1, 4],
+                label: `January mood level`,
+                data: dataArr,
                 backgroundColor: '#CEB5FF',
                 borderColor: '#6545a4',
                 borderWidth: 1,
@@ -25,9 +18,8 @@ function initMoodGraph(dest) {
                 y: {
                     beginAtZero: false,
                     ticks: {
-                        // Include a dollar sign in the ticks
                         callback: function(value, index, ticks) {
-                            return moodLevel.get(value);
+                            return yAxisMap.get(value);
                         }
                     }
                     
@@ -35,7 +27,11 @@ function initMoodGraph(dest) {
             },
             plugins: {
                 legend: {
-                    display: false
+                    display: true,
+                    labels: {
+                        boxWidth: 0,
+                        boxHeight: 0
+                    }
                 }
             }
         }
@@ -44,7 +40,17 @@ function initMoodGraph(dest) {
 
 function setup() {
     const moodGraphCanvas = document.querySelector("#moodgraph");
-    initMoodGraph(moodGraphCanvas);
+
+    const moodLevels = new Map();
+    moodLevels.set(1, "😰");
+    moodLevels.set(2, "🙁");
+    moodLevels.set(3, "😐");
+    moodLevels.set(4, "🙂");
+    moodLevels.set(5, "😃");
+
+    const times = [23, 24, 25, 26, 27, 28, 29, 30, 31];
+    const sampleData = [3, 3, 5, 4, 1, 1, 4, 4, 5];
+    initMoodGraph(moodGraphCanvas, sampleData, times, moodLevels);
 }
 
 document.addEventListener("DOMContentLoaded", setup);

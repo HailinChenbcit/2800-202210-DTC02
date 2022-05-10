@@ -13,6 +13,8 @@ const {
   isAdmin,
 } = require("./middleware/checkAuth");
 const db = require("../config/database");
+const passport = require("./middleware/passport");
+const port = process.env.PORT || 3000;
 
 const app = express();
 
@@ -40,24 +42,47 @@ app.use(
   })
 );
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use((req, _, next) => {
-  console.log(req.headers);
+  console.log(req.url);
   console.log(req.session);
   console.log(req.body);
+  console.log(req.user);
   next();
 });
 
 // Routes for ejs views regarding logging in
 app.get("/auth/register", forwardAuthenticated, authController.registerPage);
 app.get("/auth/login", forwardAuthenticated, authController.loginPage);
-app.post("/auth/register", authController.registerUser);
-app.post("/auth/login", authController.loginUser);
+app.post(
+  "/auth/register",
+  authController.registerUser,
+  passport.authenticate("local", {
+    successRedirect: "/home",
+    failureRedirect: "/login",
+  })
+);
+app.post(
+  "/auth/login",
+  passport.authenticate("local", {
+    successRedirect: "/home",
+    failureRedirect: "/login",
+  })
+);
+app.get("/auth/logout", authController.logout);
 
 // Routes for ejs views
 app.get("/home", ensureAuthenticated, indexController.homePage);
-app.get("/accounts", ensureAuthenticated, isAdmin, indexController.accountsPage);
+app.get(
+  "/accounts",
+  ensureAuthenticated,
+  isAdmin,
+  indexController.accountsPage
+);
 
 // Starts the server
-app.listen(3000, () =>
+app.listen(port, () =>
   console.log(`App listening on port 3000. | ${__dirname}!`)
 );

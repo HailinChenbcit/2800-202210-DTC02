@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,6 +19,7 @@
     <!-- FAVICON -->
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 </head>
+
 <body>
     <!-- Header -->
     <nav class="navbar">
@@ -27,8 +29,11 @@
         </a>
     </nav>
 
-    <canvas id="moodgraph"></canvas>
+    <div class="moodgraph_container">
+        <canvas id="moodgraph"></canvas>
+    </div>
 
+    <button type="button" class="LogOutButton">Log Out</button>
     <!-- Footer -->
     <footer id="nav" class="navbar justify-content-evenly fixed-bottom" style="height: 4em">
         <a class="icon-btn" href="/">
@@ -52,4 +57,5 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="scripts/profile.js"></script>
 </body>
+
 </html>

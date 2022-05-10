@@ -60,4 +60,25 @@ html, body {
 /* Mood Graph */
 #moodgraph {
     background-color: #E7DAFF;
+    width: 80%;
 }
+
+.moodgraph_container {
+    /* width: 80%; */
+    justify-content: center;
+}
+
+/* Logout button */
+.LogOutButton {
+    width: 75%;
+    border: none;
+    background-color: #ff9999;
+    color: #6545a4;
+    margin: 50px;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }

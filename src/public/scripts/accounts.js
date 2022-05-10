@@ -77,6 +77,11 @@ function setupUserOptions() {
     accountsList.forEach((userElement, i) => {
         initDotMenuBtn(`dotted${i}`, accounts);
     })
+
+    const backBtn = document.querySelector("#back");
+    backBtn.addEventListener('click', () => {
+        window.location.href = '/profile'
+    })
 }
 
 /**

@@ -56,3 +56,8 @@
 html, body {
     height: 100%;
 }
+
+/* Mood Graph */
+#moodgraph {
+    background-color: #E7DAFF;
+}

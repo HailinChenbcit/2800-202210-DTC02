@@ -156,9 +156,26 @@ function populatePage(users) {
     })
 }
 
+function setupUserOptions() {
+    const accounts = document.querySelector("#accounts-target");
+    const accountsList = [...accounts.children]
+    // console.log(accountsList);
+
+    accountsList.forEach((user, i) => {
+        console.log(user);
+        // initResetBtn(`reset${i}`, user);
+        // initDelBtn(`del${i}`, single_cell, users_div, user);
+        // initSlider(`slidecheck${i}`, single_cell, user);
+        initDotMenuBtn(`dotted${i}`, accounts);
+    })
+}
+
 function setup() {
     // fetchUsers(); Get users from MongoDB database
-    populatePage(userArr);
+    // populatePage(userArr);
+    // initDotMenuBtn(`dotted1`, document.querySelector("#accounts-target"))
+    // console.log();
+    setupUserOptions();
 }
 
 document.addEventListener("DOMContentLoaded", setup);

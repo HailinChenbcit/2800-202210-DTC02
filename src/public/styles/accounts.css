@@ -1,8 +1,8 @@
 /* Accounts list */
 h1 {
-    /* background-color: #E7DAFF; */
     color: #6545A4;
     padding: 20px;
+    text-align: left;
 }
 
 main {
@@ -41,21 +41,15 @@ main form {
 }
 
 .singlecell {
-    /* display: flex; */
-    /* flex-direction: row; */
-    /* justify-content: flex-start; */
-    /* align-items: center; */
     margin: 0.5rem 1rem;
-    /* flex-basis: 1px; */
     display: grid;
     grid-template-columns: 70% 25% 5%;
     align-items: center;
     row-gap: 1rem;
-    /* justify-content: center; */
+    text-align: left;
 }
 
 .singlecell .email {
-    /* flex-basis: 70%; */
     overflow: hidden;
     text-overflow: ellipsis;
     grid-column: 1 / span 1;
@@ -72,9 +66,7 @@ main form {
 }
 
 .singlecell .btn {
-    /* margin-left: auto; */
     width: fit-content;
-    /* background-color: #6545A4; */
     padding: 0;
     grid-column: 3 / span 1;
 }

@@ -71,3 +71,26 @@ body {
 .navbar i {
     margin-right: 15px;
 }
+
+#time_picker {
+    align-content: center;
+    justify-content: center;
+}
+
+#emoji_buttons button {
+    border: none;
+    background-color: white;
+    width: 30px;
+    height: 30px;
+}
+
+#emoji_buttons {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#today_mood {
+    text-transform: capitalize;
+}

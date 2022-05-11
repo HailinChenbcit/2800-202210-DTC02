@@ -15,7 +15,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
       lowercase: true,
-      unique: true
+      unique: true,
     },
     password: {
       type: String,
@@ -26,6 +26,10 @@ const userSchema = new Schema(
       default: false,
     },
     worries: [{ type: Schema.Types.ObjectId, ref: "WorryEntry" }],
+    avatar: {
+      data: Buffer,
+      contentType: String
+    },
   },
   {
     _id: true,

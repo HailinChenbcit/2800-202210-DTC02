@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const identicon = require("identicon");
 
 const authController = {
   loginPage: (req, res) => {
@@ -11,9 +12,17 @@ const authController = {
 
   registerUser: async (req, res, next) => {
     const { firstname, lastname, email, password } = req.body;
+    const buffer = await identicon.generate(email, 64);
     try {
-      const newUser = new User({ firstname, lastname, email, password });
+      const newUser = new User({
+        firstname,
+        lastname,
+        email,
+        password,
+        avatar: { data: buffer, contentType: "image/png" },
+      });
       await newUser.save();
+
       next();
     } catch (err) {
       console.log(err.message);

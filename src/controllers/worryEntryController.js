@@ -1,28 +1,57 @@
 const WorryEntry = require("../models/WorryEntry");
-
+const emojis = {
+    1: "&#128549;",
+    2: "&#128542;",
+    3: "&#128563;",
+    4: '&#128513',
+    5: "&#128522;",
+}
 
 const worryEntryController = {
     userWorryEntries: (req, res) => {
         res.send(req.user.worries);
     },
-
+    // Show all worry cards
     displayWorryEntries: (req, res) => {
-        // list all worry cards
-        allWorries = WorryEntry.find({owner: req.user._id})
-        // query entrytime
-        entrytime = WorryEntry.find({owner: req.user._id}, {createdAt:1})
-        // query worry description
-        description = WorryEntry.find({owner: req.user._id}, {worryDescription:1})
-        // Mood level
-        moodLevel = WorryEntry.find({owner: req.user._id}, {moodLevel:1})
-
-        console.log(entrytime, description)
-
-        res.render("dailyView.ejs", {
-            "entrytime": entrytime.createdAt,
-            "description": description.worryDescription,
-            "moodLevel": moodLevel,
-        })
+        allWorries = WorryEntry.find({ owner: req.user._id }, function (err, data) {
+            if (err) {
+                console.log("Error " + err);
+            } else {
+                // console.log("Data " + data);
+                res.render("dailyView.ejs", {
+                    "data": data,
+                })
+            }
+        });
+    },
+    // Edit worry card
+    updateWorryEntries: (req, res) => {
+        eventModel.updateOne({
+            _id: req.params.id
+        }, {
+            $inc: { hits: 1 }
+        }, function (err, data) {
+            if (err) {
+                console.log("Error " + err);
+            } else {
+                console.log("Data " + data);
+            }
+            console.log(_id)
+            res.send("Updated Worry Entry!");
+        });
+    },
+    // Delete worry card
+    deleteWorryEntries: (req, res) => {
+        worryEntry.remove({
+            owner: req.user._id
+        }, function (err, data) {
+            if (err) {
+                console.log("Error " + err);
+            } else {
+                console.log("Data " + data);
+            }
+            res.send("Deleted Entry!");
+        });
     },
 }
 

@@ -52,30 +52,36 @@
     <p>
         Display date clicked on calendar
     </p>
+
+    <% for (var i=0; i < data.length; i++) { %>
     <!-- CARDS DISPLAY -->
     <div class="card text-center">
         <div class="card-header">
-             entrytime
+            <%= data[i].createdAt %>
         </div>
         <div class="card-body">
             <span>
-                Show Mood here
+                Mood  <%= data[i].moodLevel %>
             </span>
-            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
-                aria-expanded="false" aria-controls="collapseExample">
+            
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#entry<%= data[i]._id %>"
+                aria-expanded="false" aria-controls="entry<%= data[i]._id %>">
                 Edit
             </button>
-            <a href="#" class="btn secondary-primary">Delete</a>
+            <input type="button" name="deleteEntry" id="deleteEntry" class="btn secondary-primary" value="Delete">
         </div>
         <!-- Collapse input content -->
-        <div class="collapse" id="collapseExample">
+        <div class="collapse" id="entry<%= data[i]._id %>">
             <div class="card card-body">
-                <input type="textarea" name="worryEntry" id="worryEntry" class="form-control" value=' description'>
+                <input type="textarea" name="worryEntry" id="worryEntry" class="form-control" value='<%= data[i].worryDescription %>' >
                 <br>
                 <input type="submit" name="save" id="save" class="btn btn-primary" value="Save">
             </div>
         </div>
     </div>
+        <% } %>
+
+
 
     <footer id="nav" class="navbar justify-content-evenly fixed-bottom" style="height: 4em">
         <a class="icon-btn" href="/home">

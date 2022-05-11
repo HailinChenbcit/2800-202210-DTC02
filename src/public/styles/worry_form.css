@@ -91,6 +91,12 @@ body {
     justify-content: space-evenly;
 }
 
-#today_mood {
-    text-transform: capitalize;
+#timepicker{
+    width: 60%;
+}
+
+.worry_emoji{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

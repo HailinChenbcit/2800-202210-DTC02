@@ -12,7 +12,11 @@ const indexController = {
     res.render("profile", {
       "userProfile": req.user
     });
-  }
+  },
+  worryFormPage: (req, res) => {
+    res.render("worry_form");
+  },
+  
 };
 
 module.exports = indexController;

@@ -33,33 +33,30 @@
     </nav>
 
     <form>
-        <div class="worry_picker">
-            <!-- TIMEPICKER -->
-            <div class="col">
-                <div class="cs-form form-outline timepicker">
-                    <label class="form-label" for="time_picker">Pick Time</label>
-                    <input type="time" id="time_picker" class="form-control" default="now" />
-                </div>
-            </div>
-
-            <br>
-            <!-- MOODPICKER -->
-            <div id="emoji_picker">
-                <p>Mood today: </p>
-                <div id="emoji_buttons">
-                    <button id="awesome" value="5">&#128513;</button>
-                    <button id="good" value="4">&#128522;</button>
-                    <button id="neutral" value="3">&#128563;</button>
-                    <button id="sad" value="2">&#128542;</button>
-                    <button id="cry" value="1">&#128549;</button>
-                </div>
-                <br>
-                Now I feel <span id="today_mood"></span>
-            </div>
-        </div>
-
         <div class="worry_input_container">
+            <div class="worry_emoji">
+                <!-- TIMEPICKER -->
+                <div class="col">
+                    <div class="cs-form form-outline timepicker">
+                        <span>Pick Time</span>
+                        <input type="time" id="time_picker" class="form-control" default="now" />
+                    </div>
+                </div>
 
+                <br>
+                <!-- MOODPICKER -->
+                <div id="emoji_picker">
+                    <p>Mood today: </p>
+                    <div id="emoji_buttons">
+                        <button id="awesome" value="5">&#128513;</button>
+                        <button id="good" value="4">&#128522;</button>
+                        <button id="neutral" value="3">&#128563;</button>
+                        <button id="sad" value="2">&#128542;</button>
+                        <button id="cry" value="1">&#128549;</button>
+                    </div>
+                </div>
+            </div>
+            <br>
             <span>What do you worry about?</span>
             <textarea name="worry_input" id="worry_input" cols="80" rows="8"></textarea>
             <br>

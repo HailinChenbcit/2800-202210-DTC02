@@ -18,11 +18,11 @@ function initMoodGraph(destChild, dataArr, xAxisArr, yAxisMap) {
                 y: {
                     beginAtZero: false,
                     ticks: {
-                        callback: function(value, index, ticks) {
+                        callback: function (value, index, ticks) {
                             return yAxisMap.get(value);
                         }
                     }
-                    
+
                 }
             },
             plugins: {
@@ -37,6 +37,38 @@ function initMoodGraph(destChild, dataArr, xAxisArr, yAxisMap) {
         }
     })
 }
+
+var canvasElement = document.getElementById("summaryBarGraph");
+var config = {
+    type: "bar",
+    data: {
+        labels: ["😰", "🙁", "😐", "🙂", "😃"],
+        datasets: [
+            {
+                label: "Number of moods you've been feeling",
+                data: [1, 2, 5, 10, 4],
+                backgroundColor: [
+                    'rgba(144, 98, 234, 1)',
+                    'rgba(144, 98, 234, 1)',
+                    'rgba(144, 98, 234, 1)',
+                    'rgba(144, 98, 234, 1)',
+                    'rgba(144, 98, 234, 1)',
+                ],
+                borderColor: [
+                    'rgba(106, 69, 165, 1)',
+                    'rgba(106, 69, 165, 1)',
+                    'rgba(106, 69, 165, 1)',
+                    'rgba(106, 69, 165, 1)',
+                    'rgba(106, 69, 165, 1)',
+                ],
+                borderWidth: 1,
+
+            },
+        ],
+    },
+}
+
+var summaryBarGraph = new Chart(canvasElement, config)
 
 function setup() {
     const moodGraphCanvas = document.querySelector("#moodgraph");

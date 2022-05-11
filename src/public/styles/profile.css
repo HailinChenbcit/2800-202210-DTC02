@@ -8,6 +8,16 @@
     justify-content: center;
 }
 
+/* Bar Graph */
+#summaryBarGraph {
+    background-color: #E7DAFF;
+    width: 80%;
+}
+
+.summaryBarGraph_container {
+    margin-top: 50px;
+}
+
 /* Logout button */
 .LogOutButton {
     width: 70%;
@@ -26,5 +36,8 @@
     text-decoration: none;
     width: 100%;
     height: 100%;
+}
 
+h1 {
+    text-align: center;
 }

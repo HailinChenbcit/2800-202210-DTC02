@@ -94,6 +94,10 @@ app.post(
   indexController.createWorryEntry
 );
 
+// Routes for daily view
+app.get("/dailyView", ensureAuthenticated, worryEntryController.displayWorryEntries);
+
+
 // Starts the server
 app.listen(port, () =>
   console.log(`App listening on port 3000. | ${__dirname}!`)

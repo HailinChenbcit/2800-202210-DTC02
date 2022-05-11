@@ -47,9 +47,9 @@ app.use(passport.session());
 
 app.use((req, _, next) => {
   console.log(req.url);
-  console.log(req.session);
-  console.log(req.body);
-  console.log(req.user);
+  // console.log(req.session);
+  // console.log(req.body);
+  // console.log(req.user);
   next();
 });
 
@@ -83,6 +83,12 @@ app.get(
   indexController.accountsPage
 );
 app.get("/worryForm", ensureAuthenticated, indexController.worryFormPage);
+
+app.post(
+  "/createWorryEntry",
+  ensureAuthenticated,
+  indexController.createWorryEntry
+);
 
 // Starts the server
 app.listen(port, () =>

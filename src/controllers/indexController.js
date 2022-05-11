@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const WorryEntry = require("../models/WorryEntry");
 
 const indexController = {
   homePage: (req, res) => {
@@ -10,14 +11,34 @@ const indexController = {
   },
   profilePage: (req, res) => {
     res.render("profile", {
-      user: req.user
+      user: req.user,
     });
   },
   worryFormPage: (req, res) => {
     res.render("worryForm");
   },
-  
+
+  createWorryEntry: async (req, res) => {
+    let { time, mood, worryDescription } = req.body;
+    time = new Date(time);
+    mood = Number(mood);
+
+    const newWorryEntry = WorryEntry({
+      datetime: time,
+      moodLevel: mood,
+      worryDescription,
+      owner: req.user._id
+    });
+
+    try {
+      const worryEntryFromDB = await newWorryEntry.save();
+      req.user.worries.push(worryEntryFromDB._id);
+      await req.user.save();
+      res.redirect("/home");
+    } catch (e) {
+      console.log(e);
+    }
+  },
 };
 
 module.exports = indexController;
-

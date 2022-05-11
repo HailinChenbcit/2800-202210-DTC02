@@ -3,6 +3,10 @@ const { Schema } = mongoose;
 
 const worryEntrySchema = new Schema(
   {
+    datetime: {
+      type: Date,
+      default: () => Date.now(),
+    },
     moodLevel: {
       type: Number,
       required: true,
@@ -14,6 +18,7 @@ const worryEntrySchema = new Schema(
       type: Boolean,
       default: false,
     },
+    owner: { type: Schema.Types.ObjectId, ref: "User" }
   },
   {
     _id: true,

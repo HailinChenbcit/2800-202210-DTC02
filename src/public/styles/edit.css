@@ -1,0 +1,26 @@
+.mainContent {
+    padding: 1rem;
+    font-weight: bold;
+}
+
+.mainContent span{
+    font-weight: lighter;
+}
+
+.mainContent legend{
+    text-align: center;
+    font-weight: bolder;
+    margin-bottom: 3vh;
+}
+
+.editSaveButton {
+    width: 70%;
+    border: none;
+    background-color: #92a1d1;
+    color: #6545a4;
+    margin: 50px;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}

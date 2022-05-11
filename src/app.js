@@ -84,6 +84,8 @@ app.get(
 );
 app.get("/worryForm", ensureAuthenticated, indexController.worryFormPage);
 
+app.get("/edit", ensureAuthenticated, indexController.editPage);
+
 // Starts the server
 app.listen(port, () =>
   console.log(`App listening on port 3000. | ${__dirname}!`)

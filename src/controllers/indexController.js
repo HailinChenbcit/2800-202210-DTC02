@@ -16,6 +16,9 @@ const indexController = {
   worryFormPage: (req, res) => {
     res.render("worryForm");
   },
+  editPage: (req, res) => {
+    res.render("edit");
+  },
   
 };
 

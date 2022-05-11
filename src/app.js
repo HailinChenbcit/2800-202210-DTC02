@@ -7,6 +7,7 @@ const session = require("express-session");
 const MongoDBSession = require("connect-mongodb-session")(session);
 const authController = require("./controllers/authController");
 const indexController = require("./controllers/indexController");
+const worryEntryController = require("./controllers/worryEntryController");
 
 const {
   ensureAuthenticated,
@@ -84,6 +85,9 @@ app.get(
   indexController.accountsPage
 );
 app.get("/worry_form", ensureAuthenticated, indexController.worryFormPage);
+
+// Worry entry
+app.get("/worryEntriesAll", ensureAuthenticated, worryEntryController.userWorryEntries);
 
 // Starts the server
 app.listen(port, () =>

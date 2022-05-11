@@ -14,7 +14,7 @@ const indexController = {
     });
   },
   worryFormPage: (req, res) => {
-    res.render("worry_form");
+    res.render("worryForm");
   },
   
 };

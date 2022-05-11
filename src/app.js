@@ -82,7 +82,7 @@ app.get(
   isAdmin,
   indexController.accountsPage
 );
-app.get("/worry_form", ensureAuthenticated, indexController.worryFormPage);
+app.get("/worryForm", ensureAuthenticated, indexController.worryFormPage);
 
 // Starts the server
 app.listen(port, () =>

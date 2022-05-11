@@ -7,21 +7,8 @@ body {
     justify-content: flex-start;
 }
 
-.navbar {
-    background-color: #e7daff;
-    width: 100%;
-    height: 4em;
-}
 
-.navbar-brand img {
-    margin-left: 5vw;
-}
-
-.navbar-brand span {
-    color: #6545a4;
-}
-
-.worry_input_container {
+.worryInputContainer {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -29,18 +16,33 @@ body {
     font-weight: bold;
 }
 
-.worry_input_container span {
+.worryInputContainer span {
     margin-bottom: 5px;
+    margin-top: 5vh;
 }
 
-.worry_input_container textarea {
+.worryInputContainer textarea {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     width: 80%;
 }
 
-.worry_submit_button {
+#emojiContainer {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    accent-color: #6545a4;
+    margin-top: 5vh;
+}
+
+#emojiLabels label {
+    margin: 3vh 5vw;
+}
+
+.worrySubmitButton {
     width: 70%;
     border: none;
     background-color: #92a1d1;
@@ -66,37 +68,4 @@ body {
 .material-symbols-outlined p {
     color: #6545a4;
     align-content: center;
-}
-
-.navbar i {
-    margin-right: 15px;
-}
-
-#time_picker {
-    align-content: center;
-    justify-content: center;
-}
-
-#emoji_buttons button {
-    border: none;
-    background-color: white;
-    width: 30px;
-    height: 30px;
-}
-
-#emoji_buttons {
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-#timepicker{
-    width: 60%;
-}
-
-.worry_emoji{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }

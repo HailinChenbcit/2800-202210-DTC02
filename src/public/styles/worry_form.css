@@ -1,0 +1,73 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    background-color: #92a1d1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.navbar {
+    background-color: #e7daff;
+    width: 100%;
+    height: 4em;
+}
+
+.navbar-brand img {
+    margin-left: 5vw;
+}
+
+.navbar-brand span {
+    color: #6545a4;
+}
+
+.worry_input_container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.worry_input_container span {
+    margin-bottom: 5px;
+}
+
+.worry_input_container textarea {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 80%;
+}
+
+.worry_submit_button {
+    width: 70%;
+    border: none;
+    background-color: #92a1d1;
+    color: #6545a4;
+    margin: 50px;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.icon-btn {
+    text-align: center;
+    text-decoration: none;
+    color: #6545a4
+}
+
+.material-symbols-outlined {
+    color: #6545a4;
+    justify-content: center;
+}
+
+.material-symbols-outlined p {
+    color: #6545a4;
+    align-content: center;
+}
+
+.navbar i {
+    margin-right: 15px;
+}

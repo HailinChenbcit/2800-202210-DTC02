@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorryLess</title>
+
+    <!-- Bootstrap Library CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+        </script>
+
+    <!-- FontAwesome Library -->
+    <script src="https://kit.fontawesome.com/3972ff60ea.js" crossorigin="anonymous"></script>
+
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Local Library -->
+    <!-- <link rel="stylesheet" href="/styles/login.css"> -->
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    <style>
+        #time_picker {
+            align-content: center;
+            justify-content: center;
+        }
+
+        #emoji_buttons button {
+            border: none;
+            background-color: white;
+            width: 30px;
+            height: 30px;
+        }
+
+        #emoji_buttons {
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+        #today_mood{
+            text-transform: capitalize;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- TIMEPICKER -->
+    <div style="margin-left: 5%; margin-right: 5%;">
+        <div class="col">
+            <div class="cs-form form-outline timepicker">
+                <label class="form-label" for="time_picker">Pick Time</label>
+                <input type="time" id="time_picker" class="form-control" default="now"/>
+            </div>
+        </div>
+
+        <br>
+        <!-- MOODPICKER -->
+        <div id="emoji_picker">
+            <p>Mood today: </p>
+            <div id="emoji_buttons">
+                <button id="awesome" value="5">&#128513;</button>
+                <button id="good" value="4">&#128522;</button>
+                <button id="neutral" value="3">&#128563;</button>
+                <button id="sad" value="2">&#128542;</button>
+                <button id="cry" value="1">&#128549;</button>
+            </div>
+            Now I feel <span id="today_mood"></span>
+        </div>
+    </div>
+</body>
+
+
+<script>
+    $("#emoji_buttons button").click(function () {
+        // $("#today_mood").empty()
+        // console.log(this.id)
+        $("#today_mood").html(this.id)
+    })
+</script>
+
+</html>

@@ -3,7 +3,7 @@
 
 
 body {
-    background-color: azure;
+    background-color: #ceb5ff;
     display: flex;
     align-content: center;
     justify-content: center
@@ -20,7 +20,7 @@ body {
     padding: 1.5rem;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
     border-radius: 12px;
-    background-color: white;
+    background-color: #e7daff;
 }
 
 .form-title {
@@ -84,5 +84,15 @@ body {
 .fa-google-plus-g:hover,
 .fa-linkedin-in:hover,
 .fa-github:hover {
-    color: #adadad;
+    color: #9062ea;
+}
+
+.btn-primary{
+    background-color:#6545a4;
+    border-color:#9062ea;
+}
+
+.btn-primary:hover{
+    background-color: #9062ea;
+    border-color:#9062ea;
 }

@@ -1,6 +1,8 @@
+const WorryEntry = require("../models/WorryEntry");
+
 const worryEntryController = {
     userWorryEntries: (req, res) => {
-        res.send(req.user.worries);
+        res.send(WorryEntry.find({}));
     }
 }
 

@@ -31,7 +31,6 @@
             background-color: #9062ea;
             border-color: #9062ea;
         }
-
     </style>
 
 </head>
@@ -54,53 +53,56 @@
     </p>
 
     <% for (var i=0; i < data.length; i++) { %>
-    <!-- CARDS DISPLAY -->
-    <div class="card text-center">
-        <div class="card-header">
-            <%= data[i].createdAt %>
-        </div>
-        <div class="card-body">
-            <span>
-                Mood  <%= data[i].moodLevel %>
-            </span>
-            
-            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#entry<%= data[i]._id %>"
-                aria-expanded="false" aria-controls="entry<%= data[i]._id %>">
-                Edit
-            </button>
-            <input type="button" name="deleteEntry" id="deleteEntry" class="btn secondary-primary" value="Delete">
-        </div>
-        <!-- Collapse input content -->
-        <div class="collapse" id="entry<%= data[i]._id %>">
-            <div class="card card-body">
-                <input type="textarea" name="worryEntry" id="worryEntry" class="form-control" value='<%= data[i].worryDescription %>' >
-                <br>
-                <input type="submit" name="save" id="save" class="btn btn-primary" value="Save">
+        <!-- CARDS DISPLAY -->
+        <div class="card text-center">
+            <div class="card-header">
+                <%= data[i].createdAt %>
+            </div>
+            <div class="card-body">
+                <span>
+                    Mood <%= data[i].moodLevel %>
+                </span>
+
+                <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#entry<%= data[i]._id %>" aria-expanded="false"
+                    aria-controls="entry<%= data[i]._id %>">
+                    Edit
+                </button>
+                <input type="button" name="deleteEntry" id="deleteEntry<%= data[i]._id %>" class="deleteEntry btn secondary-primary" value="Delete">
+            </div>
+            <!-- Collapse input content -->
+            <div class="collapse" id="entry<%= data[i]._id %>">
+                <div class="card card-body">
+                    <input type="textarea" name="worryEntry" id="worryEntry" class="form-control"
+                        value='<%= data[i].worryDescription %>'>
+                    <br>
+                    <input type="submit" name="save" id="save<%= data[i]._id %>" class="btn btn-primary saveEntry" value="Save">
+                </div>
             </div>
         </div>
-    </div>
         <% } %>
 
-
-
-    <footer id="nav" class="navbar justify-content-evenly fixed-bottom" style="height: 4em">
-        <a class="icon-btn" href="/home">
-            <i class="material-symbols-outlined">home</i>
-            <p class="btm-btn-text">Home</p>
-        </a>
-        <a class="icon-btn" href="/worryForm">
-            <i class="material-symbols-outlined">add_box</i>
-            <p class="btm-btn-text">Journal</p>
-        </a>
-        <a class="icon-btn" href="/">
-            <i class="material-symbols-outlined">alarm</i>
-            <p class="btm-btn-text">Alarms</p>
-        </a>
-        <a class="icon-btn" href="/profile">
-            <i class="material-symbols-outlined">person</i>
-            <p class="btm-btn-text">Profile</p>
-        </a>
-    </footer>
+            <footer id="nav" class="navbar justify-content-evenly fixed-bottom" style="height: 4em">
+                <a class="icon-btn" href="/home">
+                    <i class="material-symbols-outlined">home</i>
+                    <p class="btm-btn-text">Home</p>
+                </a>
+                <a class="icon-btn" href="/worryForm">
+                    <i class="material-symbols-outlined">add_box</i>
+                    <p class="btm-btn-text">Journal</p>
+                </a>
+                <a class="icon-btn" href="/">
+                    <i class="material-symbols-outlined">alarm</i>
+                    <p class="btm-btn-text">Alarms</p>
+                </a>
+                <a class="icon-btn" href="/profile">
+                    <i class="material-symbols-outlined">person</i>
+                    <p class="btm-btn-text">Profile</p>
+                </a>
+            </footer>
 </body>
+<!-- JAVASCRIPT -->
+<script src="/scripts/dailyview.js">
+</script>
 
 </html>

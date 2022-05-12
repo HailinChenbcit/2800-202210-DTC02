@@ -97,9 +97,9 @@ app.post(
 // Routes for daily view
 app.get("/dailyView", ensureAuthenticated, worryEntryController.displayWorryEntries);
 // Update
-app.get("/dailyView", ensureAuthenticated, worryEntryController.updateWorryEntries);
+app.get("/dailyView/update/:id", ensureAuthenticated, worryEntryController.updateWorryEntries);
 // Delete
-app.get("/dailyView", ensureAuthenticated, worryEntryController.deleteWorryEntries);
+app.get("/dailyView/remove/:id", ensureAuthenticated, worryEntryController.deleteWorryEntries);
 
 
 // Starts the server

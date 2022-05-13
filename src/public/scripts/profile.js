@@ -1,7 +1,35 @@
 let worryEntries;
 
-function initMoodBar(destChild, dataArr, xAxisArr, yAxisArr) {
+function initMoodBar(destChild, dataArr, xAxisArr) {
+    const context = destChild.getContext('2d');
+    const moodGraph = new Chart(context, {
+        type: "bar",
+        data: {
+            labels: xAxisArr,
+            datasets: [
+                {
+                    label: "Number of moods you've been feeling",
+                    data: dataArr,
+                    backgroundColor: [
+                        'rgba(144, 98, 234, 1)',
+                        'rgba(144, 98, 234, 1)',
+                        'rgba(144, 98, 234, 1)',
+                        'rgba(144, 98, 234, 1)',
+                        'rgba(144, 98, 234, 1)',
+                    ],
+                    borderColor: [
+                        'rgba(106, 69, 165, 1)',
+                        'rgba(106, 69, 165, 1)',
+                        'rgba(106, 69, 165, 1)',
+                        'rgba(106, 69, 165, 1)',
+                        'rgba(106, 69, 165, 1)',
+                    ],
+                    borderWidth: 1,
     
+                },
+            ],
+        },
+    })
 }
 
 function initMoodLine(destChild, dataArr, xAxisArr, yAxisMap) {
@@ -45,34 +73,6 @@ function initMoodLine(destChild, dataArr, xAxisArr, yAxisMap) {
 }
 
 var canvasElement = document.getElementById("summaryBarGraph");
-var config = {
-    type: "bar",
-    data: {
-        labels: ["😰", "🙁", "😐", "🙂", "😃"],
-        datasets: [
-            {
-                label: "Number of moods you've been feeling",
-                data: [1, 2, 5, 10, 4],
-                backgroundColor: [
-                    'rgba(144, 98, 234, 1)',
-                    'rgba(144, 98, 234, 1)',
-                    'rgba(144, 98, 234, 1)',
-                    'rgba(144, 98, 234, 1)',
-                    'rgba(144, 98, 234, 1)',
-                ],
-                borderColor: [
-                    'rgba(106, 69, 165, 1)',
-                    'rgba(106, 69, 165, 1)',
-                    'rgba(106, 69, 165, 1)',
-                    'rgba(106, 69, 165, 1)',
-                    'rgba(106, 69, 165, 1)',
-                ],
-                borderWidth: 1,
-
-            },
-        ],
-    },
-}
 
 // var summaryBarGraph = new Chart(canvasElement, config)
 
@@ -83,9 +83,7 @@ async function getWorryEntries() {
 }
 
 function setup() {
-    const {times, moods} = processWorryEntries(worryEntries)
-    console.log(times)
-    console.log(moods)
+    const {times, moods, count} = processWorryEntries(worryEntries)
 
     const moodGraphCanvas = document.querySelector("#moodgraph");
 
@@ -97,7 +95,7 @@ function setup() {
     moodLevels.set(5, "😃");
 
     initMoodLine(moodGraphCanvas, moods, times, moodLevels);
-    initMoodBar(canvasElement, ?, ?, ["😰", "🙁", "😐", "🙂", "😃"])
+    initMoodBar(canvasElement, count, ["😰", "🙁", "😐", "🙂", "😃"])
 }
 
 function average(numArr) {
@@ -108,8 +106,13 @@ function average(numArr) {
 
 function processWorryEntries(data) {
     let parsedData = new Map()
+    let moodCount = new Map()
+    for (let i = 1; i <= 5; i++) {
+        moodCount.set(i, 0)
+    }
 
     data.map((datum) => {
+        moodCount.set(datum.moodLevel, moodCount.get(datum.moodLevel) + 1)
         return { date: datum.datetime.split("T")[0], mood: datum.moodLevel }
     }).forEach((pair) => {
         if (parsedData.has(pair.date)) {
@@ -121,8 +124,9 @@ function processWorryEntries(data) {
 
     let stamps = Array.from(parsedData.keys(), key => key.substr(-2))
     let avgMoods = Array.from(parsedData.values(), values => average(values))
+    let countMoods = Array.from(moodCount.values())
 
-    return {times: stamps, moods: avgMoods}
+    return {times: stamps, moods: avgMoods, count: countMoods}
 
 
     // for (const x of parsedData.entries()) {

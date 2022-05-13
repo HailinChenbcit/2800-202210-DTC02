@@ -72,9 +72,6 @@ function initMoodLine(destChild, dataArr, xAxisArr, yAxisMap) {
     })
 }
 
-var canvasElement = document.getElementById("summaryBarGraph");
-
-// var summaryBarGraph = new Chart(canvasElement, config)
 
 async function getWorryEntries() {
     const resp = await fetch('../../worryEntriesAll')
@@ -86,6 +83,7 @@ function setup() {
     const {times, moods, count} = processWorryEntries(worryEntries)
 
     const moodGraphCanvas = document.querySelector("#moodgraph");
+    const canvasElement = document.getElementById("summaryBarGraph");
 
     const moodLevels = new Map();
     moodLevels.set(1, "😰");
@@ -94,6 +92,14 @@ function setup() {
     moodLevels.set(4, "🙂");
     moodLevels.set(5, "😃");
 
+    /* Note:
+     * Line graph should be able to only keep the most recent X amount of days
+     * Line graph due to day averaging may not be the most accurate, what would be more accurate
+     *      would be a very linear precise graph that tracks mood down to the minute just to represent
+     *      daily mood shifts and swings. A day's average would be misleading if the user's mood is 1 in the morning
+     *      but ends their day at 5, would be representing as an overall 3 which is arguably inaccurate.
+     * Bar graph also doesn't account for recency. 
+     */
     initMoodLine(moodGraphCanvas, moods, times, moodLevels);
     initMoodBar(canvasElement, count, ["😰", "🙁", "😐", "🙂", "😃"])
 }
@@ -127,17 +133,6 @@ function processWorryEntries(data) {
     let countMoods = Array.from(moodCount.values())
 
     return {times: stamps, moods: avgMoods, count: countMoods}
-
-
-    // for (const x of parsedData.entries()) {
-        
-    // }
-    
-    // parsedData.forEach((value, key) => {
-    //     console.log(value)
-    //     console.log(`${key}: ${average(value)}`)
-    // })
-
 }
 
 document.addEventListener("DOMContentLoaded", getWorryEntries().then((data) => {

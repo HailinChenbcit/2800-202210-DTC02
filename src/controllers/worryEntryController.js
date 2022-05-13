@@ -49,7 +49,6 @@ const worryEntryController = {
     }
   },
 
-<<<<<<< HEAD
   // Delete worry card
   deleteWorryEntries: (req, res) => {
     WorryEntry.deleteOne(
@@ -68,20 +67,3 @@ const worryEntryController = {
 };
 
 module.exports = worryEntryController;
-=======
-    // Delete worry card
-    deleteWorryEntries: (req, res) => {
-        WorryEntry.deleteOne({
-            _id: req.params.id
-        }, function (err, data) {
-            if (err) {
-                console.log("Error " + err);
-            } else {
-                console.log("Deleted Data " + data);
-            }
-        });
-    }
-}
-
-module.exports = worryEntryController;
->>>>>>> 9595b99ccf04175eef974f85dfee2447843d8c7b

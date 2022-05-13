@@ -32,22 +32,19 @@ const worryEntryController = {
   },
 
   // Edit worry card
-  updateWorryEntries: (req, res) => {
-    WorryEntry.updateOne(
-      {
-        _id: req.params.id,
-      },
-      function (err, data) {
-        if (err) {
-          console.log("Error " + err);
-        } else {
-          // console.log(data);
-          res.render("dailyView.ejs", {
-            data: data,
-          });
-        }
-      }
-    );
+  updateWorryEntries: async (req, res) => {
+    const { id } = req.params;
+    const { worryDescription } = req.body;
+    try {
+      const updatedWorryEntry = await WorryEntry.findByIdAndUpdate(
+        id,
+        { worryDescription },
+        { new: true }
+      ).exec();
+      res.json(updatedWorryEntry);
+    } catch (e) {
+      res.json(e);
+    }
   },
 
   // Delete worry card

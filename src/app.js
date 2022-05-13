@@ -98,7 +98,7 @@ app.get("/edit", ensureAuthenticated, indexController.editPage);
 // Routes for daily view
 app.get("/dailyView/:date", ensureAuthenticated, worryEntryController.displayWorryEntries);
 // Update
-app.get("/dailyView/update/:id", ensureAuthenticated, worryEntryController.updateWorryEntries);
+app.post("/dailyView/update/:id", ensureAuthenticated, worryEntryController.updateWorryEntries);
 // Delete
 app.get("/dailyView/remove/:id", ensureAuthenticated, worryEntryController.deleteWorryEntries);
 

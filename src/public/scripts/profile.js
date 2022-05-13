@@ -79,6 +79,7 @@ async function getWorryEntries() {
 }
 
 function setup() {
+    processWorryEntries(worryEntries)
 
     const moodGraphCanvas = document.querySelector("#moodgraph");
 
@@ -99,26 +100,33 @@ function setup() {
          */
 }
 
+function average(numArr) {
+    let sum = 0;
+    numArr.forEach(num => sum+=num)
+    return sum / numArr.length
+}
+
 function processWorryEntries(data) {
     let parsedData = new Map()
 
     data.map((datum) => {
         return { date: datum.datetime.split("T")[0], mood: datum.moodLevel }
     }).forEach((pair) => {
-        console.log(pair)
-        if (groupedData.has(pair.date)) {
-            groupedData.get(pair.date).push(pair.mood)
+        if (parsedData.has(pair.date)) {
+            parsedData.get(pair.date).push(pair.mood)
         } else {
-            groupedData.set(pair.date, [pair.mood])
+            parsedData.set(pair.date, [pair.mood])
         }
     })
-
-
-    console.log(parsedData)
+    
+    parsedData.forEach((value, key) => {
+        console.log(value)
+        console.log(`${key}: ${average(value)}`)
+    })
 
 }
 
 document.addEventListener("DOMContentLoaded", getWorryEntries().then((data) => {
-    worryEntries = processWorryEntries(data);
+    worryEntries = data;
     setup()
 }));

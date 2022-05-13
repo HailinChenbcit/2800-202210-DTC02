@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WorryLess</title>
+    <title>Edit page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet"
@@ -13,10 +13,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/styles/layout.css">
-    <link rel="stylesheet" href="/styles/home_page.css">
-
-    <!-- FAVICON -->
-    <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
+    <link rel="stylesheet" href="/styles/edit.css">
 </head>
 
 <body>
@@ -27,38 +24,16 @@
             <span>WorryLess</span>
         </a>
     </nav>
+    <div class="mainContent">
+        <legend>Worry Edit Form</legend>
+        <p>Date: <span>May/11/2022</span></p> 
+        <p>Time: <span>9:00 AM</span></p>
+        <span style="font-weight: bold;">Your Worry:</span>
+            <textarea name="worryDescriptionEdit" id="worryEdit" cols="45" rows="19"></textarea>
+            <br>
+            <button class="editSaveButton">Save</button>
 
-    <!-- Calendar -->
-    <main>
-        <div id="calendar-container">
-            <div id="calendar-header">
-                <div id="monthDisplayTitle"></div>
-                <div>
-                    <button id="backButton">Back</button>
-                    <button id="nextButton">Next</button>
-                </div>
-            </div>
-            <div class="calendar-wrapper">      
-                <div id="weekdays">
-                    <div><span>Su</span></div>
-                    <div><span>Mo</span></div>
-                    <div><span>Tu</span></div>
-                    <div><span>We</span></div>
-                    <div><span>Th</span></div>
-                    <div><span>Fr</span></div>
-                    <div><span>Sa</span></div>
-                </div>
-    
-                <div id="calendar"></div>
-            </div>
-        </div>
-
-        
-            <!-- Button for Worries -->
-            <button type="button" class="worryButton">GO INTO WORRY TIME</button>
-
-    </main>
-
+    </div>
     <!-- Footer -->
     <footer id="nav" class="navbar justify-content-evenly fixed-bottom" style="height: 4em">
         <a class="icon-btn" href="/home">
@@ -78,10 +53,7 @@
             <p class="btm-btn-text">Profile</p>
         </a>
     </footer>
+
 </body>
-<script src="/scripts/home_page.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
 
 </html>

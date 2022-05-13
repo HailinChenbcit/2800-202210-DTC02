@@ -1,37 +1,3 @@
-* {
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-
-body {
-  height: 100vh;
-  width: 100vw;
-  background-color: #92a1d1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-main {
-  padding: 1rem;
-  text-align: center;
-}
-
-.navbar {
-  background-color: #e7daff;
-  width: 100%;
-  height: 4em;
-}
-
-.navbar-brand img{
-  margin-left: 5vw;
-}
-
-.navbar-brand span{
-  color: #6545a4;
-}
-
 
 button {
   width: 30vw;
@@ -52,7 +18,7 @@ button {
 
 #calendar-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   padding: 10px;
   color: #d36c6c;
   font-size: 1rem;
@@ -82,6 +48,11 @@ button {
   width: 100%;
   /* margin-left: 15px; */
 }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
 .day {
   padding-top: 20px;
   text-align: center;
@@ -96,7 +67,7 @@ button {
   background-color: #e8faed;
 }
 
-.day + #currentDay {
+.currentDay {
   background-color:#e8f4fa;
 }
 
@@ -128,17 +99,6 @@ button {
   text-align: center;
 }
 
-/* Footer, Header */
-.material-symbols-outlined {
-  align-items: center;
-    font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 48
-}
-
-.icon-btn {
-  text-align: center;
-  text-decoration: none;
+#monthDisplayTitle {
+  font-size: small;
 }

@@ -1,0 +1,71 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    background-color: #92a1d1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+
+.worryInputContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.worryInputContainer span {
+    margin-bottom: 5px;
+    margin-top: 5vh;
+}
+
+.worryInputContainer textarea {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 80%;
+}
+
+#emojiContainer {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    accent-color: #6545a4;
+    margin-top: 5vh;
+}
+
+#emojiLabels label {
+    margin: 3vh 5vw;
+}
+
+.worrySubmitButton {
+    width: 70%;
+    border: none;
+    background-color: #92a1d1;
+    color: #6545a4;
+    margin: 50px;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.icon-btn {
+    text-align: center;
+    text-decoration: none;
+    color: #6545a4
+}
+
+.material-symbols-outlined {
+    color: #6545a4;
+    justify-content: center;
+}
+
+.material-symbols-outlined p {
+    color: #6545a4;
+    align-content: center;
+}

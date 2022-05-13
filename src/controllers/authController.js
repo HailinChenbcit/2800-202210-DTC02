@@ -1,50 +1,39 @@
 const User = require("../models/User");
-
-function login(req, user) {
-  req.session.isAuth = true;
-  req.session.user = user;
-}
-
+const identicon = require("identicon");
 
 const authController = {
   loginPage: (req, res) => {
     res.render("login");
   },
-  
-  registerPage: (req, res) =>{
+
+  registerPage: (req, res) => {
     res.render("register");
   },
 
-  registerUser: async (req, res) => {
-    console.log(req.body);
+  registerUser: async (req, res, next) => {
     const { firstname, lastname, email, password } = req.body;
+    const buffer = await identicon.generate(email, 64);
     try {
-      const newUser = new User({ firstname, lastname, email, password });
+      const newUser = new User({
+        firstname,
+        lastname,
+        email,
+        password,
+        avatar: { data: buffer, contentType: "image/png" },
+      });
       await newUser.save();
-      login(req, newUser);
+
+      next();
     } catch (err) {
       console.log(err.message);
       res.redirect("/auth/register");
     }
-    res.render("home");
   },
 
-  loginUser: async (req, res) => {
-    // authenticate user and render home page
-    const { email, password } = req.body;
-    let user;
-    try {
-      user = await User.findOne({ email });
-    } catch (err) {
-      console.log(err);
-      throw err;
-    }
-    if (user && user.password === password) {
-      login(req, user);
-      res.render("home");
-    } else {
-      res.send("User login failed");
-    }
+  logout: (req, res) => {
+    req.logout();
+    req.session.destroy();
+    res.redirect("/auth/login");
   },
 };
 

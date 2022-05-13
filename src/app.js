@@ -93,6 +93,7 @@ app.post(
   ensureAuthenticated,
   indexController.createWorryEntry
 );
+app.get("/edit", ensureAuthenticated, indexController.editPage);
 
 // Starts the server
 app.listen(port, () =>

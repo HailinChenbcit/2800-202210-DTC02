@@ -39,6 +39,10 @@ const indexController = {
       console.log(e);
     }
   },
+  editPage: (req, res) => {
+    res.render("edit");
+  },
+  
 };
 
 module.exports = indexController;

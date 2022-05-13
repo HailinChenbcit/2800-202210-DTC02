@@ -49,9 +49,9 @@ app.use(passport.session());
 
 app.use((req, _, next) => {
   console.log(req.url);
-  // console.log(req.session);
-  // console.log(req.body);
-  // console.log(req.user);
+  console.log(req.session);
+  console.log(req.body);
+  console.log(req.user);
   next();
 });
 

@@ -8,7 +8,9 @@ const emojis = {
 }
 const worryEntryController = {
     userWorryEntries: (req, res) => {
-        res.send(req.user.worries);
+        WorryEntry.find({owner: req.session.passport.user}, "moodLevel datetime owner",(err, resp) => {
+            res.json(resp)
+        })
     },
 
     // Show all worry cards
@@ -51,8 +53,7 @@ const worryEntryController = {
                 console.log("Deleted Data " + data);
             }
         });
-    },
-
+    }
 }
 
 module.exports = worryEntryController;

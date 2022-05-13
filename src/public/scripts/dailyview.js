@@ -1,4 +1,4 @@
-const deleteEntryUrl = "http://localhost:3000/dailyView/remove/";
+const deleteEntryUrl = "https://aqueous-brook-37004.herokuapp.com/dailyView/remove/";
 const worryCards = document.querySelectorAll(".worry-card");
 
 const handleDelete = async (worryCard) => {

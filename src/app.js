@@ -100,7 +100,7 @@ app.get("/dailyView/:date", ensureAuthenticated, worryEntryController.dailyWorry
 // Update
 app.post("/dailyView/update/:id", ensureAuthenticated, worryEntryController.updateWorryEntries);
 // Delete
-app.get("/dailyView/remove/:id", ensureAuthenticated, worryEntryController.deleteWorryEntries);
+app.delete("/dailyView/remove/:id", ensureAuthenticated, worryEntryController.deleteWorryEntries);
 
 
 // Starts the server

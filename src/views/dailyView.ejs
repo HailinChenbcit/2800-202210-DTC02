@@ -64,7 +64,7 @@
 
         <% worryEntries.forEach(entry=> { %>
 
-          <div class="card text-center">
+          <div class="card text-center worry-card" id="<%= entry.id %> ">
             <div class="card-header">
               <div class="entry-time">
                 <%= entry.time %>
@@ -92,8 +92,7 @@
                   Edit
                 </button>
 
-                <input type="button" name="deleteEntry" id="deleteEntry<%= entry.id %>"
-                  class="deleteEntry btn secondary-primary" value="Delete" />
+                <input type="button" name="deleteEntry" class="deleteEntry btn secondary-primary" value="Delete" />
 
               </div>
 

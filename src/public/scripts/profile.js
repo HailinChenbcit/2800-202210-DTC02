@@ -1,4 +1,4 @@
-
+let worryEntries;
 
 function initMoodGraph(destChild, dataArr, xAxisArr, yAxisMap) {
     const context = destChild.getContext('2d');
@@ -70,12 +70,12 @@ var config = {
     },
 }
 
-var summaryBarGraph = new Chart(canvasElement, config)
+// var summaryBarGraph = new Chart(canvasElement, config)
 
 async function getWorryEntries() {
-    const entries = await fetch('/worryEntriesAll');
-    const worriesJSON = await entries.json();
-    return worriesJSON;
+    const resp = await fetch('../../worryEntriesAll')
+    const data = await resp.json()
+    return data
 }
 
 function setup() {
@@ -90,15 +90,16 @@ function setup() {
 
     const times = [6, 7, 8, 9, 10, 11, 12];
     const sampleData = [3.4, 3.2, 5.0, 4.9, 1.4, 1.4, 4.5];
-    initMoodGraph(moodGraphCanvas, sampleData, times, moodLevels);
-    getWorryEntries().then((val) => {
-        console.log(val);
+    // initMoodGraph(moodGraphCanvas, sampleData, times, moodLevels);
         /* let val be the array of mood entries...
          * group every val that has the same day
          * for every day group, get the average mood level
          * then for every average mood level of a day is a point in the mood graph
          */
-    })
+    console.log(worryEntries)
 }
 
-document.addEventListener("DOMContentLoaded", setup);
+document.addEventListener("DOMContentLoaded", getWorryEntries().then((data) => {
+    worryEntries = data;
+    setup()
+}));

@@ -1,11 +1,12 @@
-async function deleteEntry() {
+
+
+async function deleteEntry(e) {
+  e.preventDefault();
   entry_id = this.id.slice(11);
-  await $.ajax({
-    url: `http://localhost:3000/dailyView/remove/${entry_id}`,
-    type: "get",
-    success: (e) => {},
-  });
-  console.log(this);
+  const resp = await fetch(
+    `http://localhost:3000/dailyView/remove/${entry_id}`
+  );
+  console.log(this)
   this.parentElement.parentElement.removeChild(this.parentElement);
 }
 

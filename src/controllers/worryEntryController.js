@@ -7,30 +7,47 @@ const emojis = {
   5: "&#128522;",
 };
 const worryEntryController = {
-    userWorryEntries: (req, res) => {
-        WorryEntry.find({owner: req.session.passport.user}, "moodLevel datetime owner",(err, resp) => {
-            res.json(resp)
-        })
-    },
+  userWorryEntries: (req, res) => {
+    WorryEntry.find(
+      { owner: req.session.passport.user },
+      "moodLevel datetime owner",
+      (err, resp) => {
+        res.json(resp);
+      }
+    );
+  },
 
   // Show all worry cards
-  displayWorryEntries: async (req, res) => {
+  dailyWorryEntries: async (req, res) => {
     const dateString = req.params.date;
     const year = dateString.substring(0, 4);
     const month = dateString.substring(4, 6);
     const day = Number(dateString.substring(6, 8));
     const date = new Date(year, month, day);
     const nextDay = new Date(year, month, day + 1);
-    console.log(date, nextDay);
-    const worryEntries = await WorryEntry.find({
+    // console.log(dateString, date, nextDay)
+    const worryEntriesRaw = await WorryEntry.find({
       owner: req.user._id,
       datetime: {
         $gte: date,
         $lt: nextDay,
       },
     }).exec();
-    console.log(worryEntries);
-    res.render("dailyView", { data: worryEntries });
+
+    const worryEntries = worryEntriesRaw.map((entry) => {
+      const worryEntry = {
+        id: entry._id,
+        time: entry.datetime.toLocaleString("en-GB", {
+          timeZone: "Canada/Pacific",
+          dateStyle: "medium",
+          timeStyle: "medium",
+        }),
+        description: entry.worryDescription,
+        moodIcon: emojis[entry.moodLevel]
+      };
+      return worryEntry;
+    });
+    res.render("dailyView", { worryEntries });
   },
 
   // Edit worry card

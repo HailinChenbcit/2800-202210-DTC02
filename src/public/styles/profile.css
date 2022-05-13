@@ -19,7 +19,7 @@
 }
 
 /* Logout button */
-.LogOutButton {
+.LogOutButton, .AdminButton {
     width: 70%;
     border: none;
     background-color: #92a1d1;
@@ -31,7 +31,7 @@
     text-align: center;
   }
 
-.LogOutButton a {
+.LogOutButton a, .AdminButton a {
     display: inline-block;
     text-decoration: none;
     width: 100%;

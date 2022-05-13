@@ -45,7 +45,7 @@
     <main>
         <div class="user-info-wrapper">
             <div class="avatar-wrapper">
-                <!-- <img src="data:image/ejs<%#=user.avatar.contentType%>;base64,<%#=user.avatar.data.toString('base64')%>"> -->
+                <img src="data:image/ejs<%=user.avatar.contentType%>;base64,<%=user.avatar.data.toString('base64')%>">
             </div>
             <div class="name-wrapper">
                 <p><%= user.firstname %>, <%= user.lastname %></p>
@@ -58,6 +58,11 @@
       <div class="summaryBarGraph_container">
             <canvas id="summaryBarGraph" height="200"></canvas>
       </div>
+        <% if (user.admin) { %>
+        <button type="button" class="AdminButton" >
+          <a href="/accounts">View All Accounts</a>
+        </button>
+        <% } %>
         <button type="button" class="LogOutButton" >
             <a href="/auth/logout">Logout</a>
         </button>

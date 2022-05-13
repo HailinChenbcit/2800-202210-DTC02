@@ -85,9 +85,6 @@ function setup() {
     const moodGraphCanvas = document.querySelector("#moodgraph");
     const canvasElement = document.getElementById("summaryBarGraph");
 
-    console.log(moods)
-    console.log(times)
-
     const moodLevels = new Map();
     moodLevels.set(1, "😰");
     moodLevels.set(2, "🙁");
@@ -142,7 +139,6 @@ function processWorryEntries(data) {
 }
 
 document.addEventListener("DOMContentLoaded", getWorryEntries().then((data) => {
-    console.log(data)
     worryEntries = data;
     setup()
 }));

@@ -79,6 +79,7 @@ async function getWorryEntries() {
 }
 
 function setup() {
+
     const moodGraphCanvas = document.querySelector("#moodgraph");
 
     const moodLevels = new Map();
@@ -96,10 +97,28 @@ function setup() {
          * for every day group, get the average mood level
          * then for every average mood level of a day is a point in the mood graph
          */
-    console.log(worryEntries)
+}
+
+function processWorryEntries(data) {
+    let parsedData = new Map()
+
+    data.map((datum) => {
+        return { date: datum.datetime.split("T")[0], mood: datum.moodLevel }
+    }).forEach((pair) => {
+        console.log(pair)
+        if (groupedData.has(pair.date)) {
+            groupedData.get(pair.date).push(pair.mood)
+        } else {
+            groupedData.set(pair.date, [pair.mood])
+        }
+    })
+
+
+    console.log(parsedData)
+
 }
 
 document.addEventListener("DOMContentLoaded", getWorryEntries().then((data) => {
-    worryEntries = data;
+    worryEntries = processWorryEntries(data);
     setup()
 }));

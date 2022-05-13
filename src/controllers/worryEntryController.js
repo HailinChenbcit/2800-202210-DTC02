@@ -17,7 +17,6 @@ const worryEntryController = {
             if (err) {
                 console.log("Error " + err);
             } else {
-                console.log(data)
                 res.render("dailyView.ejs", {
                     "data": data,
                 })
@@ -33,7 +32,10 @@ const worryEntryController = {
             if (err) {
                 console.log("Error " + err);
             } else {
-                console.log(entryID);
+                // console.log(data);
+                res.render("dailyView.ejs", {
+                    "data": data,
+                })
             }
         });
     },

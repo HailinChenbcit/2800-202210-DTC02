@@ -7,7 +7,7 @@ async function deleteEntry() {
             console.log(e)
         }
     })
-    // refresh div
+    this.parentElement.parentElement.removeChild(this.parentElement);
 
 }
 

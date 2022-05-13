@@ -1,6 +1,10 @@
 let worryEntries;
 
-function initMoodGraph(destChild, dataArr, xAxisArr, yAxisMap) {
+function initMoodBar(destChild, dataArr, xAxisArr, yAxisArr) {
+    
+}
+
+function initMoodLine(destChild, dataArr, xAxisArr, yAxisMap) {
     const context = destChild.getContext('2d');
     const moodGraph = new Chart(context, {
         type: 'line',
@@ -79,7 +83,9 @@ async function getWorryEntries() {
 }
 
 function setup() {
-    processWorryEntries(worryEntries)
+    const {times, moods} = processWorryEntries(worryEntries)
+    console.log(times)
+    console.log(moods)
 
     const moodGraphCanvas = document.querySelector("#moodgraph");
 
@@ -90,14 +96,8 @@ function setup() {
     moodLevels.set(4, "🙂");
     moodLevels.set(5, "😃");
 
-    const times = [6, 7, 8, 9, 10, 11, 12];
-    const sampleData = [3.4, 3.2, 5.0, 4.9, 1.4, 1.4, 4.5];
-    // initMoodGraph(moodGraphCanvas, sampleData, times, moodLevels);
-        /* let val be the array of mood entries...
-         * group every val that has the same day
-         * for every day group, get the average mood level
-         * then for every average mood level of a day is a point in the mood graph
-         */
+    initMoodLine(moodGraphCanvas, moods, times, moodLevels);
+    initMoodBar(canvasElement, ?, ?, ["😰", "🙁", "😐", "🙂", "😃"])
 }
 
 function average(numArr) {
@@ -118,11 +118,21 @@ function processWorryEntries(data) {
             parsedData.set(pair.date, [pair.mood])
         }
     })
+
+    let stamps = Array.from(parsedData.keys(), key => key.substr(-2))
+    let avgMoods = Array.from(parsedData.values(), values => average(values))
+
+    return {times: stamps, moods: avgMoods}
+
+
+    // for (const x of parsedData.entries()) {
+        
+    // }
     
-    parsedData.forEach((value, key) => {
-        console.log(value)
-        console.log(`${key}: ${average(value)}`)
-    })
+    // parsedData.forEach((value, key) => {
+    //     console.log(value)
+    //     console.log(`${key}: ${average(value)}`)
+    // })
 
 }
 

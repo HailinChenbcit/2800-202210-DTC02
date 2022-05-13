@@ -18,7 +18,7 @@ button {
 
 #calendar-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   padding: 10px;
   color: #d36c6c;
   font-size: 1rem;
@@ -97,4 +97,8 @@ a {
   font-size: 16px;
   cursor: pointer;
   text-align: center;
+}
+
+#monthDisplayTitle {
+  font-size: small;
 }

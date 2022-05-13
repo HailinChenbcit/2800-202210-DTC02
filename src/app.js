@@ -96,11 +96,11 @@ app.post(
 app.get("/edit", ensureAuthenticated, indexController.editPage);
 
 // Routes for daily view
-app.get("/dailyView/:date", ensureAuthenticated, worryEntryController.displayWorryEntries);
+app.get("/dailyView/:date", ensureAuthenticated, worryEntryController.dailyWorryEntries);
 // Update
 app.post("/dailyView/update/:id", ensureAuthenticated, worryEntryController.updateWorryEntries);
 // Delete
-app.get("/dailyView/remove/:id", ensureAuthenticated, worryEntryController.deleteWorryEntries);
+app.delete("/dailyView/remove/:id", ensureAuthenticated, worryEntryController.deleteWorryEntries);
 
 
 // Starts the server

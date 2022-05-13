@@ -139,6 +139,7 @@ function processWorryEntries(data) {
 }
 
 document.addEventListener("DOMContentLoaded", getWorryEntries().then((data) => {
+    console.log(data)
     worryEntries = data;
     setup()
 }));

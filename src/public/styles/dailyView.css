@@ -1,0 +1,23 @@
+.card-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-body {
+    display: flex;
+    justify-content: space-between;
+}
+
+.entry-content {
+    text-align: left;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+nav i{
+    margin-right: 10px;
+  }

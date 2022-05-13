@@ -48,6 +48,11 @@ button {
   width: 100%;
   /* margin-left: 15px; */
 }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
 .day {
   padding-top: 20px;
   text-align: center;
@@ -62,7 +67,7 @@ button {
   background-color: #e8faed;
 }
 
-.day + #currentDay {
+.currentDay {
   background-color:#e8f4fa;
 }
 

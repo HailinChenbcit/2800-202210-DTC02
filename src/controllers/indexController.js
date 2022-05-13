@@ -43,6 +43,11 @@ const indexController = {
     res.render("edit");
   },
   
+
+  dailyViewPage: (req, res) => {
+    res.render("dailyView");
+  },
+
 };
 
 module.exports = indexController;

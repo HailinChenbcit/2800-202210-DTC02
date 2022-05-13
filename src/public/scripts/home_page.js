@@ -72,5 +72,13 @@ function initButtons() {
 
 }
 
+// Go into daily view page
+function dailyView() {
+    document.getElementsByClassName('day').addEventListener('click', () => {
+        window.location.href = "/views/dailyView.ejs"
+    });
+}
+
+
 initButtons();
 load();

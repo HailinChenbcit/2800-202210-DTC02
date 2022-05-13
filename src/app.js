@@ -95,6 +95,14 @@ app.post(
 );
 app.get("/edit", ensureAuthenticated, indexController.editPage);
 
+// Routes for daily view
+app.get("/dailyView", ensureAuthenticated, worryEntryController.displayWorryEntries);
+// Update
+app.get("/dailyView/update/:id", ensureAuthenticated, worryEntryController.updateWorryEntries);
+// Delete
+app.get("/dailyView/remove/:id", ensureAuthenticated, worryEntryController.deleteWorryEntries);
+
+
 // Starts the server
 app.listen(port, () =>
   console.log(`App listening on port 3000. | ${__dirname}!`)

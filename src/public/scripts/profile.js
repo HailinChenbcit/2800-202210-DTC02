@@ -85,6 +85,9 @@ function setup() {
     const moodGraphCanvas = document.querySelector("#moodgraph");
     const canvasElement = document.getElementById("summaryBarGraph");
 
+    console.log(moods)
+    console.log(times)
+
     const moodLevels = new Map();
     moodLevels.set(1, "😰");
     moodLevels.set(2, "🙁");
@@ -111,6 +114,8 @@ function average(numArr) {
 }
 
 function processWorryEntries(data) {
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
     let parsedData = new Map()
     let moodCount = new Map()
     for (let i = 1; i <= 5; i++) {
@@ -119,7 +124,8 @@ function processWorryEntries(data) {
 
     data.map((datum) => {
         moodCount.set(datum.moodLevel, moodCount.get(datum.moodLevel) + 1)
-        return { date: datum.datetime.split("T")[0], mood: datum.moodLevel }
+        let fmtDate = new Date(datum.datetime)
+        return { date: `${months[fmtDate.getMonth()]} ${fmtDate.getDate()}`, mood: datum.moodLevel }
     }).forEach((pair) => {
         if (parsedData.has(pair.date)) {
             parsedData.get(pair.date).push(pair.mood)
@@ -128,7 +134,7 @@ function processWorryEntries(data) {
         }
     })
 
-    let stamps = Array.from(parsedData.keys(), key => key.substr(-2))
+    let stamps = Array.from(parsedData.keys())
     let avgMoods = Array.from(parsedData.values(), values => average(values))
     let countMoods = Array.from(moodCount.values())
 
@@ -136,6 +142,7 @@ function processWorryEntries(data) {
 }
 
 document.addEventListener("DOMContentLoaded", getWorryEntries().then((data) => {
+    console.log(data)
     worryEntries = data;
     setup()
 }));

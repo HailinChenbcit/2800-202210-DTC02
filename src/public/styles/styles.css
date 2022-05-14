@@ -3,7 +3,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Kumbh Sans", sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   scroll-behavior: smooth;
 }
 
@@ -211,22 +211,13 @@
 }
 
 .title_heading span {
-  background: #ffffff;
+  color: #ffffff;
   background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
 }
 
 .title_description {
   font-size: 60px;
-  background: #ceb5ff;
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
+  color: #ceb5ff;
 }
 
 .highlight {
@@ -255,12 +246,7 @@
 }
 
 .team h1 {
-  background-color: #6545a4;
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
+  color: #6545a4;
   margin-bottom: 5rem;
   font-size: 2.5rem;
 }
@@ -360,25 +346,16 @@
 
 .main_content h1 {
   font-size: 2rem;
-  background-color: #fe3b6f;
-  background-image: linear-gradient(to top, #ff087b 0%, #ed1a52 100%);
+  color: #fe3b6f;
   background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
   text-transform: uppercase;
   margin-bottom: 32px;
 }
 
 .main_content h2 {
   font-size: 4rem;
-  background: #bf62ea;
+  color: #bf62ea;
   background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
 }
 
 .main_content p {
@@ -428,11 +405,11 @@
   width: 100%;
 }
 
-.main_image--container {
+.main_image_container {
   text-align: center;
 }
 
-.main_image--card {
+.main_image_card {
   margin: 10px;
   height: 500px;
   width: 500px;
@@ -460,12 +437,12 @@
     height: 90%;
   }
 
-  .main_image--container {
+  .main_image_container {
     display: flex;
     justify-content: center;
   }
 
-  .main_image--card {
+  .main_image_card {
     height: 425px;
     width: 425px;
   }
@@ -491,13 +468,11 @@
 }
 
 @media screen and (max-width: 480px) {
-  .main_image--card {
+  .main_image_card {
     width: 250px;
     height: 250px;
   }
-
-  .fa-users,
-  .fa-layer-group {
+  .fa-book {
     font-size: 4rem;
   }
 

@@ -242,7 +242,7 @@
   justify-content: center;
   align-items: center;
   height: 100%;
-  padding: 10rem 0;
+  padding: 5rem 0;
 }
 
 .team h1 {
@@ -431,6 +431,9 @@
 
 /* Mobile Responsive */
 @media screen and (max-width: 1100px) {
+  .main {
+      padding: 0%;
+  }
   .main_container {
     display: grid;
     grid-template-columns: 1fr;
@@ -587,6 +590,9 @@
 }
 
 @media screen and (max-width: 820px) {
+  .footer_container {
+      padding: 0%;
+  }
   .footer_links {
     padding-top: 2rem;
   }

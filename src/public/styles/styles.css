@@ -270,6 +270,10 @@
   transition: 0.3s ease-in;
 }
 
+.team_card a {
+    text-decoration: none;
+}
+
 .team_card:nth-child(2) {
   background: #1fa2ff;
   background-image: url("../img/jasonProfile.jpg");

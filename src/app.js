@@ -17,6 +17,7 @@ const {
 } = require("./middleware/checkAuth");
 const db = require("../config/database");
 const passport = require("./middleware/passport");
+const { editPage } = require("./controllers/indexController");
 const port = process.env.PORT || 3000;
 
 const app = express();
@@ -94,9 +95,7 @@ app.post(
   ensureAuthenticated,
   indexController.createWorryEntry
 );
-app.get("/edit/:date/:id", ensureAuthenticated, (req, res) => {
-  res.render("edit", {"id": req.params.id, "date": req.params.date})
-});
+app.get("/edit/:date/:id", ensureAuthenticated, editPage);
 
 // Routes for daily view
 app.get("/dailyView/:date", ensureAuthenticated, worryEntryController.dailyWorryEntries);

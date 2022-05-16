@@ -8,6 +8,7 @@ const MongoDBSession = require("connect-mongodb-session")(session);
 const authController = require("./controllers/authController");
 const indexController = require("./controllers/indexController");
 const worryEntryController = require("./controllers/worryEntryController");
+const worryTimeController = require("./controllers/worryTimeController");
 
 const {
   ensureAuthenticated,
@@ -103,7 +104,8 @@ app.post("/dailyView/update/:id", ensureAuthenticated, worryEntryController.upda
 app.delete("/dailyView/remove/:id", ensureAuthenticated, worryEntryController.deleteWorryEntries);
 
 // Worry Time routes
-app.get("/worryTimeSetup", ensureAuthenticated, indexController.worryTimeSetupPage)
+app.get("/worryTimeSetup", ensureAuthenticated, indexController.worryTimeSetupPage);
+app.get("/duringWorryTime", ensureAuthenticated, worryTimeController.duringWorryTimePage);
 
 
 // Starts the server

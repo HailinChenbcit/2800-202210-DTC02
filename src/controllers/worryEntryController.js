@@ -47,12 +47,7 @@ const worryEntryController = {
       };
       return worryEntry;
     });
-<<<<<<< HEAD
-    console.log(worryEntries)
-    res.render("dailyView", { worryEntries });
-=======
     res.render("dailyView", { worryEntries, "dayview": req.params.date });
->>>>>>> Fonse_Clarito_Edit_Worry_Entry
   },
 
   // Edit worry card

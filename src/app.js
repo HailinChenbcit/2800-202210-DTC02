@@ -110,15 +110,7 @@ app.get(
   worryEntryController.dailyWorryEntries
 );
 // Update
-<<<<<<< HEAD
-app.post(
-  "/dailyView/update/:id",
-  ensureAuthenticated,
-  worryEntryController.updateWorryEntries
-);
-=======
 app.post("/update/:date/:id", ensureAuthenticated, worryEntryController.updateWorryEntries, worryEntryController.dailyWorryEntries);
->>>>>>> Fonse_Clarito_Edit_Worry_Entry
 // Delete
 app.delete(
   "/dailyView/remove/:id",

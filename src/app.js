@@ -98,7 +98,7 @@ app.get(
 app.post(
   "/createWorryEntry",
   ensureAuthenticated,
-  indexController.createWorryEntry
+  worryEntryController.createWorryEntry
 );
 app.get("/edit", ensureAuthenticated, indexController.editPage);
 

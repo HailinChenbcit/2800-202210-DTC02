@@ -94,14 +94,14 @@ app.post(
   ensureAuthenticated,
   indexController.createWorryEntry
 );
-app.get("/edit/:id", ensureAuthenticated, (req, res) => {
-  res.render("edit", {"id": req.params.id})
+app.get("/edit/:date/:id", ensureAuthenticated, (req, res) => {
+  res.render("edit", {"id": req.params.id, "date": req.params.date})
 });
 
 // Routes for daily view
 app.get("/dailyView/:date", ensureAuthenticated, worryEntryController.dailyWorryEntries);
 // Update
-app.post("/update/:id", ensureAuthenticated, worryEntryController.updateWorryEntries);
+app.post("/update/:date/:id", ensureAuthenticated, worryEntryController.updateWorryEntries, worryEntryController.dailyWorryEntries);
 // Delete
 app.delete("/dailyView/remove/:id", ensureAuthenticated, worryEntryController.deleteWorryEntries);
 

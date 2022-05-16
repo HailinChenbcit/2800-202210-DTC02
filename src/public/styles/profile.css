@@ -3,6 +3,26 @@ body {
   background-color: #e7daff;
 }
 
+
+#avatar-label, #avatar {
+  background-color: #7F9CCB;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px ridge black;
+  font-size: 0.8rem;
+  height: auto;
+}
+
+#avatar-label:hover {
+  background-color: #2D5BA3;
+  color: white;
+}
+
+#avatar-label:active {
+  background-color: #0D3F8F;
+  color: white;
+}
+
 /* Mood Graph */
 #moodgraph {
   background-color: #e7daff;

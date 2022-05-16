@@ -47,6 +47,11 @@ const indexController = {
   dailyViewPage: (req, res) => {
     res.render("dailyView");
   },
+  
+  uploadAvatar: (req, res) => {
+    const file = req.file;
+    console.log(file);
+  }
 
 };
 

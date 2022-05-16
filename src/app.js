@@ -8,6 +8,7 @@ const MongoDBSession = require("connect-mongodb-session")(session);
 const authController = require("./controllers/authController");
 const indexController = require("./controllers/indexController");
 const worryEntryController = require("./controllers/worryEntryController");
+const { upload } = require("./middleware/multer");
 
 const {
   ensureAuthenticated,
@@ -49,9 +50,9 @@ app.use(passport.session());
 
 app.use((req, _, next) => {
   console.log(req.url);
-  console.log(req.session);
-  console.log(req.body);
-  console.log(req.user);
+  // console.log(req.session);
+  // console.log(req.body);
+  // console.log(req.user);
   next();
 });
 
@@ -78,6 +79,7 @@ app.get("/auth/logout", authController.logout);
 // Routes for ejs views
 app.get("/home", ensureAuthenticated, indexController.homePage);
 app.get("/profile", ensureAuthenticated, indexController.profilePage);
+app.post("/avatarUpload", ensureAuthenticated, upload.single("avatar"), indexController.uploadAvatar);
 app.get(
   "/accounts",
   ensureAuthenticated,
@@ -87,7 +89,11 @@ app.get(
 app.get("/worryForm", ensureAuthenticated, indexController.worryFormPage);
 
 // Worry entry
-app.get("/worryEntriesAll", ensureAuthenticated, worryEntryController.userWorryEntries);
+app.get(
+  "/worryEntriesAll",
+  ensureAuthenticated,
+  worryEntryController.userWorryEntries
+);
 app.post(
   "/createWorryEntry",
   ensureAuthenticated,
@@ -96,12 +102,23 @@ app.post(
 app.get("/edit", ensureAuthenticated, indexController.editPage);
 
 // Routes for daily view
-app.get("/dailyView/:date", ensureAuthenticated, worryEntryController.dailyWorryEntries);
+app.get(
+  "/dailyView/:date",
+  ensureAuthenticated,
+  worryEntryController.dailyWorryEntries
+);
 // Update
-app.post("/dailyView/update/:id", ensureAuthenticated, worryEntryController.updateWorryEntries);
+app.post(
+  "/dailyView/update/:id",
+  ensureAuthenticated,
+  worryEntryController.updateWorryEntries
+);
 // Delete
-app.delete("/dailyView/remove/:id", ensureAuthenticated, worryEntryController.deleteWorryEntries);
-
+app.delete(
+  "/dailyView/remove/:id",
+  ensureAuthenticated,
+  worryEntryController.deleteWorryEntries
+);
 
 // Starts the server
 app.listen(port, () =>

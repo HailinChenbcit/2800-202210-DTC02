@@ -94,12 +94,14 @@ app.post(
   ensureAuthenticated,
   indexController.createWorryEntry
 );
-app.get("/edit", ensureAuthenticated, indexController.editPage);
+app.get("/edit/:id", ensureAuthenticated, (req, res) => {
+  res.render("edit", {"id": req.params.id})
+});
 
 // Routes for daily view
 app.get("/dailyView/:date", ensureAuthenticated, worryEntryController.dailyWorryEntries);
 // Update
-app.post("/dailyView/update/:id", ensureAuthenticated, worryEntryController.updateWorryEntries);
+app.post("/update/:id", ensureAuthenticated, worryEntryController.updateWorryEntries);
 // Delete
 app.delete("/dailyView/remove/:id", ensureAuthenticated, worryEntryController.deleteWorryEntries);
 
@@ -110,5 +112,5 @@ app.get("/duringWorryTime", ensureAuthenticated, worryTimeController.duringWorry
 
 // Starts the server
 app.listen(port, () =>
-  console.log(`App listening on port 3000. | ${__dirname}!`)
+  console.log(`App listening on port ${port}. | ${__dirname}!`)
 );

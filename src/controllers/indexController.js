@@ -40,7 +40,7 @@ const indexController = {
     }
   },
   editPage: (req, res) => {
-    res.render("edit");
+    res.render("edit", {"id": req.params.id});
   },
   
 

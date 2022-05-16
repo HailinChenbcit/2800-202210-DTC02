@@ -38,7 +38,7 @@ const worryEntryController = {
       const worryEntry = {
         id: entry._id,
         time: entry.datetime.toLocaleString("en-GB", {
-          timeZone: "Canada/Pacific",
+          // timeZone: "Canada/Pacific",
           dateStyle: "medium",
           timeStyle: "medium",
         }),
@@ -47,6 +47,7 @@ const worryEntryController = {
       };
       return worryEntry;
     });
+    console.log(worryEntries)
     res.render("dailyView", { worryEntries });
   },
 

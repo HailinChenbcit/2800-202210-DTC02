@@ -56,3 +56,14 @@ $.fn.setNow = function (onlyBlank) {
 $(function () {
   $('input[type="datetime-local"]').setNow();
 });
+
+var textarea = document.getElementById('worryDescription');
+
+document.getElementById('worryDescription').onkeyup = function(){
+  
+  var text_value = document.getElementById('worryDescription').value;
+  
+  if (text_value.includes("birthday") === true) {
+    console.log("hello")
+  }
+};

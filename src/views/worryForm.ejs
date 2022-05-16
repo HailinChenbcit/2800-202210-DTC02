@@ -6,14 +6,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WorryLess</title>
-  <link rel="stylesheet" href="/styles/worry_form.css" />
-  <link rel="stylesheet" href="/styles/layout.css" />
   <!-- Bootstrap Library CSS CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
+  <!-- CSS sheets -->
+  <link rel="stylesheet" href="/styles/worry_form.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
   <!-- JQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -24,14 +25,15 @@
   <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
 </head>
 
-<body>
+<!-- Have to inline style to override bootstrap css -->
+<body style="background-color: #e7daff;"> 
   <!-- Header -->
   <nav class="navbar">
     <a class="navbar-brand" href="/home">
       <img src="/img/WorryLessIcon.png" width="30" height="30" class="d-inline-block align-top" alt="WorryLess Icon" />
       <span>WorryLess</span>
     </a>
-    <a href="/home" style="margin-right: 15px;">
+    <a href="/home" style="margin-right: 15px">
       <i class="material-symbols-outlined">close</i>
     </a>
   </nav>
@@ -39,7 +41,7 @@
   <form action="/createWorryEntry" method="post">
     <div class="worryInputContainer">
       <!-- TIMEPICKER -->
-      <div style="margin-top: 5vh;">
+      <div class="timeContainer">
         <label for="time"> Time: </label>
         <input type="datetime-local" name="time" id="time" class="form-control" default="" />
       </div>
@@ -48,23 +50,23 @@
         <legend>Select a mood:</legend>
 
         <div id="emojiLabels">
-          <label for="awesome">&#128513; <br>
+          <label for="awesome">&#128513; <br />
             <input type="radio" id="awesome" name="mood" value="5" checked />
           </label>
 
-          <label for="good">&#128522; <br>
+          <label for="good">&#128522; <br />
             <input type="radio" id="good" name="mood" value="4" />
           </label>
 
-          <label for="neutral">&#128563; <br>
+          <label for="neutral">&#128563; <br />
             <input type="radio" id="neutral" name="mood" value="3" />
           </label>
 
-          <label for="bad">&#128542; <br>
+          <label for="bad">&#128542; <br />
             <input type="radio" id="bad" name="mood" value="2" />
           </label>
 
-          <label for="worst">&#128549; <br>
+          <label for="worst">&#128549; <br />
             <input type="radio" id="worst" name="mood" value="1" />
           </label>
         </div>
@@ -73,7 +75,7 @@
       <span>What do you worry about?</span>
       <textarea name="worryDescription" id="worryDescription" cols="275" rows="8"></textarea>
       <br />
-      <input type="submit" class="worrySubmitButton" value="Save">
+      <input type="submit" class="worrySubmitButton" value="Save" />
     </div>
   </form>
 </body>

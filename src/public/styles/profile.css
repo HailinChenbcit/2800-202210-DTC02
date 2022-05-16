@@ -3,6 +3,14 @@ body {
   background-color: #e7daff;
 }
 
+.avatar-wrapper {
+  width: 50%;
+  border-radius: 50%;
+}
+
+.avatar-wrapper > img {
+  width: 100%;
+}
 
 #avatar-label, #avatar {
   background-color: #7F9CCB;

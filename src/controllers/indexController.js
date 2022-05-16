@@ -19,28 +19,6 @@ const indexController = {
     res.render("worryForm");
   },
 
-  createWorryEntry: async (req, res) => {
-    let { time, mood, worryDescription } = req.body;
-    time = new Date(time);
-    console.log(time);
-    mood = Number(mood);
-
-    const newWorryEntry = WorryEntry({
-      datetime: time,
-      moodLevel: mood,
-      worryDescription,
-      owner: req.user._id,
-    });
-
-    try {
-      const worryEntryFromDB = await newWorryEntry.save();
-      req.user.worries.push(worryEntryFromDB._id);
-      await req.user.save();
-      res.redirect("/home");
-    } catch (e) {
-      console.log(e);
-    }
-  },
   editPage: (req, res) => {
     res.render("edit");
   },

@@ -1,43 +1,55 @@
+/* HTML/Body */
+body {
+  background-color: #e7daff;
+}
+
 /* Mood Graph */
 #moodgraph {
-    background-color: #E7DAFF;
-    width: 80%;
+  background-color: #e7daff;
+  width: 80%;
 }
 
 .moodgraph_container {
-    justify-content: center;
+  justify-content: center;
 }
 
 /* Bar Graph */
 #summaryBarGraph {
-    background-color: #E7DAFF;
-    width: 80%;
+  background-color: #e7daff;
+  width: 80%;
 }
 
 .summaryBarGraph_container {
-    margin-top: 50px;
+  margin-top: 3.5vh;
 }
 
 /* Logout button */
-.LogOutButton, .AdminButton {
-    width: 70%;
-    border: none;
-    background-color: #92a1d1;
-    color: #6545a4;
-    margin: 10px;
-    padding: 14px 28px;
-    font-size: 16px;
-    cursor: pointer;
-    text-align: center;
-  }
+.LogOutButton,
+.AdminButton {
+  width: 70%;
+  border: none;
+  background-color: #92a1d1;
+  color: #6545a4;
+  margin: 10px;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 5px;
+}
 
-.LogOutButton a, .AdminButton a {
-    display: inline-block;
-    text-decoration: none;
-    width: 100%;
-    height: 100%;
+/* Admin button */
+.LogOutButton a,
+.AdminButton a {
+  display: inline-block;
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+}
+.AdminButton {
+  margin-top: 2rem;
 }
 
 h1 {
-    text-align: center;
+  text-align: center;
 }

@@ -25,7 +25,6 @@ const userSchema = new Schema(
       type: Boolean,
       default: false,
     },
-    worries: [{ type: Schema.Types.ObjectId, ref: "WorryEntry" }],
     avatar: {
       data: Buffer,
       contentType: String

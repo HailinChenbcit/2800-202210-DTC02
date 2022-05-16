@@ -48,6 +48,10 @@ const indexController = {
     res.render("dailyView");
   },
 
+  worryTimeSetupPage: (req, res) => {
+    res.render("worryTimeSetup")
+  }
+
 };
 
 module.exports = indexController;

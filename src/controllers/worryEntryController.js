@@ -43,7 +43,7 @@ const worryEntryController = {
           timeStyle: "medium",
         }),
         description: entry.worryDescription,
-        moodIcon: emojis[entry.moodLevel]
+        moodIcon: emojis[entry.moodLevel],
       };
       return worryEntry;
     });
@@ -81,7 +81,8 @@ const worryEntryController = {
       }
     );
   },
-// display all worry times
+
+  // display all worry times
   allWorryTime: async (req, res) => {
     const allWorryTimes = await WorryEntry.find({
       owner: req.user._id,
@@ -96,20 +97,22 @@ const worryEntryController = {
     });
     res.render("duringWorryTime", { worryTimes });
   },
+
   // Clear selected worry time
-  clearWorryTime: async (req, res) => {
-    const allWorryTimes = await WorryEntry.find({
-      owner: req.user._id,
-    }).exec();
-    const worryTimes = allWorryTimes.map((entry) => {
-      const worryTime = {
-        id: entry._id,
-        description: entry.worryDescription,
-        finished: entry.finished,
-      };
-      return worryTime;
-    });
-    res.render("duringWorryTime", { worryTimes });
+  clearWorryTime: (req, res) => {
+    WorryEntry.deleteMany(
+      {
+        _id: req.params.id,
+      },
+      function (err, data) {
+        if (err) {
+          console.log("Error " + err);
+        } else {
+          console.log("Deleted Data " + data);
+        }
+      }
+    );
+    // res.render("duringWorryTime", { worryTimes });
   },
 
   // updateWorryTimes: async (req, res) => {
@@ -127,6 +130,5 @@ const worryEntryController = {
   //   }
   // },
 };
-
 
 module.exports = worryEntryController;

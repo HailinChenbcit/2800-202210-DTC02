@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WorryLess</title>
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -54,6 +57,13 @@
       <div class="row justify-content-center" id="countdown"></div>
       <br />
       <p>Your Worries:</p>
+      <span>select all</span>
+      <input
+        type="checkbox"
+        id="selectall"
+        name="selectall"
+        value="select all"
+      />
 
       <% if (worryTimes.length === 0) { %>
       <p>You don't have worry time today</p>
@@ -65,7 +75,7 @@
           <!-- <div><%= entry.description %></div> -->
           <% if (entry.finished === false){ %>
           <div class="form-check">
-            <label class="form-check-label pull-left" for="unfinishedWorry">
+            <label class="form-check-label" for="unfinishedWorry">
               <%= entry.description %>
             </label>
             <input

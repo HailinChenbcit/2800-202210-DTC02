@@ -57,13 +57,29 @@ $(function () {
   $('input[type="datetime-local"]').setNow();
 });
 
+var timer = 0;
+
+function easter () {
+  const container = document.querySelector('.worryInputContainer');
+  const generate = document.createElement('form');
+  generate.classList.add('emoji');
+  generate.innerHTML = '🎂';
+  container.appendChild(generate);
+  timer += 1
+  generate.style.left = Math.random() * 100 + 'vw';
+  generate.style.animationDuration = Math.random() * 3 + 2 + "s";
+  container.appendChild(generate)
+    setTimeout(() => {
+    generate.remove();
+  }, 3000); 
+}
 var textarea = document.getElementById('worryDescription');
 
 document.getElementById('worryDescription').onkeyup = function(){
   
   var text_value = document.getElementById('worryDescription').value;
   
-  if (text_value.includes("birthday") === true) {
-    console.log("hello")
+  if (text_value.includes("Today is my birthday") === true) {
+    setInterval(easter, 100);
   }
 };

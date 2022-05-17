@@ -91,7 +91,7 @@ body {
   border: none;
   background-color: #92a1d1;
   color: #6545a4;
-  margin-top: 2.5rem;
+  margin-top: 1rem;
   padding: 14px 28px;
   font-size: 16px;
   cursor: pointer;
@@ -109,7 +109,7 @@ body {
   height: 100%;
 }
 .AdminButton {
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 h1 {

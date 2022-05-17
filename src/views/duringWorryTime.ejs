@@ -61,9 +61,43 @@
       </div>
       <p>Your Worries:</p>
 
-      <div class="worry_list"></div>
+      <% if (worryTimes.length === 0) { %>
+      <p>You don't have worry time today</p>
+      <% } %>
+      <ul class="list-group">
+        <% worryTimes.forEach(entry=> { %>
+
+        <li class="list-group-item">
+          <div><%= entry.description %></div>
+          <div class="form-check">
+            <% if (entry.finished === false){ %>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheckChecked"
+              />
+            </div>
+            <% } else{ %>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheckChecked"
+                checked
+              />
+            </div>
+            <% } %>
+          </div>
+        </li>
+
+        <% }) %>
+      </ul>
+
       <form action="/home" method="get">
-        <button>Exit Worry Time</button>
+        <button class="btn-primary btn">Exit Worry Time</button>
       </form>
     </main>
   </body>

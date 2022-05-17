@@ -105,7 +105,8 @@ app.delete("/dailyView/remove/:id", ensureAuthenticated, worryEntryController.de
 
 // Worry Time routes
 app.get("/worryTimeSetup", ensureAuthenticated, indexController.worryTimeSetupPage);
-app.get("/duringWorryTime", ensureAuthenticated, worryTimeController.duringWorryTimePage);
+app.get("/duringWorryTime", ensureAuthenticated, worryEntryController.allWorryTime);
+// app.post("/duringWorryTime", ensureAuthenticated, worryEntryController.updateWorryTimes);
 
 
 // Starts the server

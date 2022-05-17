@@ -81,6 +81,37 @@ const worryEntryController = {
       }
     );
   },
+
+  allWorryTime: async (req, res) => {
+    const allWorryTimes = await WorryEntry.find({
+      owner: req.user._id,
+    }).exec();
+    const worryTimes = allWorryTimes.map((entry) => {
+      const worryTime = {
+        id: entry._id,
+        description: entry.worryDescription,
+        finished: entry.finished,
+      };
+      return worryTime;
+    });
+    res.render("duringWorryTime", { worryTimes });
+  },
+
+  // updateWorryTimes: async (req, res) => {
+  //   const { id } = req.params;
+  //   const { worryDescription } = req.body;
+  //   try {
+  //     const updatedWorryEntry = await WorryEntry.findByIdAndUpdate(
+  //       id,
+  //       { worryDescription },
+  //       { new: true }
+  //     ).exec();
+  //     res.json(updatedWorryEntry);
+  //   } catch (e) {
+  //     res.json(e);
+  //   }
+  // },
 };
+
 
 module.exports = worryEntryController;

@@ -19,7 +19,7 @@
     gap: 10px 10px;
 }
 
-img {
+.image-wrapper img {
     width: 100%;
 }
 .buttons {

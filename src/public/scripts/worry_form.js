@@ -59,20 +59,6 @@ $(function () {
 
 var timer = 0;
 
-function easter () {
-  const container = document.querySelector('.worryInputContainer');
-  const generate = document.createElement('form');
-  generate.classList.add('emoji');
-  generate.innerHTML = '🎂';
-  container.appendChild(generate);
-  timer += 1
-  generate.style.left = Math.random() * 100 + 'vw';
-  generate.style.animationDuration = Math.random() * 3 + 2 + "s";
-  container.appendChild(generate)
-    setTimeout(() => {
-    generate.remove();
-  }, 3000); 
-}
 var textarea = document.getElementById('worryDescription');
 
 document.getElementById('worryDescription').onkeyup = function(){
@@ -80,6 +66,24 @@ document.getElementById('worryDescription').onkeyup = function(){
   var text_value = document.getElementById('worryDescription').value;
   
   if (text_value.includes("Today is my birthday") === true) {
-    setInterval(easter, 100);
+    var repeater = setInterval(function() {
+      const container = document.querySelector('.worryInputContainer');
+      const generate = document.createElement('form');
+      generate.classList.add('emoji');
+      generate.innerHTML = '🎂';
+      container.appendChild(generate);
+      timer++;
+      console.log(timer)
+      generate.style.left = Math.random() * 100 + 'vw';
+      generate.style.animationDuration = Math.random() * 3 + 4 + "s";
+      container.appendChild(generate)
+        setTimeout(() => {
+        generate.remove();
+      }, 3000); 
+    
+      if (timer == 100) {
+        window.clearInterval(repeater)
+      }
+    })
   }
 };

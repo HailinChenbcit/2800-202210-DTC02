@@ -31,29 +31,27 @@ function secondExample() {
 document.getElementById("btnId2").addEventListener("click", secondExample);
 
 // select and delete all entries
-$("#selectall").change(function() {
-  if($(this).is(":checked")) {
-      $(".form-check-input").each(function() {
-          $(this).prop('checked', true);
-      });
+$("#selectall").change(function () {
+  if ($(this).is(":checked")) {
+    $(".form-check-input").each(function () {
+      $(this).prop("checked", true);
+    });
+  } else {
+    $(".form-check-input").each(function () {
+      $(this).prop("checked", false);
+    });
   }
-  else {
-      $(".form-check-input").each(function() {
-          $(this).prop('checked', false);
-      });
-  }       
 });
 // if all checked, will uncheck again
-$(".form-check-input").change(function() {
+$(".form-check-input").change(function () {
   var allSelected = true;
 
-  $(".form-check-input").each(function() {
-      if(!$(this).is(":checked")) {
-          $("#selectall").prop('checked', false);
-          allSelected = false;
-      }
+  $(".form-check-input").each(function () {
+    if (!$(this).is(":checked")) {
+      $("#selectall").prop("checked", false);
+      allSelected = false;
+    }
   });
 
-  if(allSelected)
-      $("#selectall").prop('checked', true);
+  if (allSelected) $("#selectall").prop("checked", true);
 });

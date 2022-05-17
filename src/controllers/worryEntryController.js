@@ -96,6 +96,21 @@ const worryEntryController = {
     });
     res.render("duringWorryTime", { worryTimes });
   },
+  // Clear selected worry time
+  clearWorryTime: async (req, res) => {
+    const allWorryTimes = await WorryEntry.find({
+      owner: req.user._id,
+    }).exec();
+    const worryTimes = allWorryTimes.map((entry) => {
+      const worryTime = {
+        id: entry._id,
+        description: entry.worryDescription,
+        finished: entry.finished,
+      };
+      return worryTime;
+    });
+    res.render("duringWorryTime", { worryTimes });
+  },
 
   // updateWorryTimes: async (req, res) => {
   //   const { id } = req.params;

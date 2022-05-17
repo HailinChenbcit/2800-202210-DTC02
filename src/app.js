@@ -88,7 +88,11 @@ app.get(
 app.get("/worryForm", ensureAuthenticated, indexController.worryFormPage);
 
 // Worry entry
-app.get("/worryEntriesAll", ensureAuthenticated, worryEntryController.userWorryEntries);
+app.get(
+  "/worryEntriesAll",
+  ensureAuthenticated,
+  worryEntryController.userWorryEntries
+);
 app.post(
   "/createWorryEntry",
   ensureAuthenticated,
@@ -97,17 +101,40 @@ app.post(
 app.get("/edit", ensureAuthenticated, indexController.editPage);
 
 // Routes for daily view
-app.get("/dailyView/:date", ensureAuthenticated, worryEntryController.dailyWorryEntries);
+app.get(
+  "/dailyView/:date",
+  ensureAuthenticated,
+  worryEntryController.dailyWorryEntries
+);
 // Update
-app.post("/dailyView/update/:id", ensureAuthenticated, worryEntryController.updateWorryEntries);
+app.post(
+  "/dailyView/update/:id",
+  ensureAuthenticated,
+  worryEntryController.updateWorryEntries
+);
 // Delete
-app.delete("/dailyView/remove/:id", ensureAuthenticated, worryEntryController.deleteWorryEntries);
+app.delete(
+  "/dailyView/remove/:id",
+  ensureAuthenticated,
+  worryEntryController.deleteWorryEntries
+);
 
 // Worry Time routes
-app.get("/worryTimeSetup", ensureAuthenticated, indexController.worryTimeSetupPage);
-app.get("/duringWorryTime", ensureAuthenticated, worryEntryController.allWorryTime);
-// app.post("/duringWorryTime", ensureAuthenticated, worryEntryController.updateWorryTimes);
-
+app.get(
+  "/worryTimeSetup",
+  ensureAuthenticated,
+  indexController.worryTimeSetupPage
+);
+app.get(
+  "/duringWorryTime",
+  ensureAuthenticated,
+  worryEntryController.allWorryTime
+);
+app.post(
+  "/duringWorryTime",
+  ensureAuthenticated,
+  worryEntryController.clearWorryTime
+);
 
 // Starts the server
 app.listen(port, () =>

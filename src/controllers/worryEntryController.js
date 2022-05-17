@@ -1,4 +1,6 @@
 const WorryEntry = require("../models/WorryEntry");
+const fs = require("fs").promises;
+
 const emojis = {
   1: "&#128549;",
   2: "&#128542;",
@@ -43,11 +45,12 @@ const worryEntryController = {
           timeStyle: "medium",
         }),
         description: entry.worryDescription,
-        moodIcon: emojis[entry.moodLevel]
+        moodIcon: emojis[entry.moodLevel],
+        images: entry.images
       };
       return worryEntry;
     });
-    console.log(worryEntries)
+    console.log(worryEntries);
     res.render("dailyView", { worryEntries });
   },
 
@@ -89,17 +92,31 @@ const worryEntryController = {
     console.log(time);
     mood = Number(mood);
 
+    const images = [];
+    const files = req.files;
+    if (files && files.length > 0) {
+      for (let file of files) {
+        try {
+          const imageBuffer = await fs.readFile(`./uploads/${file.filename}`);
+          const contentType = file.mimeType;
+          images.push({ data: imageBuffer, contentType });
+          fs.unlink(`./uploads/${file.filename}`);
+        } catch (e) {
+          console.log(e);
+        }
+      }
+    }
+
     const newWorryEntry = WorryEntry({
       datetime: time,
       moodLevel: mood,
       worryDescription,
       owner: req.user._id,
+      images,
     });
 
     try {
       const worryEntryFromDB = await newWorryEntry.save();
-      req.user.worries.push(worryEntryFromDB._id);
-      await req.user.save();
       res.redirect("/home");
     } catch (e) {
       console.log(e);

@@ -51,7 +51,7 @@
       </a>
     </nav>
 
-    <form action="/createWorryEntry" method="post">
+    <form action="/createWorryEntry" method="post" enctype="multipart/form-data">
       <div class="worryInputContainer">
         <!-- TIMEPICKER -->
         <div class="timeContainer">
@@ -98,8 +98,8 @@
         </div>
         <!-- Image input -->
         <div class="journalImageSelector">
-          <label id="imageLabel" for="imageLabel">Photo for today:</label>
-          <input type="file" name="journalImage" id="journalImage" accept=".jpg, .jpeg, .png" />
+          <label id="imageLabel" for="journalImages">Photo for today:</label>
+          <input type="file" name="journalImages" id="journalImages" accept=".jpg, .jpeg, .png" multiple />
         </div>
         <!-- WORRYENTRY -->
         <span>What do you worry about?</span>

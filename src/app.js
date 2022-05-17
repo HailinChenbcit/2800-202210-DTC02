@@ -98,6 +98,7 @@ app.get(
 app.post(
   "/createWorryEntry",
   ensureAuthenticated,
+  upload.array("journalImages", 5),
   worryEntryController.createWorryEntry
 );
 app.get("/edit", ensureAuthenticated, indexController.editPage);

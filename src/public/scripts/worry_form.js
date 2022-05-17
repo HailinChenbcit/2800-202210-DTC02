@@ -64,11 +64,11 @@ var textarea = document.getElementById('worryDescription');
 document.getElementById('worryDescription').onkeyup = function(){
   
   var text_value = document.getElementById('worryDescription').value;
-  
-  if (text_value.includes("Today is my birthday") === true) {
+
+  if (text_value.includes("my birthday") === true) {
     var repeater = setInterval(function() {
       const container = document.querySelector('.worryInputContainer');
-      const generate = document.createElement('form');
+      const generate = document.createElement('div');
       generate.classList.add('emoji');
       generate.innerHTML = '🎂';
       container.appendChild(generate);
@@ -81,9 +81,8 @@ document.getElementById('worryDescription').onkeyup = function(){
         generate.remove();
       }, 3000); 
     
-      if (timer == 100) {
+      if (timer >= 10) {
         window.clearInterval(repeater)
-        timer = 0;
       }
     })
   }

@@ -95,8 +95,7 @@
                 </div>
               </div>
               <div class="buttons">
-                <button class="btn btn-primary editBtn" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#entry<%= entry.id %>" aria-expanded="false" aria-controls="entry<%= entry.id %>" id="<%= dayview %>/<%= entry.id %>">
+                <button class="btn btn-primary editBtn" type="button" id="<%= dayview %>/<%= entry.id %>">
                   Edit
                 </button>
 
@@ -104,17 +103,6 @@
 
               </div>
 
-            </div>
-
-            <!-- Collapse input content -->
-            <div class="collapse" id="entry<%= entry.id %>">
-              <div class="card card-body">
-                <input type="textarea" name="worryEntry" id="worryEntry" class="form-control"
-                  value="<%= entry.description %>" />
-                <br />
-                <input type="submit" name="save" id="save<%= entry.id %>" class="btn btn-primary saveEntry"
-                  value="Save" />
-              </div>
             </div>
           </div>
 

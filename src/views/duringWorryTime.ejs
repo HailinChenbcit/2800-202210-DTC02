@@ -22,6 +22,12 @@
 
     <!-- FAVICON -->
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
+
+    <style>
+      .btn-primary {
+        width: 50%;
+      }
+    </style>
   </head>
 
   <body>
@@ -39,9 +45,27 @@
       </a>
     </nav>
 
+    <!-- Display worry times -->
     <main>
-        
-    </main>
+      <h5>Worry time left:</h5>
+      <div class="row justify-content-center mt-5 mb-2"></div>
+      <div
+        class="row justify-content-center border rounded-pill"
+        id="countdown3"
+      ></div>
 
+      <div class="row justify-content-center mt-2">
+        <button type="button" class="btn btn-primary" id="btnId2">
+          Start worry time
+        </button>
+      </div>
+      <p>Your Worries:</p>
+
+      <div class="worry_list"></div>
+      <form action="/home" method="get">
+        <button>Exit Worry Time</button>
+      </form>
+    </main>
   </body>
+  <script src="/scripts/duringworry.js"></script>
 </html>

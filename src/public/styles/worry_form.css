@@ -67,7 +67,7 @@ body{
     position: fixed;
     font-size: 23px;
     font-weight: bold;
-    top: -1vh;
+    top: -20vh;
     left: 0;
     animation: fall 1s ease-in infinite;
     transform: translateY(0%);

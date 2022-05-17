@@ -83,6 +83,7 @@ document.getElementById('worryDescription').onkeyup = function(){
     
       if (timer == 100) {
         window.clearInterval(repeater)
+        timer = 0;
       }
     })
   }

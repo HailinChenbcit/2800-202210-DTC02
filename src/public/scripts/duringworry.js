@@ -55,3 +55,11 @@ $(".form-check-input").change(function () {
 
   if (allSelected) $("#selectall").prop("checked", true);
 });
+
+function exitWorryTime() {
+  // make sure that the timer and other stuffs are stopped before exiting worry time
+
+  window.location.href = "/home";
+}
+
+document.querySelector("#exitWorryTimeBtn").addEventListener("click", exitWorryTime)

@@ -81,7 +81,7 @@ const worryEntryController = {
       }
     );
   },
-
+// display all worry times
   allWorryTime: async (req, res) => {
     const allWorryTimes = await WorryEntry.find({
       owner: req.user._id,

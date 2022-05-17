@@ -18,11 +18,11 @@ function secondExample() {
     var seconds3 = Math.floor((timeLeft3 % (1000 * 60)) / 1000);
     if (seconds3 < 10) seconds3 = "0" + seconds3;
 
-    document.getElementById("countdown3").innerHTML =
+    document.getElementById("countdown").innerHTML =
       minutes3 + "m " + seconds3 + "s";
     if (timeLeft3 <= 0) {
       clearInterval(timing3);
-      document.getElementById("countdown3").innerHTML =
+      document.getElementById("countdown").innerHTML =
         "Your worry time has ended!";
     }
   }, 1000);

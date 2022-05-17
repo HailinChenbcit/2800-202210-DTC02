@@ -25,7 +25,9 @@
 
     <style>
       .btn-primary {
-        width: 50%;
+        background-color: #6545a4;
+        border-color: #9062ea;
+        width: 45%;
       }
     </style>
   </head>
@@ -49,43 +51,39 @@
     <main>
       <h5>Worry time left:</h5>
       <div class="row justify-content-center mt-5 mb-2"></div>
-      <div
-        class="row justify-content-center border rounded-pill"
-        id="countdown3"
-      ></div>
+      <div class="row justify-content-center" id="countdown"></div>
       <br />
-      <div class="row justify-content-center mt-2">
-        <button type="button" class="btn btn-primary" id="btnId2">
-          Start worry time
-        </button>
-      </div>
       <p>Your Worries:</p>
 
       <% if (worryTimes.length === 0) { %>
       <p>You don't have worry time today</p>
       <% } %>
-      <ul class="list-group">
+      <ul class="list-group container">
         <% worryTimes.forEach(entry=> { %>
 
         <li class="list-group-item">
-          <div><%= entry.description %></div>
-          <div class="form-check form-check-inline">
-            <% if (entry.finished === false){ %>
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                id="flexCheckChecked"
-              />
-            </div>
+          <!-- <div><%= entry.description %></div> -->
+          <% if (entry.finished === false){ %>
+          <div class="form-check">
+            <label class="form-check-label pull-left" for="unfinishedWorry">
+              <%= entry.description %>
+            </label>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="unfinishedWorry"
+            />
             <% } else{ %>
             <div class="form-check">
+              <label class="form-check-label" for="finishedWorry">
+                <%= entry.description %>
+              </label>
               <input
                 class="form-check-input"
                 type="checkbox"
                 value=""
-                id="flexCheckChecked"
+                id="finishedWorry"
                 checked
               />
             </div>
@@ -95,11 +93,41 @@
 
         <% }) %>
       </ul>
+      <br />
+      <div class="row justify-content-center mt-2">
+        <button type="button" class="btn btn-primary" id="btnId2">
+          Start worry time
+        </button>
+      </div>
 
+      <!-- 
       <form action="/home" method="get">
         <button class="btn-primary btn">Exit Worry Time</button>
-      </form>
+      </form> -->
     </main>
+    <!-- Footer -->
+    <footer
+      id="nav"
+      class="navbar justify-content-evenly fixed-bottom"
+      style="height: 4em"
+    >
+      <a class="icon-btn" href="/home">
+        <i class="material-symbols-outlined">home</i>
+        <p class="btm-btn-text">Home</p>
+      </a>
+      <a class="icon-btn" href="/worryForm">
+        <i class="material-symbols-outlined">add_box</i>
+        <p class="btm-btn-text">Journal</p>
+      </a>
+      <a class="icon-btn" href="/">
+        <i class="material-symbols-outlined">alarm</i>
+        <p class="btm-btn-text">Alarms</p>
+      </a>
+      <a class="icon-btn" href="/profile">
+        <i class="material-symbols-outlined">person</i>
+        <p class="btm-btn-text">Profile</p>
+      </a>
+    </footer>
   </body>
   <script src="/scripts/duringworry.js"></script>
 </html>

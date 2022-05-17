@@ -18,6 +18,7 @@ const {
 } = require("./middleware/checkAuth");
 const db = require("../config/database");
 const passport = require("./middleware/passport");
+const { editPage } = require("./controllers/indexController");
 const port = process.env.PORT || 3000;
 
 const app = express();
@@ -50,7 +51,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use((req, _, next) => {
-  console.log(req.url);
+  // console.log(req.url);
   // console.log(req.session);
   // console.log(req.body);
   // console.log(req.user);
@@ -101,7 +102,7 @@ app.post(
   upload.array("journalImages", 5),
   worryEntryController.createWorryEntry
 );
-app.get("/edit", ensureAuthenticated, indexController.editPage);
+app.get("/edit/:date/:id", ensureAuthenticated, editPage);
 
 // Routes for daily view
 app.get(
@@ -110,11 +111,7 @@ app.get(
   worryEntryController.dailyWorryEntries
 );
 // Update
-app.post(
-  "/dailyView/update/:id",
-  ensureAuthenticated,
-  worryEntryController.updateWorryEntries
-);
+app.post("/update/:date/:id", ensureAuthenticated, worryEntryController.updateWorryEntries, worryEntryController.dailyWorryEntries);
 // Delete
 app.delete(
   "/dailyView/remove/:id",
@@ -124,5 +121,5 @@ app.delete(
 
 // Starts the server
 app.listen(port, () =>
-  console.log(`App listening on port 3000. | ${__dirname}!`)
+  console.log(`App listening on port ${port}. | ${__dirname}!`)
 );

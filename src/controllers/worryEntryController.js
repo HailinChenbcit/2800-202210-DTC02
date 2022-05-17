@@ -50,12 +50,11 @@ const worryEntryController = {
       };
       return worryEntry;
     });
-    console.log(worryEntries);
-    res.render("dailyView", { worryEntries });
+    res.render("dailyView", { worryEntries, "dayview": req.params.date });
   },
 
   // Edit worry card
-  updateWorryEntries: async (req, res) => {
+  updateWorryEntries: async (req, res, next) => {
     const { id } = req.params;
     const { worryDescription } = req.body;
     try {
@@ -64,7 +63,7 @@ const worryEntryController = {
         { worryDescription },
         { new: true }
       ).exec();
-      res.json(updatedWorryEntry);
+      next()
     } catch (e) {
       res.json(e);
     }

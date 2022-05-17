@@ -85,12 +85,14 @@
                   <% } else { %>
                     <p>No Description.</p>
                     <% } %>
-
-                <% entry.images.forEach(image => { %>
-                  <div class="image-wrapper">
-                    <img src="data:image/<%=image.contentType%>;base64,<%=image.data.toString('base64')%>" alt="journal image" />
-                  </div>
-                <% }) %>
+                <div class="images">
+                  
+                  <% entry.images.forEach(image => { %>
+                    <div class="image-wrapper">
+                      <img src="data:image/<%=image.contentType%>;base64,<%=image.data.toString('base64')%>" alt="journal image" />
+                    </div>
+                  <% }) %>
+                </div>
               </div>
               <div class="buttons">
                 <button class="btn btn-primary" type="button" data-bs-toggle="collapse"

@@ -10,12 +10,22 @@
 
 .entry-content {
     text-align: left;
+    max-width: 80%;
 }
 
+.images {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px 10px;
+}
+
+img {
+    width: 100%;
+}
 .buttons {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 nav i{

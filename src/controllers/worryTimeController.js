@@ -15,7 +15,7 @@ const worryEntryController = {
     //   notificationEnabled,
       worries,
       notes,
-      owner: req.user._id,
+      user: req.user._id,
     });
 
     try {

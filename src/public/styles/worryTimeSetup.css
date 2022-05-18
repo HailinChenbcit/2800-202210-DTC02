@@ -1,11 +1,59 @@
+/* HTML/Body */
 body {
-    background-color: #e7daff;
+  background-color: #e7daff;
+}
+
+/* Worry cards */
+.worryCard {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 10px;
+  flex-direction: column;
+  margin-bottom: 2rem;
 }
 
 .worryListContainer {
-    margin-top: 2rem;
+  margin-top: 2rem;
 }
 
+.worryCardHeader {
+  display: flex;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0;
+  background-color: #9062ea;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  font-size: small;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.worryBody {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.worryContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkboxContainer input {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.worryDescription {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Save button */
 .worryTimeSaveButton {
     width: 70%;
     border: none;
@@ -17,49 +65,4 @@ body {
     cursor: pointer;
     text-align: center;
     border-radius: 5px;
-}
-
-.worryContent {
-    display: flex;
-    flex-direction: column;
-}
-
-.worryCard {
-    position: relative;
-    display: flex;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0,0,0,.125);
-    border-radius: 10px;
-    flex-direction: column;
-    margin-bottom: 2rem;
-}
-
-.worryCardHeader {
-    display: flex;
-    padding: 0.5rem 1rem;
-    margin-bottom: 0;
-    background-color: #9062ea;
-    border-bottom: 1px solid rgba(0,0,0,.125);
-    font-size: small;
-    border-radius: 10px 10px 0px 0px
-}
-
-.worryBody {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem;
-}
-
-.checkboxContainer input{
-    width: 1.5rem;
-    height: 1.5rem;
-}
-
-.worryDescription {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
+  }

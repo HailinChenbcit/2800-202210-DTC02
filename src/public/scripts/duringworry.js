@@ -62,14 +62,25 @@ function exitWorryTime() {
   window.location.href = "/home";
 }
 
-document.querySelector("#exitWorryTimeBtn").addEventListener("click", exitWorryTime)
+document
+  .querySelector("#exitWorryTimeBtn")
+  .addEventListener("click", exitWorryTime);
 
-// Delete selected entries
-const deleteEntryUrl = "http://localhost:3000/duringWorryTime/delete/";
+$(document).ready(function () {
+  // Delete selected entries
+  $("#deleteWorry").click(function (e) {
+    e.preventDefault();
+    worryId = $(".form-check input:checked").parent().parent().attr("id");
+    // remove <li> in browser
+    $(".form-check input:checked").parent().parent().remove();
 
-
-$("#deleteWorry").on("click", function(e) {
-  e.preventDefault();  
-  $(".form-check input:checked").parent().remove();
+    // remove entry in DB
+    $.ajax({
+      url: `http://localhost:3000/duringWorryTime/delete/${worryId}`,
+      type: "DELETE",
+      success: function (data) {
+        console.log("Successful deleted")
+      },
+    });
+  });
 });
-

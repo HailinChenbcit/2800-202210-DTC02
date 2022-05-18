@@ -31,7 +31,7 @@
 <body>
     <div class="login_form">
         <!-- LOGIN FORM -->
-        <form class="needs-validation" action="/auth/login" method="POST" >
+        <form class="needs-validation" action="/auth/login" method="POST" id="loginForm">
             <div class="form-title mb-3">
                 <h3>Login</h3>
             </div>
@@ -45,6 +45,9 @@
                 <input type="password" class="form-control" name="password" id="password" placeholder="Password" required="required">
                 <label for="password" class="form-label">Password</label>
             </div>
+
+            <!-- Invisible timezone input -->
+            <input type="hidden" class="form-control" name="timezoneOffset" value="">
 
             <div class="d-grid gap-2">
                 <button type="submit" class="btn btn-primary btn-block">Log in</button>

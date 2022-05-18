@@ -121,5 +121,5 @@ app.delete(
 
 // Starts the server
 app.listen(port, () =>
-  console.log(`App listening on port ${port}. | ${__dirname}!`)
+  console.log(`App listening on port ${port}. | ${__dirname}!\nTimeZoneOffset${new Date().getTimezoneOffset()}`)
 );

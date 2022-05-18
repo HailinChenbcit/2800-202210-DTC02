@@ -28,7 +28,15 @@ const indexController = {
   },
 
   worryTimeSetupPage: (req, res) => {
-    res.render("worryTimeSetup")
+    const userId = req.user._id;
+    // query the database for worry entries whose owner is `userId`
+    WorryEntry.find({ owner: req.session.passport.user, finished: false}, (err, resp) => {
+      console.log(resp)
+      res.render("worryTimeSetup", {
+        worryData: resp
+      });
+      
+    });
   },
 
   uploadAvatar: async (req, res) => {

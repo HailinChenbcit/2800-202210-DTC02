@@ -119,7 +119,17 @@ app.delete(
   worryEntryController.deleteWorryEntries
 );
 
+// worry time
+app.get(
+  "/setWorryTime",
+  ensureAuthenticated,
+  indexController.worryTimeSetupPage
+);
+
+app.post("/worryTime/create", ensureAuthenticated, worryTimeController.createWorryTime)
+
 // Starts the server
 app.listen(port, () =>
   console.log(`App listening on port ${port}. | ${__dirname}!`)
 );
+

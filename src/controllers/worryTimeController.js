@@ -10,17 +10,15 @@ const worryEntryController = {
     });
   },
   createWorryTime: async (req, res) => {
-    const { startTime, duration, notificationEnabled, worries } = req.body;
-    const startTimeObj = offsetDate(
-      new Date(startTime),
-      req.session.timezoneOffset
-    );
+    const { time, duration, worries, notes } = req.body;
+    const startTime = offsetDate(new Date(time), req.session.timezoneOffset);
     const worryTime = WorryTime({
-      startTime: startTimeObj,
-      duration,
-      notificationEnabled,
+      startTime,
+      duration: Number(duration),
+    //   notificationEnabled,
       worries,
-      owner: req.user._id,
+      notes,
+      user: req.user._id,
     });
 
     try {

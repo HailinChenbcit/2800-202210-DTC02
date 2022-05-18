@@ -20,6 +20,9 @@ const worryTimeSchema = new Schema(
       ref: "User",
     },
     worries: [{ type: Schema.Types.ObjectId, ref: "WorryEntry" }],
+    notes: {
+      type: String,
+    },
   },
   {
     _id: true,

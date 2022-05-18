@@ -31,10 +31,25 @@ body {
   border-radius: 10px 10px 0px 0px;
 }
 
+.worryTimesContainer {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+  accent-color: #6545a4;
+  margin-top: 1rem;
+}
+
+.worryTimesContainer label {
+  margin: 1vh 2vw;
+}
+
 .worryBody {
   display: flex;
   justify-content: space-between;
   padding: 1rem;
+  align-items: center;
 }
 
 .worryContent {
@@ -42,7 +57,7 @@ body {
   flex-direction: column;
 }
 
-.checkboxContainer input {
+.worryBody Input{
   width: 1.5rem;
   height: 1.5rem;
 }

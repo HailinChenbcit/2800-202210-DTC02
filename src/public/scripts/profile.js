@@ -131,6 +131,7 @@ function processWorryEntries(data) {
     moodCount.set(i, 0);
   }
 
+  // Parses the data
   data
     .map((datum) => {
       moodCount.set(datum.moodLevel, moodCount.get(datum.moodLevel) + 1);
@@ -148,6 +149,21 @@ function processWorryEntries(data) {
       }
     });
 
+  // Sorts the data map according to date 
+  parsedData = new Map([...parsedData.entries()]
+    .sort((a, b) => {
+      let parsed2A = parseInt(a[0].substr(4))
+      let parsed2B = parseInt(b[0].substr(4))
+
+      return parsed2A - parsed2B
+    })
+    .sort((a, b) => {
+      let parsedA = months.indexOf(a[0].slice(0, 3))
+      let parsedB = months.indexOf(b[0].slice(0, 3))
+      return parsedA - parsedB
+    }))
+
+  // Splits the parsed data into arrays ready for graphing
   let stamps = Array.from(parsedData.keys());
   let avgMoods = Array.from(parsedData.values(), (values) => average(values));
   let countMoods = Array.from(moodCount.values());
@@ -157,7 +173,6 @@ function processWorryEntries(data) {
 
 document.addEventListener("DOMContentLoaded", () => {
   getWorryEntries().then((data) => {
-    console.log(data);
     worryEntries = data;
     setup();
   });

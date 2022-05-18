@@ -3,20 +3,49 @@ body {
   background-color: #e7daff;
 }
 
+/* Avatar title section */
+.user-info-wrapper {
+  display: flex;
+  height: 12rem;
+  /* border: 2px solid #ff5757; */
+  border-radius: 5px;
+  background: linear-gradient(180deg, #9062ea 35%, #ceb5ff 0%);
+
+}
+
+.name-wrapper {
+  width: 65%;
+  padding-left: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  margin-bottom: 2.5rem;
+}
+
+.name-wrapper h3{
+  font-weight: bold;
+}
+
+.avatar-wrapper img {
+  margin-top: 5px;
+  border-radius: 50%;
+  width: 8rem;
+  height: 8rem;
+  border: 2px solid #ff5757;
+}
+
 .avatar-wrapper {
-  width: 50%;
+  width: 35%;
   border-radius: 50%;
 }
 
-.avatar-wrapper > img {
-  width: 100%;
-}
-
 #avatar-label, #avatar {
-  background-color: #7F9CCB;
+  background-color: #92a1d1;
   padding: 5px 10px;
   border-radius: 5px;
-  border: 1px ridge black;
+  color: #6545a4;
+  border: 1px ridge #92a1d1;
   font-size: 0.8rem;
   height: auto;
 }
@@ -29,6 +58,10 @@ body {
 #avatar-label:active {
   background-color: #0D3F8F;
   color: white;
+}
+
+.icon-file-selector {
+  margin-top: 1rem;
 }
 
 /* Mood Graph */
@@ -48,7 +81,7 @@ body {
 }
 
 .summaryBarGraph_container {
-  margin-top: 3.5vh;
+  margin-top: 0vh;
 }
 
 /* Logout button */
@@ -58,12 +91,13 @@ body {
   border: none;
   background-color: #92a1d1;
   color: #6545a4;
-  margin: 10px;
+  margin-top: 1rem;
   padding: 14px 28px;
   font-size: 16px;
   cursor: pointer;
   text-align: center;
   border-radius: 5px;
+  text-decoration: none;
 }
 
 /* Admin button */
@@ -75,7 +109,7 @@ body {
   height: 100%;
 }
 .AdminButton {
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 h1 {

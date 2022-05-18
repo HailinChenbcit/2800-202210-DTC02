@@ -29,10 +29,11 @@
         <p>Date: <span>May/11/2022</span></p> 
         <p>Time: <span>9:00 AM</span></p>
         <span style="font-weight: bold;">Your Worry:</span>
-            <textarea name="worryDescriptionEdit" id="worryEdit" cols="45" rows="19"></textarea>
+        <form action="/update/<%= date %>/<%= id %>" method="POST">
+            <textarea name="worryDescription" id="worryEdit" cols="45" rows="19"></textarea>
             <br>
-            <button class="editSaveButton">Save</button>
-
+            <input type="submit" class="editSaveButton" value="Save">
+        </form>
     </div>
     <!-- Footer -->
     <footer id="nav" class="navbar justify-content-evenly fixed-bottom" style="height: 4em">

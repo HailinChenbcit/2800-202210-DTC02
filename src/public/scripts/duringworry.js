@@ -100,19 +100,19 @@ $(document).ready(function () {
     console.log(worryIds)
   });
 
-  // Delete selected entries
+  // Update selected entries to 'finished'
   $("#deleteWorry").click(function (e) {
     e.preventDefault();
     console.log(worryIds.length)
     for (i = 0; i < worryIds.length; i++) {
-      // remove <li> in browser
+      // Delete selected entries in broswer
       $(`#${worryIds[i]}`).remove();
       // remove entry in DB
       $.ajax({
-        url: `http://localhost:3000/duringWorryTime/delete/${worryIds[i]}`,
-        type: "DELETE",
-        success: function (data) {
-          console.log(`Successful deleted _id: ${worryIds[i]}`);
+        url: `http://localhost:3000/duringWorryTime/update/${worryIds[i]}`,
+        type: "POST",
+        success: function () {
+          console.log(`Successful updated id: ${worryIds[i]}`);
         },
       });
     }

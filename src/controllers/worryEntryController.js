@@ -85,7 +85,14 @@ const worryEntryController = {
   // display all worry times
   allWorryTime: async (req, res) => {
     const allWorryTimes = await WorryEntry.find({
-      owner: req.user._id,
+      $and: [
+        {
+          owner: req.user._id,
+        },
+        {
+          finished: false,
+        },
+      ],
     }).exec();
     const worryTimes = allWorryTimes.map((entry) => {
       const worryTime = {
@@ -98,20 +105,18 @@ const worryEntryController = {
     res.render("duringWorryTime", { worryTimes });
   },
 
-  // Clear selected worry time
-  clearWorryTime: (req, res) => {
-    WorryEntry.deleteOne(
-      {
-        _id: req.params.id,
-      },
-      function (err, data) {
-        if (err) {
-          console.log("Error " + err);
-        } else {
-          console.log("Deleted Data " + data);
-        }
-      }
-    );
+  // Update selected worry time
+  updateWorryTime: async (req, res) => {
+    const { id } = req.params;
+    try {
+      const updatedDuringTime = await WorryEntry.findByIdAndUpdate(
+        id,
+        { finished: true },
+      ).exec();
+      res.json(updatedDuringTime);
+    } catch (e) {
+      res.json(e);
+    }
   },
 
   // updateWorryTimes: async (req, res) => {

@@ -130,10 +130,10 @@ app.get(
   ensureAuthenticated,
   worryEntryController.allWorryTime
 );
-app.delete(
-  "/duringWorryTime/delete/:id",
+app.post(
+  "/duringWorryTime/update/:id",
   ensureAuthenticated,
-  worryEntryController.clearWorryTime
+  worryEntryController.updateWorryTime
 );
 
 // Starts the server

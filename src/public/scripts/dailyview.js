@@ -19,6 +19,12 @@ worryCards.forEach((worryCard) => {
   });
 });
 
+document.querySelectorAll(".editBtn").forEach((editBtn) => {
+  editBtn.addEventListener("click", () => {
+    window.location.href = `/edit/${editBtn.id}`
+  })
+})
+
 // async function deleteEntry(e) {
 //   e.preventDefault();
 //   entry_id = this.id.slice(11);

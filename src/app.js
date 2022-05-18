@@ -119,7 +119,15 @@ app.delete(
   worryEntryController.deleteWorryEntries
 );
 
+// Time picker
+app.get(
+  "/worryTimeSetup",
+  ensureAuthenticated,
+  indexController.worryTimeSetupPage
+);
+
 // Starts the server
 app.listen(port, () =>
   console.log(`App listening on port ${port}. | ${__dirname}!`)
 );
+

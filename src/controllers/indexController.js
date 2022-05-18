@@ -28,6 +28,7 @@ const indexController = {
   },
 
   worryTimeSetupPage: (req, res) => {
+    req.user._id
     res.render("worryTimeSetup")
   },
 

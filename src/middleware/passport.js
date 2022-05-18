@@ -12,7 +12,7 @@ const localLogin = new LocalStrategy(
   async (req, email, password, done) => {
     const user = await User.findOne({ email, password }).exec();
     if (user) {
-      req.session.timezoneOffset = req.body.timezoneOffset;
+      req.session.timezoneOffset = Number(req.body.timezoneOffset);
       return done(null, user);
     } else {
       return done(null, false, {

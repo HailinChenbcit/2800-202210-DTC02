@@ -8,6 +8,9 @@ const emojis = {
   4: "&#128513",
   5: "&#128522;",
 };
+
+const offsetDate = (date, offset) => new Date(date.getTime() + offset * 60 * 1000);
+
 const worryEntryController = {
   userWorryEntries: (req, res) => {
     WorryEntry.find(
@@ -21,18 +24,25 @@ const worryEntryController = {
 
   // Show all worry cards
   dailyWorryEntries: async (req, res) => {
+
     const dateString = req.params.date;
+
     const year = dateString.substring(0, 4);
     const month = dateString.substring(4, 6);
     const day = Number(dateString.substring(6, 8));
+
     const date = new Date(year, month, day);
+    const dateOffsetted = offsetDate(date, req.session.timezoneOffset);
     const nextDay = new Date(year, month, day + 1);
-    // console.log(dateString, date, nextDay)
+    const nextDayOffsetted = offsetDate(nextDay, req.session.timezoneOffset);
+
+    console.log(dateString, date, nextDay)
+
     const worryEntriesRaw = await WorryEntry.find({
       owner: req.user._id,
       datetime: {
-        $gte: date,
-        $lt: nextDay,
+        $gte: dateOffsetted,
+        $lt: nextDayOffsetted,
       },
     }).exec();
 
@@ -86,10 +96,9 @@ const worryEntryController = {
   },
 
   createWorryEntry: async (req, res) => {
-    let { time, mood, worryDescription, timezoneOffset } = req.body;
-    time = convertTime(time, timezoneOffset);
-    // console.log(time);
-    time = new Date();
+    let { time, mood, worryDescription } = req.body;
+    const offsettedTime = offsetDate(new Date(time), req.session.timezoneOffset);
+
     mood = Number(mood);
 
     const images = [];
@@ -108,7 +117,7 @@ const worryEntryController = {
     }
 
     const newWorryEntry = WorryEntry({
-      datetime: time,
+      datetime: offsettedTime,
       moodLevel: mood,
       worryDescription,
       owner: req.user._id,

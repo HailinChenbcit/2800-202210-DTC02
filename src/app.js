@@ -51,9 +51,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use((req, _, next) => {
-  // console.log(req.url);
-  // console.log(req.session);
-  // console.log(req.body);
+  console.log(req.url);
+  console.log(req.session);
+  console.log(req.body);
   // console.log(req.user);
   next();
 });
@@ -121,5 +121,5 @@ app.delete(
 
 // Starts the server
 app.listen(port, () =>
-  console.log(`App listening on port ${port}. | ${__dirname}!\nTimeZoneOffset${new Date().getTimezoneOffset()}`)
+  console.log(`App listening on port ${port}. | ${__dirname}!`)
 );

@@ -33,40 +33,48 @@
     </a>
   </nav>
     <main>
+      <form action="/worryTime/create" method="post" enctype="multipart/form-data">
       <!-- Time/Date -->
         <div class="dateContainer">
-        <label for="time"> Date </label>
+        <label for="time"> Date/Time </label>
         <input
           step="1"
-          type="date"
+          type="datetime-local"
           name="date"
           id="date"
           class="form-control"
           default=""
         />
+        </div>
+        <div class="worryTimesContainer">
+          <span>Please select your preferred countdown time:</span>     
+          <div class="worryTimesLabels">
+
+        <label for="timeChoice1"
+        >5 mins <br />
+        <input type="radio" id="timeChoice1" name="times" value="5" checked />
+        </label>
+     
+        <label for="timeChoice2"
+        >10 mins <br />
+        <input type="radio" id="timeChoice2" name="times" value="10" checked />
+        </label>
+        <label for="timeChoice3"
+        >15 mins <br />
+        <input type="radio" id="timeChoice3" name="times" value="15" checked />
+        </label>
+
+        <label for="timeChoice4"
+        >30 mins <br />
+        <input type="radio" id="timeChoice4" name="times" value="30" checked />
+        </label>
+
+        <label for="timeChoice5"
+        >1 hour <br />
+        <input type="radio" id="timeChoice5" name="times" value="60" checked />
+        </label>
       </div>
-        <div class="timeStartContainer">
-          <label for="time"> Start Time: </label>
-          <input
-            step="1"
-            type="time"
-            name="timeStart"
-            id="timeStart"
-            class="form-control"
-            default=""
-          />
-        </div>
-          <div class="timeEndContainer">
-            <label for="time"> End Time: </label>
-            <input
-              step="1"
-              type="time"
-              name="timeEnd"
-              id="timeEnd"
-              class="form-control"
-              default=""
-            />
-        </div>
+      </div>
         <div class="worryListContainer">
           <h3>Pick your worries:</h3>
           <div class="worryContent">
@@ -82,10 +90,7 @@
                   <p>Description:</p>
                   <p><%= worryEntry.worryDescription %></p>
                 </div>
-                  <label class="checkboxContainer">
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                  </label>
+                <input type="checkbox" id="worryCheckbox" name="worryConfirmation" value="<%= worryEntry.id %>">
               </div>
                </div>
             <% }) %>
@@ -99,10 +104,11 @@
             cols="44"
             rows="8"
           ></textarea>
+        </div>
 
         <br />
         <input type="submit" class="worryTimeSaveButton" value="Save" />
-
+      </form>
     </main>
     <footer id="nav" class="navbar justify-content-evenly fixed-bottom" style="height: 4em">
         <a class="icon-btn" href="/home">

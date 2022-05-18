@@ -49,10 +49,8 @@ const worryEntryController = {
     const worryEntries = worryEntriesRaw.map((entry) => {
       const worryEntry = {
         id: entry._id,
-        time: entry.datetime.toLocaleString("en-GB", {
-          timeZone: "Canada/Pacific",
-          dateStyle: "medium",
-          timeStyle: "medium",
+        time: offsetDate(entry.datetime, -req.session.timezoneOffset).toLocaleString("en-GB", {
+          dateStyle: "medium", timeStyle: "medium"
         }),
         description: entry.worryDescription,
         moodIcon: emojis[entry.moodLevel],

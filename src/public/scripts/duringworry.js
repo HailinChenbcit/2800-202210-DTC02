@@ -71,16 +71,24 @@ $(document).ready(function () {
   $("#deleteWorry").click(function (e) {
     e.preventDefault();
     worryId = $(".form-check input:checked").parent().parent().attr("id");
+    
     // remove <li> in browser
     $(".form-check input:checked").parent().parent().remove();
+    worryIds = [];
+    if ($(".form-check input").is(":checked")) {
+      worryIds.push(worryId);
+      console.log(worryIds)
+    }
 
-    // remove entry in DB
-    $.ajax({
-      url: `http://localhost:3000/duringWorryTime/delete/${worryId}`,
-      type: "DELETE",
-      success: function (data) {
-        console.log("Successful deleted")
-      },
-    });
+    for (i = 0; i < worryIds.length; i++) {
+      // remove entry in DB
+      // $.ajax({
+      //   url: `http://localhost:3000/duringWorryTime/delete/${worryIds[i]}`,
+      //   type: "DELETE",
+      //   success: function (data) {
+      //     console.log("Successful deleted")
+      //   },
+      // });
+    }
   });
 });

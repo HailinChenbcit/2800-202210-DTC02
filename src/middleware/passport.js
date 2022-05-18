@@ -3,16 +3,22 @@ const LocalStrategy = require("passport-local").Strategy;
 const User = require("../models/User");
 
 const localLogin = new LocalStrategy(
-  { usernameField: "email", passwordField: "password" },
+  {
+    passReqToCallback: true,
+    usernameField: "email",
+    passwordField: "password",
+  },
 
-  async (email, password, done) => {
+  async (req, email, password, done) => {
     const user = await User.findOne({ email, password }).exec();
-
-    return user
-      ? done(null, user)
-      : done(null, false, {
-          message: "Your login details are not validate. Please try again.",
-        });
+    if (user) {
+      req.session.timezoneOffset = req.body.timezoneOffset;
+      return done(null, user);
+    } else {
+      return done(null, false, {
+        message: "Your login details are not validate. Please try again.",
+      });
+    }
   }
 );
 

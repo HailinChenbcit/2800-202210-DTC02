@@ -46,11 +46,11 @@ const worryEntryController = {
         }),
         description: entry.worryDescription,
         moodIcon: emojis[entry.moodLevel],
-        images: entry.images
+        images: entry.images,
       };
       return worryEntry;
     });
-    res.render("dailyView", { worryEntries, "dayview": req.params.date });
+    res.render("dailyView", { worryEntries, dayview: req.params.date });
   },
 
   // Edit worry card
@@ -63,7 +63,7 @@ const worryEntryController = {
         { worryDescription },
         { new: true }
       ).exec();
-      next()
+      next();
     } catch (e) {
       res.json(e);
     }
@@ -86,9 +86,10 @@ const worryEntryController = {
   },
 
   createWorryEntry: async (req, res) => {
-    let { time, mood, worryDescription } = req.body;
-    time = new Date(time);
-    console.log(time);
+    let { time, mood, worryDescription, timezoneOffset } = req.body;
+    time = convertTime(time, timezoneOffset);
+    // console.log(time);
+    time = new Date();
     mood = Number(mood);
 
     const images = [];

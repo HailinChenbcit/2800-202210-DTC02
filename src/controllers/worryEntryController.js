@@ -100,7 +100,7 @@ const worryEntryController = {
 
   // Clear selected worry time
   clearWorryTime: (req, res) => {
-    WorryEntry.deleteMany(
+    WorryEntry.delete(
       {
         _id: req.params.id,
       },
@@ -112,7 +112,6 @@ const worryEntryController = {
         }
       }
     );
-    // res.render("duringWorryTime", { worryTimes });
   },
 
   // updateWorryTimes: async (req, res) => {

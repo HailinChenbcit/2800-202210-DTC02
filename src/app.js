@@ -106,13 +106,13 @@ app.get(
   ensureAuthenticated,
   worryEntryController.dailyWorryEntries
 );
-// Update
+// Update daily view
 app.post(
   "/dailyView/update/:id",
   ensureAuthenticated,
   worryEntryController.updateWorryEntries
 );
-// Delete
+// Delete daily view
 app.delete(
   "/dailyView/remove/:id",
   ensureAuthenticated,
@@ -130,8 +130,8 @@ app.get(
   ensureAuthenticated,
   worryEntryController.allWorryTime
 );
-app.post(
-  "/duringWorryTime",
+app.delete(
+  "/duringWorryTime/delete/:id",
   ensureAuthenticated,
   worryEntryController.clearWorryTime
 );

@@ -1,4 +1,4 @@
-function secondExample() {
+function counter() {
   for (;;) {
     var c = prompt("Enter number of minutes");
     c = parseInt(c);
@@ -28,7 +28,7 @@ function secondExample() {
   }, 1000);
 }
 
-document.getElementById("btnId2").addEventListener("click", secondExample);
+document.getElementById("btnId2").addEventListener("click", counter);
 
 // select and delete all entries
 $("#selectall").change(function () {
@@ -63,3 +63,13 @@ function exitWorryTime() {
 }
 
 document.querySelector("#exitWorryTimeBtn").addEventListener("click", exitWorryTime)
+
+// Delete selected entries
+const deleteEntryUrl = "http://localhost:3000/duringWorryTime/delete/";
+
+
+$("#deleteWorry").on("click", function(e) {
+  e.preventDefault();  
+  $(".form-check input:checked").parent().remove();
+});
+

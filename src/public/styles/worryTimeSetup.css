@@ -31,7 +31,7 @@ body {
   border-radius: 10px 10px 0px 0px;
 }
 
-.worryTimesContainer {
+.worryDurationContainer {
   text-align: center;
   display: flex;
   align-items: center;
@@ -41,7 +41,7 @@ body {
   margin-top: 1rem;
 }
 
-.worryTimesContainer label {
+.worryDurationContainer label {
   margin: 1vh 2vw;
 }
 

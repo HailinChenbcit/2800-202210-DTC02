@@ -119,12 +119,14 @@ app.delete(
   worryEntryController.deleteWorryEntries
 );
 
-// Time picker
+// worry time
 app.get(
   "/worryTimeSetup",
   ensureAuthenticated,
   indexController.worryTimeSetupPage
 );
+
+app.post("/worryTime/create", ensureAuthenticated, worryTimeController.createWorryTime)
 
 // Starts the server
 app.listen(port, () =>

@@ -7,8 +7,8 @@ const worryTimeSchema = new Schema(
       type: Date,
       required: true,
     },
-    endTime: {
-      type: Date,
+    duration: {
+      type: Number,
       required: true,
     },
     notificationEnaled: {

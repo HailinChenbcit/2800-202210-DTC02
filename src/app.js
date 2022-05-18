@@ -128,7 +128,7 @@ app.get(
 app.get(
   "/duringWorryTime",
   ensureAuthenticated,
-  worryEntryController.allWorryTime
+  worryTimeController.displayWorryTime
 );
 app.post(
   "/duringWorryTime/update/:id",

@@ -82,37 +82,13 @@ const worryEntryController = {
     );
   },
 
-  // display all worry times
-  allWorryTime: async (req, res) => {
-    const allWorryTimes = await WorryEntry.find({
-      $and: [
-        {
-          owner: req.user._id,
-        },
-        {
-          finished: false,
-        },
-      ],
-    }).exec();
-    const worryTimes = allWorryTimes.map((entry) => {
-      const worryTime = {
-        id: entry._id,
-        description: entry.worryDescription,
-        finished: entry.finished,
-      };
-      return worryTime;
-    });
-    res.render("duringWorryTime", { worryTimes });
-  },
-
   // Update selected worry time
   updateWorryTime: async (req, res) => {
     const { id } = req.params;
     try {
-      const updatedDuringTime = await WorryEntry.findByIdAndUpdate(
-        id,
-        { finished: true },
-      ).exec();
+      const updatedDuringTime = await WorryEntry.findByIdAndUpdate(id, {
+        finished: true,
+      }).exec();
       res.json(updatedDuringTime);
     } catch (e) {
       res.json(e);

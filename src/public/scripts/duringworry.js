@@ -1,3 +1,4 @@
+// time counter
 function counter() {
   for (;;) {
     var c = prompt("Enter number of minutes");
@@ -58,7 +59,6 @@ $(".form-check-input").change(function () {
 
 function exitWorryTime() {
   // make sure that the timer and other stuffs are stopped before exiting worry time
-
   window.location.href = "/home";
 }
 
@@ -66,29 +66,55 @@ document
   .querySelector("#exitWorryTimeBtn")
   .addEventListener("click", exitWorryTime);
 
+// delete selected checboxes and delete all
 $(document).ready(function () {
+  var worryIds = [];
+  // select each checkbox
+  $(document).on("change", ".form-check-input", function () {
+    // worryId = $(".form-check input:checked").parent().parent().attr("id");
+    if (this.checked) {
+      worryId = $(this).parent().parent().attr("id");
+      if (worryIds.includes(worryId)) {
+        //pass
+      } else {
+        worryIds.push(worryId);
+      }
+    } else {
+      if (worryIds.includes(worryId)) {
+        worryIds.shift();
+      } else {
+      }
+    }
+    console.log(worryIds);
+  });
+  // check selectall checbox
+  $(document).on("change", "#selectall", function () {
+    if (this.checked) {
+      $(".form-check input:checked").each(function(){
+        worryId = $(this).parent().parent().attr("id");
+        worryIds.push(worryId);
+    });
+    } else {
+      worryIds = []
+    }
+    console.log(worryIds)
+  });
+
   // Delete selected entries
   $("#deleteWorry").click(function (e) {
     e.preventDefault();
-    worryId = $(".form-check input:checked").parent().parent().attr("id");
-    
-    // remove <li> in browser
-    $(".form-check input:checked").parent().parent().remove();
-    worryIds = [];
-    if ($(".form-check input").is(":checked")) {
-      worryIds.push(worryId);
-      console.log(worryIds)
-    }
-
+    console.log(worryIds.length)
     for (i = 0; i < worryIds.length; i++) {
+      // remove <li> in browser
+      $(`#${worryIds[i]}`).remove();
       // remove entry in DB
-      // $.ajax({
-      //   url: `http://localhost:3000/duringWorryTime/delete/${worryIds[i]}`,
-      //   type: "DELETE",
-      //   success: function (data) {
-      //     console.log("Successful deleted")
-      //   },
-      // });
+      $.ajax({
+        url: `http://localhost:3000/duringWorryTime/delete/${worryIds[i]}`,
+        type: "DELETE",
+        success: function (data) {
+          console.log(`Successful deleted _id: ${worryIds[i]}`);
+        },
+      });
     }
   });
 });

@@ -121,7 +121,7 @@ app.delete(
 
 // worry time
 app.get(
-  "/worryTimeSetup",
+  "/setWorryTime",
   ensureAuthenticated,
   indexController.worryTimeSetupPage
 );

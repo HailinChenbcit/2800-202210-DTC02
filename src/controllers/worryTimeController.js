@@ -7,13 +7,14 @@ const worryEntryController = {
     });
   },
   createWorryTime: async (req, res) => {
-    const { time, duration, worries } = req.body;
+    const { time, duration, worries, notes } = req.body;
     const startTime = new Date(time);
     const worryTime = WorryTime({
       startTime,
-      duration,
+      duration: Number(duration),
     //   notificationEnabled,
       worries,
+      notes,
       owner: req.user._id,
     });
 

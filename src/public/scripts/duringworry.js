@@ -1,28 +1,31 @@
 // time counter
 function counter() {
-  for (;;) {
-    var c = prompt("Enter number of minutes");
-    c = parseInt(c);
-    if (c >= 0 && c < 60) break;
-    else alert("Enter number between 0 and 60");
-  }
+  var totalTime = parseInt($("#totalworrytime").text());
+  var hrs = Math.floor(totalTime / 60);
+  var min = totalTime % 60;
 
-  var yourDateToGo3 = new Date();
-  yourDateToGo3.setMinutes(yourDateToGo3.getMinutes() + c);
+  var yourDateToGo = new Date();
+  yourDateToGo.setMinutes(yourDateToGo.getMinutes() + min);
+  yourDateToGo.setHours(yourDateToGo.getHours() + hrs);
 
-  var timing3 = setInterval(function () {
-    var currentDate3 = new Date().getTime();
-    var timeLeft3 = yourDateToGo3 - currentDate3;
+  var timing = setInterval(function () {
+    var currentDate = new Date().getTime();
+    var timeLeft = yourDateToGo - currentDate;
+    var hours = Math.floor(totalTime / 60);
 
-    var minutes3 = Math.floor((timeLeft3 % (1000 * 60 * 60)) / (1000 * 60));
-    if (minutes3 < 10) minutes3 = "0" + minutes3;
-    var seconds3 = Math.floor((timeLeft3 % (1000 * 60)) / 1000);
-    if (seconds3 < 10) seconds3 = "0" + seconds3;
+    var hours = Math.floor(
+      (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    if (hours < 10) hours = "0" + hours;
+    var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+    if (minutes < 10) minutes = "0" + minutes;
+    var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+    if (seconds < 10) seconds = "0" + seconds;
 
-    document.getElementById("countdown").innerHTML =
-      minutes3 + "m " + seconds3 + "s";
-    if (timeLeft3 <= 0) {
-      clearInterval(timing3);
+    document.getElementById("countdown").innerHTML = 
+    hours + "h " + minutes + "m " + seconds + "s";
+    if (timeLeft <= 0) {
+      clearInterval(timing);
       document.getElementById("countdown").innerHTML =
         "Your worry time has ended!";
     }
@@ -90,20 +93,20 @@ $(document).ready(function () {
   // check selectall checbox
   $(document).on("change", "#selectall", function () {
     if (this.checked) {
-      $(".form-check input:checked").each(function(){
+      $(".form-check input:checked").each(function () {
         worryId = $(this).parent().parent().attr("id");
         worryIds.push(worryId);
-    });
+      });
     } else {
-      worryIds = []
+      worryIds = [];
     }
-    console.log(worryIds)
+    console.log(worryIds);
   });
 
   // Update selected entries to 'finished'
   $("#deleteWorry").click(function (e) {
     e.preventDefault();
-    console.log(worryIds.length)
+    console.log(worryIds.length);
     for (i = 0; i < worryIds.length; i++) {
       // Delete selected entries in broswer
       $(`#${worryIds[i]}`).remove();

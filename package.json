@@ -4,7 +4,7 @@
   "description": "* [General info](#general-info)\r * [Technologies](#technologies)\r * [Contents](#content)",
   "main": "app.js",
   "scripts": {
-    "start": "node src/app.js"
+    "start": "nodemon src/app.js"
   },
   "repository": {
     "type": "git",

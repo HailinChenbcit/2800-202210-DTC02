@@ -54,6 +54,9 @@ app.use((req, _, next) => {
   console.log(req.url);
   console.log(req.session);
   console.log(req.body);
+  // console.log(req.url);
+  // console.log(req.session);
+  // console.log(req.body);
   // console.log(req.user);
   next();
 });
@@ -110,13 +113,37 @@ app.get(
   ensureAuthenticated,
   worryEntryController.dailyWorryEntries
 );
-// Update
+// Update 
 app.post("/update/:date/:id", ensureAuthenticated, worryEntryController.updateWorryEntries, worryEntryController.dailyWorryEntries);
 // Delete
+// Update daily view
+// app.post(
+//   "/dailyView/update/:id",
+//   ensureAuthenticated,
+//   worryEntryController.updateWorryEntries
+// );
+// Delete daily view
 app.delete(
   "/dailyView/remove/:id",
   ensureAuthenticated,
   worryEntryController.deleteWorryEntries
+);
+
+// Worry Time routes
+app.get(
+  "/worryTimeSetup",
+  ensureAuthenticated,
+  indexController.worryTimeSetupPage
+);
+app.get(
+  "/duringWorryTime",
+  ensureAuthenticated,
+  worryTimeController.displayWorryTime
+);
+app.post(
+  "/duringWorryTime/update/:id",
+  ensureAuthenticated,
+  worryTimeController.updateWorryTime
 );
 
 // Starts the server

@@ -4,7 +4,9 @@ const fs = require("fs").promises;
 
 const indexController = {
   homePage: (req, res) => {
-    res.render("home");
+    WorryEntry.find({owner: req.session.passport.user}, (err, data) => {
+      res.render("home", {"amtOfWorries": data.length});
+    })
   },
   accountsPage: async (req, res) => {
     const users = await User.find({});

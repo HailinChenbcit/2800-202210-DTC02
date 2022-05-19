@@ -9,7 +9,8 @@ const emojis = {
   5: "&#128522;",
 };
 
-const offsetDate = (date, offset) => new Date(date.getTime() + offset * 60 * 1000);
+const offsetDate = (date, offset) =>
+  new Date(date.getTime() + offset * 60 * 1000);
 
 const worryEntryController = {
   userWorryEntries: (req, res) => {
@@ -24,7 +25,6 @@ const worryEntryController = {
 
   // Show all worry cards
   dailyWorryEntries: async (req, res) => {
-
     const dateString = req.params.date;
 
     const year = dateString.substring(0, 4);
@@ -36,7 +36,7 @@ const worryEntryController = {
     const nextDay = new Date(year, month, day + 1);
     const nextDayOffsetted = offsetDate(nextDay, req.session.timezoneOffset);
 
-    console.log(dateString, date, nextDay)
+    console.log(dateString, date, nextDay);
 
     const worryEntriesRaw = await WorryEntry.find({
       owner: req.user._id,
@@ -49,8 +49,12 @@ const worryEntryController = {
     const worryEntries = worryEntriesRaw.map((entry) => {
       const worryEntry = {
         id: entry._id,
-        time: offsetDate(entry.datetime, -req.session.timezoneOffset).toLocaleString("en-GB", {
-          dateStyle: "medium", timeStyle: "medium"
+        time: offsetDate(
+          entry.datetime,
+          -req.session.timezoneOffset
+        ).toLocaleString("en-GB", {
+          dateStyle: "medium",
+          timeStyle: "medium",
         }),
         description: entry.worryDescription,
         moodIcon: emojis[entry.moodLevel],
@@ -95,7 +99,10 @@ const worryEntryController = {
 
   createWorryEntry: async (req, res) => {
     let { time, mood, worryDescription } = req.body;
-    const offsettedTime = offsetDate(new Date(time), req.session.timezoneOffset);
+    const offsettedTime = offsetDate(
+      new Date(time),
+      req.session.timezoneOffset
+    );
 
     mood = Number(mood);
 
@@ -129,6 +136,21 @@ const worryEntryController = {
       console.log(e);
     }
   },
+
+  // updateWorryTimes: async (req, res) => {
+  //   const { id } = req.params;
+  //   const { worryDescription } = req.body;
+  //   try {
+  //     const updatedWorryEntry = await WorryEntry.findByIdAndUpdate(
+  //       id,
+  //       { worryDescription },
+  //       { new: true }
+  //     ).exec();
+  //     res.json(updatedWorryEntry);
+  //   } catch (e) {
+  //     res.json(e);
+  //   }
+  // },
 };
 
 module.exports = worryEntryController;

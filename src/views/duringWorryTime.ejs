@@ -27,22 +27,11 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/styles/layout.css" />
-    <link rel="stylesheet" href="/styles/home_page.css" />
+    <link rel="stylesheet" href="/styles/duringWorryTime.css" />
 
     <!-- FAVICON -->
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
 
-    <style>
-      .btn-primary {
-        background-color: #6545a4;
-        border-color: #9062ea;
-        width: 45%;
-      }
-      .trash-btn {
-        width: 25%;
-        border: none;
-      }
-    </style>
   </head>
 
   <body>
@@ -62,11 +51,11 @@
 
     <!-- Display worry times -->
     <main>
-      <h5>Worry time left:</h5>
+      <h3>Worry time left:</h3>
       <h5 id="totalworrytime"><%= totalTime%> minutes</h5>
       <div class="row justify-content-center mt-5 mb-2"></div>
       <div class="row justify-content-center" id="countdown"></div>
-      <p>Your Worries:</p>
+      <h3>Your Worries:</h3>
 
       <div class="container">
         <div class="row">
@@ -81,7 +70,6 @@
           </div>
         </div>
       </div>
-      <br />
       <% if (worryEntries.length === 0) { %>
       <p>You don't have worry time today</p>
       <% } %>

@@ -24,10 +24,10 @@
             <span>WorryLess</span>
         </a>
     </nav>
+
     <div class="mainContent">
         <legend>Worry Edit Form</legend>
-        <p>Date: <span>May/11/2022</span></p> 
-        <p>Time: <span>9:00 AM</span></p>
+        <p>Created: <span><%= datetime %></span></p> 
         <span style="font-weight: bold;">Your Worry:</span>
         <form action="/update/<%= id %>" method="POST">
             <textarea name="worryDescription" id="worryEdit" cols="45" rows="19"></textarea>

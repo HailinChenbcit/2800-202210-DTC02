@@ -1,11 +1,15 @@
 const User = require("../models/User");
 const WorryEntry = require("../models/WorryEntry");
+const worryEntryController = require("./worryEntryController");
 const fs = require("fs").promises;
+
+const offsetDate = (date, offset) =>
+  new Date(date.getTime() + offset * 60 * 1000);
 
 const indexController = {
   homePage: (req, res) => {
-    WorryEntry.find({owner: req.session.passport.user}, (err, data) => {
-      res.render("home", {"amtOfWorries": data.length});
+    WorryEntry.find({ owner: req.session.passport.user }, (err, data) => {
+      res.render("home", { "amtOfWorries": data.length });
     })
   },
   accountsPage: async (req, res) => {
@@ -22,13 +26,24 @@ const indexController = {
   },
 
   editPage: (req, res) => {
-    res.render("edit", {"id": req.params.id, "date": req.params.date})
+    WorryEntry.findById(req.params.id, (err, resp) => {
+      if (err) {
+        res.json(err)
+      } else {
+        const modifiedDatetime = offsetDate(new Date(resp.datetime), -req.session.timezoneOffset).toLocaleString("en-GB", {
+          dateStyle: "medium",
+          timeStyle: "medium",
+        })
+
+        res.render("edit", {id: resp.id, datetime: modifiedDatetime, moodLevel: resp.moodLevel, worryDescription: resp.worryDescription})
+      }
+    })
   },
 
   dailyViewPage: (req, res) => {
     res.render("dailyView");
   },
-  
+
   uploadAvatar: async (req, res) => {
     const file = req.file;
     try {

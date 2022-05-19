@@ -19,9 +19,13 @@
 <body>
     <!-- Header -->
     <nav class="navbar">
-        <a class="navbar-brand" href="#">
-            <img src="/img/WorryLessIcon.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        <a class="navbar-brand" href="/home">
+            <img src="/img/WorryLessIcon.png" width="30" height="30" class="d-inline-block align-top"
+                alt="WorryLess Icon" />
             <span>WorryLess</span>
+        </a>
+        <a href="/dailyView/<%= datetimeLink %>">
+            <i class="material-symbols-outlined">close</i>
         </a>
     </nav>
 
@@ -41,13 +45,14 @@
         <div class="card text-center worry-card" id="<%= id %>">
             <div class="card-header">
                 <div class="entry-time">
-                    Created: <%= datetime %>
+                    Created: <%= datetimeDisplay %>
                 </div>
                 <div class="entry-mood">
-                    <%- moodIcon %> 
+                    <%- moodIcon %>
                 </div>
             </div>
-            <textarea class="card-body" name="worryDescription" id="worryEdit" cols="45" rows="19" autofocus><%= worryDescription %></textarea>
+            <textarea class="card-body" name="worryDescription" id="worryEdit" cols="45" rows="19"
+                autofocus><%= worryDescription %></textarea>
 
         </div>
         <input type="submit" class="editSaveButton" value="Save Changes">

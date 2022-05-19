@@ -38,12 +38,16 @@ const indexController = {
       if (err) {
         res.json(err)
       } else {
-        const modifiedDatetime = offsetDate(new Date(resp.datetime), -req.session.timezoneOffset).toLocaleString("en-GB", {
+        const rawDatetime = offsetDate(new Date(resp.datetime), -req.session.timezoneOffset)
+        const modifiedDatetime = rawDatetime.toLocaleString("en-GB", {
           dateStyle: "medium",
           timeStyle: "medium",
         })
 
-        res.render("edit", { id: resp.id, datetime: modifiedDatetime, moodIcon: emojis[resp.moodLevel], worryDescription: resp.worryDescription })
+        const fmtedDatetime = `${String(rawDatetime.getFullYear()).padStart(4, "0")}${String(rawDatetime.getMonth()).padStart(2, "0")}${String(rawDatetime.getDate()).padStart(2, "0")}`
+
+
+        res.render("edit", { id: resp.id, datetimeDisplay: modifiedDatetime, datetimeLink: fmtedDatetime, moodIcon: emojis[resp.moodLevel], worryDescription: resp.worryDescription })
       }
     })
   },

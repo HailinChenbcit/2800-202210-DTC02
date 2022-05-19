@@ -1,3 +1,7 @@
+body {
+    background-color: #E7DAFF;
+}
+
 .mainContent {
     padding: 1rem;
 }
@@ -24,9 +28,15 @@
     text-align: center;
 }
 
+.card {
+    background-color: #E7DAFF;
+    border: unset;
+}
+
 .card-header {
     display: flex;
     justify-content: space-between;
+    background-color: #CEB5FF;
 }
 
 .card-body {
@@ -34,26 +44,6 @@
     justify-content: space-between;
 }
 
-.entry-content {
-    text-align: left;
-    max-width: 80%;
-}
-
-.images {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px 10px;
-}
-
-.image-wrapper img {
-    width: 100%;
-}
-.buttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
 nav i{
     margin-right: 10px;
-  }
+}

@@ -101,7 +101,7 @@ app.post(
   upload.array("journalImages", 5),
   worryEntryController.createWorryEntry
 );
-app.get("/edit/:date/:id", ensureAuthenticated, editPage);
+app.get("/edit/:id", ensureAuthenticated, editPage);
 
 // Routes for daily view
 app.get(

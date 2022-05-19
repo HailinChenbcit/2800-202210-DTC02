@@ -61,8 +61,11 @@ body {
   margin-bottom: 0;
   background-color: #9062ea;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
-  font-size: small;
   border-radius: 10px 10px 0px 0px;
+}
+
+.worryTime {
+  font-weight: bold;
 }
 
 .worryBody {

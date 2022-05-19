@@ -49,7 +49,7 @@ const indexController = {
       console.log(nextWorryTimeInfo);
       res.render("home", { nextWorryTime: nextWorryTimeInfo });
     } else {
-      res.render("home");
+      res.render("home", {nextWorryTime: null});
     }
   },
   accountsPage: async (req, res) => {

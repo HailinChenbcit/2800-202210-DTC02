@@ -52,7 +52,7 @@
     <!-- Display worry times -->
     <main>
       <h3>Worry time left:</h3>
-      <h5 id="totalworrytime"><%= totalTime%> minutes</h5>
+      <h5 id="totalworrytime"><%= worryDuration%> minutes</h5>
       <div class="row justify-content-center mt-5 mb-2"></div>
       <div class="row justify-content-center" id="countdown"></div>
       <h3>Your Worries:</h3>
@@ -77,7 +77,6 @@
         <% worryEntries.forEach(entry=> { %>
 
         <li class="list-group-item" id="<%= entry.id %>">
-          <% if (entry.finished === false){ %>
           <div class="form-check">
             <label class="form-check-label" for="unfinishedWorry">
               <%= entry.description %>
@@ -89,7 +88,6 @@
               id="unfinishedWorry"
             />
           </div>
-          <% } %>
         </li>
 
         <% }) %>

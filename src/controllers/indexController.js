@@ -2,9 +2,7 @@ const User = require("../models/User");
 const WorryEntry = require("../models/WorryEntry");
 const worryEntryController = require("./worryEntryController");
 const fs = require("fs").promises;
-
-const offsetDate = (date, offset) =>
-  new Date(date.getTime() + offset * 60 * 1000);
+const { offsetDate } = require("../utility/timezones")
 
 const emojis = {
   1: "&#128549;",

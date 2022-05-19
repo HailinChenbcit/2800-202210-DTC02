@@ -1,8 +1,6 @@
 const WorryTime = require("../models/WorryTime");
 const WorryEntry = require("../models/WorryEntry");
-
-const offsetDate = (date, offset) =>
-  new Date(date.getTime() + offset * 60 * 1000);
+const { offsetDate } = require("../utility/timezones")
 
 const worryTimeController = {
   duringWorryTimePage: (req, res) => {

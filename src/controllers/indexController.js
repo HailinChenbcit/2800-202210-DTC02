@@ -22,13 +22,15 @@ const indexController = {
     const nextWorryTime =
       futureWorryTime.length > 0 ? futureWorryTime[0] : null;
 
-    nextWorryTime.startTime = offsetDate(
-      nextWorryTime.startTime,
-      -req.session.timezoneOffset
-    ).toLocaleString("en-GB", {
-      dateStyle: "medium",
-      timeStyle: "medium",
-    });
+    if (nextWorryTime) {
+      nextWorryTime.startTime = offsetDate(
+        nextWorryTime.startTime,
+        -req.session.timezoneOffset
+      ).toLocaleString("en-GB", {
+        dateStyle: "medium",
+        timeStyle: "medium",
+      });
+    }
     res.render("home", { nextWorryTime });
   },
   accountsPage: async (req, res) => {

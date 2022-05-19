@@ -65,12 +65,32 @@ document.getElementById('worryDescription').onkeyup = function(){
   
   var text_value = document.getElementById('worryDescription').value;
 
-  if (text_value.includes("my birthday") === true) {
+  if (text_value.includes("I love myself") === true) {
     var repeater = setInterval(function() {
       const container = document.querySelector('.worryInputContainer');
       const generate = document.createElement('div');
       generate.classList.add('emoji');
-      generate.innerHTML = '🎂';
+      generate.innerHTML = '💜';
+      container.appendChild(generate);
+      timer++;
+      console.log(timer)
+      generate.style.left = Math.random() * 100 + 'vw';
+      generate.style.animationDuration = Math.random() * 3 + 4 + "s";
+      container.appendChild(generate)
+        setTimeout(() => {
+        generate.remove();
+      }, 3000); 
+    
+      if (timer >= 10) {
+        window.clearInterval(repeater)
+      }
+    })
+  } else if (text_value.includes("It is my birthday") === true) {
+    var repeater = setInterval(function() {
+      const container = document.querySelector('.worryInputContainer');
+      const generate = document.createElement('div');
+      generate.classList.add('emoji');
+      generate.innerHTML = '✨';
       container.appendChild(generate);
       timer++;
       console.log(timer)

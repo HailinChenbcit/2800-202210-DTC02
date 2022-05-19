@@ -70,7 +70,7 @@
         <form action="/duringWorryTime/<%= nextWorryTime.id %> " method="get">
           <p class="next-worry-time-msg">Your next worry time: <%= nextWorryTime.startTimeString %> </p>
           <% if (nextWorryTime.available) { %>
-            <button type="submit" name="worrytime" id="worrytime" class="worryButton">GO INTO WORRY TIME</button>
+            <button type="submit" name="worrytime" id="worrytime" class="worryButton">START WORRY TIME</button>
           <% } %>
         </form>
       <% } else { %>

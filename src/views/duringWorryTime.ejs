@@ -52,11 +52,12 @@
     <!-- Display worry times -->
     <main>
       <h3>Worry time left:</h3>
-      <h5 id="totalworrytime"><%= worryDuration%> minutes</h5>
-      <div class="row justify-content-center mt-5 mb-2"></div>
       <div class="row justify-content-center" id="countdown"></div>
-      <h3>Your Worries:</h3>
 
+      <p id="totalworrytime" style="display: none;"><%= worryDuration%> minutes</p>
+      
+      <div class="row justify-content-center mt-5 mb-2"></div>
+      <h3>Your Worries:</h3>
       <div class="container">
         <div class="row">
           <div class="col">
@@ -93,11 +94,11 @@
         <% }) %>
       </ul>
       <br />
-      <div class="row justify-content-center mt-2">
+      <!-- <div class="row justify-content-center mt-2">
         <button type="button" class="btn btn-primary" id="btnId2">
           Start worry time
         </button>
-      </div>
+      </div> -->
 
       <div class="row justify-content-center mt-2">
         <button type="button" class="btn btn-primary" id="exitWorryTimeBtn">

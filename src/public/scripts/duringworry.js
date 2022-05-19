@@ -32,8 +32,6 @@ function counter() {
   }, 1000);
 }
 
-document.getElementById("btnId2").addEventListener("click", counter);
-
 // select and delete all entries
 $("#selectall").change(function () {
   if ($(this).is(":checked")) {
@@ -71,6 +69,7 @@ document
 
 // delete selected checboxes and delete all
 $(document).ready(function () {
+  counter()
   var worryIds = [];
   // select each checkbox
   $(document).on("change", ".form-check-input", function () {

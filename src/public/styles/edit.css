@@ -1,6 +1,5 @@
 .mainContent {
     padding: 1rem;
-    font-weight: bold;
 }
 
 .mainContent span{
@@ -9,8 +8,8 @@
 
 .mainContent legend{
     text-align: center;
-    font-weight: bolder;
     margin-bottom: 3vh;
+    color: #6545A4;
 }
 
 .editSaveButton {
@@ -24,3 +23,37 @@
     cursor: pointer;
     text-align: center;
 }
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-body {
+    display: flex;
+    justify-content: space-between;
+}
+
+.entry-content {
+    text-align: left;
+    max-width: 80%;
+}
+
+.images {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px 10px;
+}
+
+.image-wrapper img {
+    width: 100%;
+}
+.buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+nav i{
+    margin-right: 10px;
+  }

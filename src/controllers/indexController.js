@@ -6,6 +6,14 @@ const fs = require("fs").promises;
 const offsetDate = (date, offset) =>
   new Date(date.getTime() + offset * 60 * 1000);
 
+const emojis = {
+  1: "&#128549;",
+  2: "&#128542;",
+  3: "&#128563;",
+  4: "&#128513",
+  5: "&#128522;",
+};
+
 const indexController = {
   homePage: (req, res) => {
     WorryEntry.find({ owner: req.session.passport.user }, (err, data) => {
@@ -35,7 +43,7 @@ const indexController = {
           timeStyle: "medium",
         })
 
-        res.render("edit", {id: resp.id, datetime: modifiedDatetime, moodLevel: resp.moodLevel, worryDescription: resp.worryDescription})
+        res.render("edit", { id: resp.id, datetime: modifiedDatetime, moodIcon: emojis[resp.moodLevel], worryDescription: resp.worryDescription })
       }
     })
   },

@@ -66,9 +66,14 @@
       </div>
 
       <!-- Button for Worries -->
-      <form action="/duringWorryTime" method="get">
-        <button type="submit" name="worrytime" id="worrytime" class="worryButton">GO INTO WORRY TIME</button>
-      </form>
+      <% if (nextWorryTime) { %>
+        <form action="/duringWorryTime/<%= nextWorryTime._id %> " method="get">
+          <p>Your next worry time: <%= nextWorryTime.startTime %> </p>
+          <button type="submit" name="worrytime" id="worrytime" class="worryButton">GO INTO WORRY TIME</button>
+        </form>
+      <% } else { %>
+        <p>You do not have any upcoming worry time.</p>
+      <% } %> 
     </main>
 
     <!-- Footer -->

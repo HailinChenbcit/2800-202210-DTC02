@@ -11,17 +11,15 @@ const worryTimeController = {
     });
   },
   createWorryTime: async (req, res) => {
-    const { startTime, duration, notificationEnabled, worries } = req.body;
-    const startTimeObj = offsetDate(
-      new Date(startTime),
-      req.session.timezoneOffset
-    );
+    const { time, duration, worries, notes } = req.body;
+    const startTime = offsetDate(new Date(time), req.session.timezoneOffset);
     const worryTime = WorryTime({
-      startTime: startTimeObj,
-      duration,
-      notificationEnabled,
+      startTime,
+      duration: Number(duration),
+      //   notificationEnabled,
       worries,
-      owner: req.user._id,
+      notes,
+      user: req.user._id,
     });
 
     try {
@@ -80,6 +78,41 @@ const worryTimeController = {
     } catch (e) {
       res.json(e);
     }
+  },
+
+  worryTimeSetupPage: (req, res) => {
+    const userId = req.user._id;
+    // query the database for worry entries whose owner is `userId`
+    WorryEntry.find(
+      { owner: req.session.passport.user, finished: false },
+      (err, resp) => {
+        const worryDatum = resp.map((entry) => {
+          const modifiedEntry = {
+            id: entry.id,
+            datetime: offsetDate(
+              new Date(entry.datetime),
+              -req.session.timezoneOffset
+            ).toLocaleString("en-GB", {
+              dateStyle: "medium",
+              timeStyle: "medium",
+            }),
+            moodLevel: entry.moodLevel,
+            worryDescription: entry.worryDescription,
+            finished: entry.finished,
+            owner: entry.owner,
+            createdAt: entry.createdAt,
+            updatedAt: entry.updatedAt,
+            __v: entry.__v,
+            images: entry.images,
+          };
+          return modifiedEntry;
+        });
+
+        res.render("worryTimeSetup", {
+          worryData: worryDatum,
+        });
+      }
+    );
   },
 };
 

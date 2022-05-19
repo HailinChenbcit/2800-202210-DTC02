@@ -6,8 +6,9 @@
 
 html,
 body {
-  height: 100%;
-  background-color: #e7daff;
+  min-height: 400px;
+  margin-bottom: 30px;
+  clear: both;
 }
 
 body {

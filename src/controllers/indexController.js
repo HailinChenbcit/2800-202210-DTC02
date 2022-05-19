@@ -28,11 +28,7 @@ const indexController = {
   dailyViewPage: (req, res) => {
     res.render("dailyView");
   },
-
-  worryTimeSetupPage: (req, res) => {
-    res.render("worryTimeSetup")
-  },
-
+  
   uploadAvatar: async (req, res) => {
     const file = req.file;
     try {

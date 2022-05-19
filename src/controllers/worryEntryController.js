@@ -137,20 +137,7 @@ const worryEntryController = {
     }
   },
 
-  // updateWorryTimes: async (req, res) => {
-  //   const { id } = req.params;
-  //   const { worryDescription } = req.body;
-  //   try {
-  //     const updatedWorryEntry = await WorryEntry.findByIdAndUpdate(
-  //       id,
-  //       { worryDescription },
-  //       { new: true }
-  //     ).exec();
-  //     res.json(updatedWorryEntry);
-  //   } catch (e) {
-  //     res.json(e);
-  //   }
-  // },
+  
 };
 
 module.exports = worryEntryController;

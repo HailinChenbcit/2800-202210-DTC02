@@ -31,32 +31,14 @@ const worryTimeController = {
   },
   // display total worry time
   displayWorryTime: async (req, res) => {
-    const allWorryTimes = await WorryTime.find({
-      owner: req.user._id,
-    }).exec();
-    const worryTimes = allWorryTimes.map((entry) => {
-      const worryTime = {
-        duration: entry.duration,
-      };
-      return worryTime;
-    });
-    var totalTime = 0;
-    worryTimes.forEach((entry) => {
-      totalTime += entry.duration;
-    });
-    console.log(totalTime);
+    const worryTime = await WorryTime.findById(req.params.id).exec();
 
-    const allWorryEntries = await WorryEntry.find({
-      $and: [
-        {
-          owner: req.user._id,
-        },
-        {
-          finished: false,
-        },
-      ],
-    }).exec();
-    const worryEntries = allWorryEntries.map((entry) => {
+    const allWorryIDs = worryTime.worries;
+    const worries = await WorryEntry.find({ _id: { $in: allWorryIDs } }).exec();
+
+    const worryDuration = worryTime.duration;
+
+    const worryEntries = worries.map((entry) => {
       const worryEntry = {
         id: entry._id,
         description: entry.worryDescription,
@@ -65,7 +47,7 @@ const worryTimeController = {
       return worryEntry;
     });
 
-    res.render("duringWorryTime", { worryEntries, totalTime });
+    res.render("duringWorryTime", { worryEntries, worryDuration });
   },
   // Update selected worry time
   updateWorryTime: async (req, res) => {

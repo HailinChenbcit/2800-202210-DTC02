@@ -114,14 +114,8 @@ app.get(
   worryEntryController.dailyWorryEntries
 );
 // Update 
-app.post("/update/:date/:id", ensureAuthenticated, worryEntryController.updateWorryEntries, worryEntryController.dailyWorryEntries);
-// Delete
-// Update daily view
-// app.post(
-//   "/dailyView/update/:id",
-//   ensureAuthenticated,
-//   worryEntryController.updateWorryEntries
-// );
+app.post("/update/:id", ensureAuthenticated, worryEntryController.updateWorryEntries);
+
 // Delete daily view
 app.delete(
   "/dailyView/remove/:id",

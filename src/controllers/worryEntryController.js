@@ -66,19 +66,18 @@ const worryEntryController = {
   },
 
   // Edit worry card
-  updateWorryEntries: async (req, res, next) => {
+  updateWorryEntries: async (req, res) => {
     const { id } = req.params;
     const { worryDescription } = req.body;
-    try {
-      const updatedWorryEntry = await WorryEntry.findByIdAndUpdate(
-        id,
-        { worryDescription },
-        { new: true }
-      ).exec();
-      next();
-    } catch (e) {
-      res.json(e);
-    }
+    WorryEntry.findByIdAndUpdate(id, { worryDescription }, { new: true }, (err, resp) => {
+      if (err) {
+        res.json(err)
+      } else {
+        const rawDatetime = offsetDate(new Date(resp.datetime), -req.session.timezoneOffset)
+        const fmtedDatetime = `${String(rawDatetime.getFullYear()).padStart(4, "0")}${String(rawDatetime.getMonth()).padStart(2, "0")}${String(rawDatetime.getDate()).padStart(2, "0")}`
+        res.redirect(`/dailyView/${fmtedDatetime}`)
+      }
+    })
   },
 
   // Delete worry card
@@ -137,7 +136,7 @@ const worryEntryController = {
     }
   },
 
-  
+
 };
 
 module.exports = worryEntryController;

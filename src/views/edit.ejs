@@ -29,7 +29,7 @@
         <p>Date: <span>May/11/2022</span></p> 
         <p>Time: <span>9:00 AM</span></p>
         <span style="font-weight: bold;">Your Worry:</span>
-        <form action="/update/<%= date %>/<%= id %>" method="POST">
+        <form action="/update/<%= id %>" method="POST">
             <textarea name="worryDescription" id="worryEdit" cols="45" rows="19"></textarea>
             <br>
             <input type="submit" class="editSaveButton" value="Save">

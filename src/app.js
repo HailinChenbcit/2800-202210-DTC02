@@ -121,7 +121,7 @@ app.delete(
 
 // Worry Time routes
 app.get(
-  "/duringWorryTime",
+  "/duringWorryTime/:id",
   ensureAuthenticated,
   worryTimeController.displayWorryTime
 );

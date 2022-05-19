@@ -3,14 +3,7 @@ const WorryEntry = require("../models/WorryEntry");
 const worryEntryController = require("./worryEntryController");
 const fs = require("fs").promises;
 const { offsetDate } = require("../utility/timezones")
-
-const emojis = {
-  1: "&#128549;",
-  2: "&#128542;",
-  3: "&#128563;",
-  4: "&#128513",
-  5: "&#128522;",
-};
+const { emojis } = require("../utility/moods")
 
 const indexController = {
   homePage: (req, res) => {

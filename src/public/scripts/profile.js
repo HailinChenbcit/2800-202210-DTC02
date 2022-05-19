@@ -85,11 +85,11 @@ function setup() {
   const canvasElement = document.getElementById("summaryBarGraph");
 
   const moodLevels = new Map();
-  moodLevels.set(1, "😰");
-  moodLevels.set(2, "🙁");
-  moodLevels.set(3, "😐");
-  moodLevels.set(4, "🙂");
-  moodLevels.set(5, "😃");
+  moodLevels.set(1, "😥");
+  moodLevels.set(2, "😞");
+  moodLevels.set(3, "😳");
+  moodLevels.set(4, "😊");
+  moodLevels.set(5, "😁");
 
   /* Note:
    * Line graph should be able to only keep the most recent X amount of days
@@ -100,7 +100,7 @@ function setup() {
    * Bar graph also doesn't account for recency.
    */
   initMoodLine(moodGraphCanvas, moods, times, moodLevels);
-  initMoodBar(canvasElement, count, ["😰", "🙁", "😐", "🙂", "😃"]);
+  initMoodBar(canvasElement, count, Array.from(moodLevels.values()));
 }
 
 function average(numArr) {

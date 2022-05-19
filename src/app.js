@@ -123,7 +123,7 @@ app.delete(
 app.get(
   "/setWorryTime",
   ensureAuthenticated,
-  indexController.worryTimeSetupPage
+  worryEntryController.worryTimeSetupPage
 );
 
 app.post("/worryTime/create", ensureAuthenticated, worryTimeController.createWorryTime)

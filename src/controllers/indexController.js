@@ -27,17 +27,17 @@ const indexController = {
     res.render("dailyView");
   },
 
-  worryTimeSetupPage: (req, res) => {
-    const userId = req.user._id;
-    // query the database for worry entries whose owner is `userId`
-    WorryEntry.find({ owner: req.session.passport.user, finished: false}, (err, resp) => {
-      console.log(resp)
-      res.render("worryTimeSetup", {
-        worryData: resp
-      });
+  // worryTimeSetupPage: (req, res) => {
+  //   const userId = req.user._id;
+  //   // query the database for worry entries whose owner is `userId`
+  //   WorryEntry.find({ owner: req.session.passport.user, finished: false}, (err, resp) => {
+  //     console.log(resp)
+  //     res.render("worryTimeSetup", {
+  //       worryData: resp
+  //     });
       
-    });
-  },
+  //   });
+  // },
 
   uploadAvatar: async (req, res) => {
     const file = req.file;

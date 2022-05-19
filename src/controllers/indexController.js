@@ -1,9 +1,9 @@
 const User = require("../models/User");
 const WorryTime = require("../models/WorryTime");
+const WorryEntry = require("../models/WorryEntry");
 const fs = require("fs").promises;
-
-const offsetDate = (date, offset) =>
-  new Date(date.getTime() + offset * 60 * 1000);
+const { offsetDate, formatToString, formatToURLString } = require("../utility/timezones")
+const { emojis } = require("../utility/moods")
 
 const indexController = {
   homePage: async (req, res) => {
@@ -47,7 +47,17 @@ const indexController = {
   },
 
   editPage: (req, res) => {
-    res.render("edit", { id: req.params.id, date: req.params.date });
+    WorryEntry.findById(req.params.id, (err, resp) => {
+      if (err) {
+        res.json(err)
+      } else {
+        const rawDatetime = offsetDate(new Date(resp.datetime), -req.session.timezoneOffset)
+        const modifiedDatetime = formatToString(rawDatetime)
+        const fmtedDatetime = formatToURLString(rawDatetime)
+
+        res.render("edit", { id: resp.id, datetimeDisplay: modifiedDatetime, datetimeLink: fmtedDatetime, moodIcon: emojis[resp.moodLevel], worryDescription: resp.worryDescription })
+      }
+    })
   },
 
   dailyViewPage: (req, res) => {

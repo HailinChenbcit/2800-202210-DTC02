@@ -31,13 +31,15 @@
 <body>
     <!-- SINGUP FORM -->
     <div class="login_form">
-        <form class="needs-validation" action="/auth/register" method="POST" enctype="application/x-www-form-urlencoded">
+        <form class="needs-validation" action="/auth/register" method="POST"
+            enctype="application/x-www-form-urlencoded">
             <div class="form-title mb-3">
                 <h3>Create Account</h3>
             </div>
 
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="firstname" id="firstname" placeholder="First name" required>
+                <input type="text" class="form-control" name="firstname" id="firstname" placeholder="First name"
+                    required>
                 <label for="firstname" class="form-label">First name</label>
             </div>
 
@@ -53,18 +55,22 @@
 
             <div class="form-floating mb-3">
                 <input type="password" class="form-control" name="password" id="password" placeholder="Password"
-                    required="required" oninput="form.confirm.pattern = escapeRegExp(this.value)">
+                    required="required">
                 <label for="password" class="form-label">Password</label>
             </div>
 
             <div class="form-floating mb-3">
-                <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="Password" required>
+                <input type="password" class="form-control" name="confirm_password" id="confirm_password"
+                    placeholder="Password" required>
                 <label for="confirm_password" class="form-label">Confirm Password</label>
             </div>
 
             <div class="d-grid gap-2">
                 <button type="submit" class="btn btn-primary btn-block">Continue</button>
             </div>
+
+            <!-- Invisible timezone input -->
+            <input type="hidden" class="form-control" name="timezoneOffset" value="">
 
             <br>
 
@@ -81,13 +87,18 @@
 
         </form>
     </div>
+    <script>
+        function setup() {
+            const loginForm = document.querySelector("#loginForm")
+            loginForm.onsubmit = function () {
+                loginForm.timezoneOffset.value = new Date().getTimezoneOffset()
+                return true
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", setup)
+    </script>
 
 </body>
-
-<script>
-    function escapeRegExp(str) {
-        return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
-    }
-</script>
 
 </html>

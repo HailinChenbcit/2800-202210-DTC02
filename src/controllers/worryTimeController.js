@@ -1,6 +1,6 @@
 const WorryTime = require("../models/WorryTime");
 const WorryEntry = require("../models/WorryEntry");
-const { offsetDate } = require("../utility/timezones")
+const { offsetDate, formatToString } = require("../utility/timezones")
 
 const worryTimeController = {
   duringWorryTimePage: (req, res) => {
@@ -84,16 +84,17 @@ const worryTimeController = {
     WorryEntry.find(
       { owner: req.session.passport.user, finished: false },
       (err, resp) => {
+        if (err) {
+          res.json(err)
+        }
+
         const worryDatum = resp.map((entry) => {
           const modifiedEntry = {
             id: entry.id,
-            datetime: offsetDate(
+            datetime: formatToString(offsetDate(
               new Date(entry.datetime),
               -req.session.timezoneOffset
-            ).toLocaleString("en-GB", {
-              dateStyle: "medium",
-              timeStyle: "medium",
-            }),
+            )),
             moodLevel: entry.moodLevel,
             worryDescription: entry.worryDescription,
             finished: entry.finished,

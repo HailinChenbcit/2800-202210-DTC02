@@ -2,7 +2,7 @@ const User = require("../models/User");
 const WorryEntry = require("../models/WorryEntry");
 const worryEntryController = require("./worryEntryController");
 const fs = require("fs").promises;
-const { offsetDate } = require("../utility/timezones")
+const { offsetDate, formatToString, formatToURLString } = require("../utility/timezones")
 const { emojis } = require("../utility/moods")
 
 const indexController = {
@@ -30,13 +30,8 @@ const indexController = {
         res.json(err)
       } else {
         const rawDatetime = offsetDate(new Date(resp.datetime), -req.session.timezoneOffset)
-        const modifiedDatetime = rawDatetime.toLocaleString("en-GB", {
-          dateStyle: "medium",
-          timeStyle: "medium",
-        })
-
-        const fmtedDatetime = `${String(rawDatetime.getFullYear()).padStart(4, "0")}${String(rawDatetime.getMonth()).padStart(2, "0")}${String(rawDatetime.getDate()).padStart(2, "0")}`
-
+        const modifiedDatetime = formatToString(rawDatetime)
+        const fmtedDatetime = formatToURLString(rawDatetime)
 
         res.render("edit", { id: resp.id, datetimeDisplay: modifiedDatetime, datetimeLink: fmtedDatetime, moodIcon: emojis[resp.moodLevel], worryDescription: resp.worryDescription })
       }

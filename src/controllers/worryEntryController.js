@@ -1,6 +1,6 @@
 const WorryEntry = require("../models/WorryEntry");
 const fs = require("fs").promises;
-const { offsetDate } = require("../utility/timezones")
+const { offsetDate, formatToString, formatToURLString } = require("../utility/timezones")
 const { emojis } = require("../utility/moods")
 
 const worryEntryController = {
@@ -40,13 +40,11 @@ const worryEntryController = {
     const worryEntries = worryEntriesRaw.map((entry) => {
       const worryEntry = {
         id: entry._id,
-        time: offsetDate(
-          entry.datetime,
-          -req.session.timezoneOffset
-        ).toLocaleString("en-GB", {
-          dateStyle: "medium",
-          timeStyle: "medium",
-        }),
+        time: formatToString(
+          offsetDate(
+            entry.datetime,
+            -req.session.timezoneOffset
+          )),
         description: entry.worryDescription,
         moodIcon: emojis[entry.moodLevel],
         images: entry.images,
@@ -65,7 +63,7 @@ const worryEntryController = {
         res.json(err)
       } else {
         const rawDatetime = offsetDate(new Date(resp.datetime), -req.session.timezoneOffset)
-        const fmtedDatetime = `${String(rawDatetime.getFullYear()).padStart(4, "0")}${String(rawDatetime.getMonth()).padStart(2, "0")}${String(rawDatetime.getDate()).padStart(2, "0")}`
+        const fmtedDatetime = formatToURLString(rawDatetime)
         res.redirect(`/dailyView/${fmtedDatetime}`)
       }
     })

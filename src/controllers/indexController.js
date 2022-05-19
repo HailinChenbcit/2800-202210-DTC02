@@ -7,31 +7,50 @@ const offsetDate = (date, offset) =>
 
 const indexController = {
   homePage: async (req, res) => {
+    // find next worry time for user
     const worryTimes = await WorryTime.find({
       user: req.user._id,
     }).exec();
 
-    const futureWorryTime = worryTimes
+    const activeWorryTime = worryTimes
       .filter(
         (worryTime) =>
           new Date(worryTime.startTime.getTime() + worryTime.duration * 60000) >
           new Date()
       )
-      .sort((a, b) => a.worryTime - b.worryTime);
+      .sort((a, b) => a.startTime - b.startTime);
 
     const nextWorryTime =
-      futureWorryTime.length > 0 ? futureWorryTime[0] : null;
+      activeWorryTime.length > 0 ? activeWorryTime[0] : null;
 
+    // format next worry time
     if (nextWorryTime) {
-      nextWorryTime.startTime = offsetDate(
+      const startTimeString = offsetDate(
         nextWorryTime.startTime,
         -req.session.timezoneOffset
       ).toLocaleString("en-GB", {
         dateStyle: "medium",
         timeStyle: "medium",
       });
+
+      const nextWorryTimeInfo = {
+        id: nextWorryTime._id,
+        startTimeString,
+      };
+
+      // worry time page become available 5 min before the start time and remain available until the end of worry time
+      if (
+        new Date() <
+          new Date(nextWorryTime.startTime.getTime() + nextWorryTime.duration * 60 * 1000) &&
+        new Date() > new Date(nextWorryTime.startTime.getTime() - 5 * 60 * 1000)
+      ) {
+        nextWorryTimeInfo.available = true;
+      }
+      console.log(nextWorryTimeInfo);
+      res.render("home", { nextWorryTime: nextWorryTimeInfo });
+    } else {
+      res.render("home");
     }
-    res.render("home", { nextWorryTime });
   },
   accountsPage: async (req, res) => {
     const users = await User.find({});

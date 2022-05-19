@@ -94,9 +94,13 @@ a {
   border: none;
   background-color: #92a1d1;
   color: #6545a4;
-  margin: 50px;
+  margin-bottom: 50px;
   padding: 14px 28px;
   font-size: 16px;
   cursor: pointer;
   text-align: center;
+}
+
+.next-worry-time-msg {
+  margin: 1rem;
 }

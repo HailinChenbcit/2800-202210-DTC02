@@ -7,8 +7,8 @@ const worryTimeSchema = new Schema(
       type: Date,
       required: true,
     },
-    endTime: {
-      type: Date,
+    duration: {
+      type: Number,
       required: true,
     },
     notificationEnaled: {
@@ -20,6 +20,9 @@ const worryTimeSchema = new Schema(
       ref: "User",
     },
     worries: [{ type: Schema.Types.ObjectId, ref: "WorryEntry" }],
+    notes: {
+      type: String,
+    },
   },
   {
     _id: true,

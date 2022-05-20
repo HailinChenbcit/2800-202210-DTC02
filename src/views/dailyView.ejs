@@ -85,10 +85,17 @@
                   <% } else { %>
                     <p>No Description.</p>
                     <% } %>
+                <div class="images">
+                  
+                  <% entry.images.forEach(image => { %>
+                    <div class="image-wrapper">
+                      <img src="data:image/<%=image.contentType%>;base64,<%=image.data.toString('base64')%>" alt="journal image" />
+                    </div>
+                  <% }) %>
+                </div>
               </div>
               <div class="buttons">
-                <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#entry<%= entry.id %>" aria-expanded="false" aria-controls="entry<%= entry.id %>">
+                <button class="btn btn-primary editBtn" type="button" id="<%= entry.id %>">
                   Edit
                 </button>
 
@@ -97,40 +104,15 @@
               </div>
 
             </div>
-
-            <!-- Collapse input content -->
-            <div class="collapse" id="entry<%= entry.id %>">
-              <div class="card card-body">
-                <input type="textarea" name="worryEntry" id="worryEntry" class="form-control"
-                  value="<%= entry.description %>" />
-                <br />
-                <input type="submit" name="save" id="save<%= entry.id %>" class="btn btn-primary saveEntry"
-                  value="Save" />
-              </div>
-            </div>
           </div>
 
           <% }) %>
+          
+          <div class="text-center py-5">
+          </div>
 
   </main>
-  <footer id="nav" class="navbar justify-content-evenly fixed-bottom" style="height: 4em">
-    <a class="icon-btn" href="/home">
-      <i class="material-symbols-outlined">home</i>
-      <p class="btm-btn-text">Home</p>
-    </a>
-    <a class="icon-btn" href="/worryForm">
-      <i class="material-symbols-outlined">add_box</i>
-      <p class="btm-btn-text">Journal</p>
-    </a>
-    <a class="icon-btn" href="/">
-      <i class="material-symbols-outlined">alarm</i>
-      <p class="btm-btn-text">Alarms</p>
-    </a>
-    <a class="icon-btn" href="/profile">
-      <i class="material-symbols-outlined">person</i>
-      <p class="btm-btn-text">Profile</p>
-    </a>
-  </footer>
+  <%- include("./partials/footer"); %> 
 </body>
 <!-- JAVASCRIPT -->
 <script src="/scripts/dailyview.js"></script>

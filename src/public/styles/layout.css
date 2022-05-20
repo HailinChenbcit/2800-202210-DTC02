@@ -6,7 +6,9 @@
 
 html,
 body {
-  height: 100%;
+  min-height: 400px;
+  margin-bottom: 30px;
+  clear: both;
 }
 
 body {
@@ -19,6 +21,7 @@ body {
 main {
   padding: 1rem;
   text-align: center;
+  padding-bottom: 10rem;
 }
 
 /* Bottom Navbar */

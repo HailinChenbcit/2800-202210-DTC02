@@ -1,127 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WorryLess</title>
-    <link rel="stylesheet" href="/styles/styles.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css"
-        integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5" crossorigin="anonymous">
-    
-    <!-- FAVICON -->
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
-</head>
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v6.1.1/css/all.css"
+      integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5"
+      crossorigin="anonymous"
+    />
 
-<body>
+    <!-- FAVICON -->
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+  </head>
+
+  <body>
     <!--Navbar section-->
     <nav class="navbar">
-        <div class="navbar_container">
-            <a href="#home" id="navbar_logo"><img src="/img/WorryLessIcon.png" alt="logo"></a>
-            <div class="navbar_toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-            <ul class="navbar_menu">
-                <li class="navbar_item">
-                    <a href="#home" class="navbar_links" id="home-page">Home</a>
-                </li>
-                <li class="navbar_item">
-                    <a href="#team" class="navbar_links" id="team-page">Team</a>
-                </li>
-                <li class="navbar_item">
-                    <a href="#about" class="navbar_links" id="about-page">About</a>
-                </li>
-                <li class="navbar_btn">
-                    <a href="/auth/login" class="button" id="signup">Sign Up</a>
-                </li>
-            </ul>
+      <div class="navbar_container">
+        <a href="#home" id="navbar_logo"
+          ><img src="/img/WorryLessIcon.png" alt="logo"
+        /></a>
+        <div class="navbar_toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
         </div>
+        <ul class="navbar_menu">
+          <li class="navbar_item">
+            <a href="#home" class="navbar_links" id="home-page">Home</a>
+          </li>
+          <li class="navbar_item">
+            <a href="#team" class="navbar_links" id="team-page">Team</a>
+          </li>
+          <li class="navbar_item">
+            <a href="#about" class="navbar_links" id="about-page">About</a>
+          </li>
+          <li class="navbar_btn">
+            <a href="/auth/login" class="button" id="signup">Login</a>
+          </li>
+        </ul>
+      </div>
     </nav>
 
     <!-- Title Section -->
     <div class="title" id="home">
-        <div class="title_container">
-            <h1 class="title_heading"> <span>WorryLess</span></h1>
-            <p class="title_description">"Don't Worry About It"</p>
-        </div>
+      <div class="title_container">
+        <h1 class="title_heading"><span>WorryLess</span></h1>
+        <p class="title_description">"Don't Worry About It"</p>
+      </div>
     </div>
 
     <!-- Team Section-->
     <div class="team" id="team">
-        <h1>The Team</h1>
-        <div class="team_wrapper">
-            <div class="team_card">
-                <h2>Bosco</h2>
-                <p>Chan</p>
+      <h1>The Team</h1>
+      <div class="team_wrapper">
+          <div class="team_card">
+            <a href="https://github.com/BoscoCHW">
+            <div class="name_tag">
+              <h2>Bosco</h2>
+              <p>Chan</p>
             </div>
-            <div class="team_card">
-                <h2>Jason</h2>
-                <p>Lui</p>
+        </a>
+          </div>
+          <div class="team_card">
+        <a href="https://github.com/Jason42lui">
+            <div class="name_tag">
+              <h2>Jason</h2>
+              <p>Lui</p>
             </div>
-            <div class="team_card">
-                <h2>Fonse</h2>
-                <p>Clarito</p>
+        </a>
+          </div>
+          <div class="team_card">
+            <a href="https://github.com/FonseLULW">
+            <div class="name_tag">
+              <h2>Fonse</h2>
+              <p>Clarito</p>
             </div>
-            <div class="team_card">
-                <h2>Adam</h2>
-                <p>Chen</p>
+        </a>
+          </div>
+          <div class="team_card">
+            <a href="https://github.com/HailinChenbcit">
+            <div class="name_tag">
+              <h2>Adam</h2>
+              <p>Chen</p>
             </div>
-        </div>
+        </a>
+          </div>
+      </div>
     </div>
 
     <!-- About Section -->
     <div class="main" id="about">
-        <div class="main_container">
-            <div class="main_image--container">
-                <div class="main_image--card"><i class="fas fa-solid fa-book"></i></div>
-            </div>
-            <div class="main_content">
-                <h1>What do we do?</h1>
-                <h2>We help people manage their anxiety</h2>
-                <p>Hear the story of why we built this app</p>
-                <button class="main_btn"><a href="#">Learn more</a></button>
-            </div>
+      <div class="main_container">
+        <div class="main_image_container">
+          <div class="main_image_card">
+            <i class="fas fa-solid fa-book"></i>
+          </div>
         </div>
+        <div class="main_content">
+          <h1>What do we do?</h1>
+          <h2>We help people manage their anxiety</h2>
+          <p>Hear the story of why we built this app</p>
+          <button class="main_btn"><a href="#">Learn more</a></button>
+        </div>
+      </div>
     </div>
 
     <!-- Footer Section-->
     <div class="footer_container">
-        <div class="footer_links">
-            <div class="footer_link-wrapper">
-                <div class="footer_link-items">
-                    <h2>About Us</h2>
-                    <a href="/sign-up">Our Story</a>
-                    <a href="/">Careers</a>
-                    <a href="/">Terms of Service</a>
-                </div>
-                <div class="footer_link-items">
-                    <h2>Contact Us</h2>
-                    <a href="/">Contact</a>
-                    <a href="/">Support</a>
-                    <a href="/">Locations</a>
-                </div>
-            </div>
+      <div class="footer_links">
+        <div class="footer_link-wrapper">
+          <div class="footer_link-items">
+            <h2>About Us</h2>
+            <a href="/sign-up">Our Story</a>
+            <a href="/">Careers</a>
+            <a href="/">Terms of Service</a>
+          </div>
+          <div class="footer_link-items">
+            <h2>Contact Us</h2>
+            <a href="/">Contact</a>
+            <a href="/">Support</a>
+            <a href="/">Locations</a>
+          </div>
         </div>
-        <section class="social_media">
-            <div class="social_media-wrap">
-                <div class="footer_logo">
-                    <a href="/" id="footer_logo">WORRYLESS</a>
-                </div>
-                <p class="website_rights">© WORRYLESS 2022. All rights reserved</p>
-                <div class="social_icons">
-                    <a href="/" class="social_icon-link" target="_blank"><i class="fab fa-facebook"></i></a>
-                    <a href="/" class="social_icon-link"><i class="fab fa-instagram"></i></a>
-                    <a href="/" class="social_icon-link"><i class="fab fa-youtube"></i></a>
-                    <a href="/" class="social_icon-link"><i class="fab fa-linkedin"></i></a>
-                    <a href="/" class="social_icon-link"><i class="fab fa-twitter"></i></a>
-                </div>
-            </div>
-        </section>
+      </div>
+      <section class="social_media">
+        <div class="social_media-wrap">
+          <div class="footer_logo">
+            <a href="/" id="footer_logo">WORRYLESS</a>
+          </div>
+          <p class="website_rights">© WORRYLESS 2022. All rights reserved</p>
+          <div class="social_icons">
+            <a href="/" class="social_icon-link" target="_blank"
+              ><i class="fab fa-facebook"></i
+            ></a>
+            <a href="/" class="social_icon-link"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="/" class="social_icon-link"
+              ><i class="fab fa-youtube"></i
+            ></a>
+            <a href="/" class="social_icon-link"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+            <a href="/" class="social_icon-link"
+              ><i class="fab fa-twitter"></i
+            ></a>
+          </div>
+        </div>
+      </section>
     </div>
     <script src="scripts/index.js"></script>
-</body>
-
+  </body>
 </html>

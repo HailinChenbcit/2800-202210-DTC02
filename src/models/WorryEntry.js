@@ -18,7 +18,13 @@ const worryEntrySchema = new Schema(
       type: Boolean,
       default: false,
     },
-    owner: { type: Schema.Types.ObjectId, ref: "User" }
+    owner: { type: Schema.Types.ObjectId, ref: "User" },
+    images: [
+      {
+        data: Buffer,
+        contentType: String,
+      },
+    ],
   },
   {
     _id: true,

@@ -19,40 +19,56 @@
 <body>
     <!-- Header -->
     <nav class="navbar">
-        <a class="navbar-brand" href="#">
-            <img src="/img/WorryLessIcon.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        <a class="navbar-brand" href="/home">
+            <img src="/img/WorryLessIcon.png" width="30" height="30" class="d-inline-block align-top"
+                alt="WorryLess Icon" />
             <span>WorryLess</span>
         </a>
+        <a href="/dailyView/<%= datetimeLink %>">
+            <i class="material-symbols-outlined">close</i>
+        </a>
     </nav>
-    <div class="mainContent">
-        <legend>Worry Edit Form</legend>
-        <p>Date: <span>May/11/2022</span></p> 
-        <p>Time: <span>9:00 AM</span></p>
-        <span style="font-weight: bold;">Your Worry:</span>
-            <textarea name="worryDescriptionEdit" id="worryEdit" cols="45" rows="19"></textarea>
-            <br>
-            <button class="editSaveButton">Save</button>
 
-    </div>
+    <!-- <div class="mainContent card text-center worry-card">
+        <legend>Worry Edit Form</legend>
+        <p>Created: <span><%#= datetime %></span></p> 
+        <span style="font-weight: bold;">Your Worry:</span>
+        <form action="/update/<%#= id %>" method="POST">
+            <textarea name="worryDescription" id="worryEdit" cols="45" rows="19"></textarea>
+            <br>
+            <input type="submit" class="editSaveButton" value="Save">
+        </form>
+    </div> -->
+
+    <form class="mainContent" action="/update/<%= id %>" method="POST">
+        <legend>Worry Edit Form</legend>
+        <div class="card text-center worry-card" id="<%= id %>">
+            <div class="card-header">
+                <div class="entry-time">
+                    Created: <%= datetimeDisplay %>
+                </div>
+                <div class="entry-mood">
+                    <%- moodIcon %>
+                </div>
+            </div>
+            <textarea class="card-body" name="worryDescription" id="worryEdit" cols="45" rows="19"
+                autofocus><%= worryDescription %></textarea>
+
+        </div>
+        <input type="submit" class="editSaveButton" value="Save Changes">
+    </form>
+
     <!-- Footer -->
-    <footer id="nav" class="navbar justify-content-evenly fixed-bottom" style="height: 4em">
-        <a class="icon-btn" href="/home">
-            <i class="material-symbols-outlined">home</i>
-            <p class="btm-btn-text">Home</p>
-        </a>
-        <a class="icon-btn" href="/worryForm">
-            <i class="material-symbols-outlined">add_box</i>
-            <p class="btm-btn-text">Journal</p>
-        </a>
-        <a class="icon-btn" href="/">
-            <i class="material-symbols-outlined">alarm</i>
-            <p class="btm-btn-text">Alarms</p>
-        </a>
-        <a class="icon-btn" href="/profile">
-            <i class="material-symbols-outlined">person</i>
-            <p class="btm-btn-text">Profile</p>
-        </a>
-    </footer>
+    <%- include("./partials/footer"); %> 
+
+    <script>
+        function setup() {
+            const editArea = document.querySelector("TEXTAREA")
+            editArea.setSelectionRange(editArea.value.length, editArea.value.length)
+        }
+
+        document.addEventListener("DOMContentLoaded", setup)
+    </script>
 
 </body>
 

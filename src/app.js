@@ -8,6 +8,8 @@ const MongoDBSession = require("connect-mongodb-session")(session);
 const authController = require("./controllers/authController");
 const indexController = require("./controllers/indexController");
 const worryEntryController = require("./controllers/worryEntryController");
+const worryTimeController = require("./controllers/worryTimeController");
+const { upload } = require("./middleware/multer");
 
 const {
   ensureAuthenticated,
@@ -16,6 +18,7 @@ const {
 } = require("./middleware/checkAuth");
 const db = require("../config/database");
 const passport = require("./middleware/passport");
+const { editPage } = require("./controllers/indexController");
 const port = process.env.PORT || 3000;
 
 const app = express();
@@ -51,7 +54,6 @@ app.use((req, _, next) => {
   console.log(req.url);
   console.log(req.session);
   console.log(req.body);
-  console.log(req.user);
   next();
 });
 
@@ -78,6 +80,7 @@ app.get("/auth/logout", authController.logout);
 // Routes for ejs views
 app.get("/home", ensureAuthenticated, indexController.homePage);
 app.get("/profile", ensureAuthenticated, indexController.profilePage);
+app.post("/avatarUpload", ensureAuthenticated, upload.single("avatar"), indexController.uploadAvatar);
 app.get(
   "/accounts",
   ensureAuthenticated,
@@ -87,23 +90,58 @@ app.get(
 app.get("/worryForm", ensureAuthenticated, indexController.worryFormPage);
 
 // Worry entry
-app.get("/worryEntriesAll", ensureAuthenticated, worryEntryController.userWorryEntries);
+app.get(
+  "/worryEntriesAll",
+  ensureAuthenticated,
+  worryEntryController.userWorryEntries
+);
 app.post(
   "/createWorryEntry",
   ensureAuthenticated,
-  indexController.createWorryEntry
+  upload.array("journalImages", 5),
+  worryEntryController.createWorryEntry
 );
-app.get("/edit", ensureAuthenticated, indexController.editPage);
+app.get("/edit/:id", ensureAuthenticated, editPage);
 
 // Routes for daily view
-app.get("/dailyView/:date", ensureAuthenticated, worryEntryController.dailyWorryEntries);
-// Update
-app.post("/dailyView/update/:id", ensureAuthenticated, worryEntryController.updateWorryEntries);
-// Delete
-app.delete("/dailyView/remove/:id", ensureAuthenticated, worryEntryController.deleteWorryEntries);
+app.get(
+  "/dailyView/:date",
+  ensureAuthenticated,
+  worryEntryController.dailyWorryEntries
+);
+// Update 
+app.post("/update/:id", ensureAuthenticated, worryEntryController.updateWorryEntries);
 
+// Delete daily view
+app.delete(
+  "/dailyView/remove/:id",
+  ensureAuthenticated,
+  worryEntryController.deleteWorryEntries
+);
+
+// Worry Time routes
+app.get(
+  "/duringWorryTime/:id",
+  ensureAuthenticated,
+  worryTimeController.displayWorryTime
+);
+app.post(
+  "/duringWorryTime/update/:id",
+  ensureAuthenticated,
+  worryTimeController.updateWorryTime
+);
+
+// worry time
+app.get(
+  "/setWorryTime",
+  ensureAuthenticated,
+  worryTimeController.worryTimeSetupPage
+);
+
+app.post("/worryTime/create", ensureAuthenticated, worryTimeController.createWorryTime)
 
 // Starts the server
 app.listen(port, () =>
-  console.log(`App listening on port 3000. | ${__dirname}!`)
+  console.log(`App listening on port ${port}. | ${__dirname}!`)
 );
+

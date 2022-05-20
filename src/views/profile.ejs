@@ -43,53 +43,39 @@
     </nav>
     <!-- Main body -->
     <main>
-        <div class="user-info-wrapper">
-            <div class="avatar-wrapper">
-                <img src="data:image/<%=user.avatar.contentType%>;base64,<%=user.avatar.data.toString('base64')%>">
-            </div>
-            <div class="name-wrapper">
-                <p><%= user.firstname %>, <%= user.lastname %></p>
-            </div>
-            
+      <div class="user-info-wrapper">
+        <div class="avatar-wrapper">
+          <img
+            src="data:image/<%=user.avatar.contentType%>;base64,<%=user.avatar.data.toString('base64')%>"
+            alt="Avatar"
+          />
+          <div class="icon-file-selector">
+            <label id="avatar-label" for="avatar">Change Avatar</label>
+            <input type="file" name="avatar" id="avatar" accept=".jpg, .jpeg, .png" />
+          </div>
         </div>
+        <div class="name-wrapper">
+          <h3><%= user.firstname %>, <%= user.lastname %></h3>
+          <p><%= user.email %></p>
+        </div>
+      </div>
       <div class="moodgraph_container">
         <canvas id="moodgraph"></canvas>
       </div>
       <div class="summaryBarGraph_container">
-            <canvas id="summaryBarGraph" height="200"></canvas>
+        <canvas id="summaryBarGraph" height="175"></canvas>
       </div>
-        <% if (user.admin) { %>
-        <button type="button" class="AdminButton" >
-          <a href="/accounts">View All Accounts</a>
-        </button>
-        <% } %>
-        <button type="button" class="LogOutButton" >
-            <a href="/auth/logout">Logout</a>
-        </button>
+      <% if (user.admin) { %>
+      <button type="button" class="AdminButton">
+        <a href="/accounts">View All Accounts</a>
+      </button>
+      <% } %>
+      <button type="button" class="LogOutButton">
+        <a href="/auth/logout">Logout</a>
+      </button>
     </main>
     <!-- Footer -->
-    <footer
-      id="nav"
-      class="navbar justify-content-evenly fixed-bottom"
-      style="height: 4em"
-    >
-      <a class="icon-btn" href="/home">
-        <i class="material-symbols-outlined">home</i>
-        <p class="btm-btn-text">Home</p>
-      </a>
-      <a class="icon-btn" href="/worryForm">
-        <i class="material-symbols-outlined">add_box</i>
-        <p class="btm-btn-text">Journal</p>
-      </a>
-      <a class="icon-btn" href="/">
-        <i class="material-symbols-outlined">alarm</i>
-        <p class="btm-btn-text">Alarms</p>
-      </a>
-      <a class="icon-btn" href="/profile">
-        <i class="material-symbols-outlined">person</i>
-        <p class="btm-btn-text">Profile</p>
-      </a>
-    </footer>
+    <%- include("./partials/footer"); %> 
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="scripts/profile.js"></script>

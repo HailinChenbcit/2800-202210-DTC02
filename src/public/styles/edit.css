@@ -1,6 +1,9 @@
+body {
+    background-color: #E7DAFF;
+}
+
 .mainContent {
     padding: 1rem;
-    font-weight: bold;
 }
 
 .mainContent span{
@@ -9,8 +12,9 @@
 
 .mainContent legend{
     text-align: center;
-    font-weight: bolder;
     margin-bottom: 3vh;
+    color: #6545A4;
+    font-weight: bold;
 }
 
 .editSaveButton {
@@ -23,4 +27,24 @@
     font-size: 16px;
     cursor: pointer;
     text-align: center;
+}
+
+.card {
+    background-color: #E7DAFF;
+    border: unset;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #CEB5FF;
+}
+
+.card-body {
+    display: flex;
+    justify-content: space-between;
+}
+
+nav i{
+    margin-right: 10px;
 }

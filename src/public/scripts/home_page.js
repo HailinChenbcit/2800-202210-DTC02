@@ -51,7 +51,7 @@ function load() {
 
   for (let i = 1; i <= paddingDays + daysInMonth; i++) {
     const dayLink = document.createElement("a");
-    dayLink.href = `/dailyView/${year}${String(month).padStart(2, "0")}${String(i).padStart(2, "0")}`;
+    dayLink.href = `/dailyView/${year}${String(month).padStart(2, "0")}${String(i - paddingDays).padStart(2, "0")}`;
 
     const daySquare = document.createElement("div");
     daySquare.classList.add("day");

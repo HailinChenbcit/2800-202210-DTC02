@@ -50,7 +50,7 @@ const indexController = {
       ) {
         nextWorryTimeInfo.available = true;
       }
-      console.log(nextWorryTimeInfo);
+
       res.render("home", { nextWorryTime: nextWorryTimeInfo });
     } else {
       res.render("home", { nextWorryTime: null });

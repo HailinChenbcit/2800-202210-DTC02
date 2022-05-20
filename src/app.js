@@ -72,7 +72,7 @@ app.post(
   "/auth/login",
   passport.authenticate("local", {
     successRedirect: "/home",
-    failureRedirect: "/login",
+    failureRedirect: "/auth/login",
   })
 );
 app.get("/auth/logout", authController.logout);

@@ -183,7 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
   avatarInput.addEventListener("change", () => {
     const formdata = new FormData();
     formdata.append("avatar", avatarInput.files[0]);
-    fetch("http://localhost:3000/avatarUpload", {
+    fetch("/avatarUpload", {
       method: "POST",
       body: formdata,
     }).then((data) => window.location.reload());

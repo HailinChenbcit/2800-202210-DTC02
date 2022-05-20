@@ -111,7 +111,7 @@ $(document).ready(function () {
       $(`#${worryIds[i]}`).remove();
       // remove entry in DB
       $.ajax({
-        url: `http://localhost:3000/duringWorryTime/update/${worryIds[i]}`,
+        url: `https://aqueous-brook-37004.herokuapp.com/duringWorryTime/update/${worryIds[i]}`,
         type: "POST",
         success: function () {
           console.log(`Successful updated id: ${worryIds[i]}`);

@@ -1,104 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WorryLess</title>
 
     <!-- Bootstrap Library CSS CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-        </script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
 
     <!-- FontAwesome Library -->
-    <script src="https://kit.fontawesome.com/3972ff60ea.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/3972ff60ea.js"
+      crossorigin="anonymous"
+    ></script>
 
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <!-- Local Library -->
-    <link rel="stylesheet" href="/styles/login.css">
+    <link rel="stylesheet" href="/styles/login.css" />
 
     <!-- FAVICON -->
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+  </head>
 
-</head>
-
-<body>
+  <body>
     <!-- SINGUP FORM -->
     <div class="login_form">
-        <form class="needs-validation" action="/auth/register" method="POST"
-            enctype="application/x-www-form-urlencoded">
-            <div class="form-title mb-3">
-                <h3>Create Account</h3>
-            </div>
+      <form
+        class="needs-validation"
+        action="/auth/register"
+        method="POST"
+        id="registrationForm"
+        enctype="application/x-www-form-urlencoded"
+      >
+        <div class="form-title mb-3">
+          <h3>Create Account</h3>
+        </div>
 
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="firstname" id="firstname" placeholder="First name"
-                    required>
-                <label for="firstname" class="form-label">First name</label>
-            </div>
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control"
+            name="firstname"
+            id="firstname"
+            placeholder="First name"
+            required
+          />
+          <label for="firstname" class="form-label">First name</label>
+        </div>
 
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Last name" required>
-                <label for="lastname" class="form-label">Last name</label>
-            </div>
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control"
+            name="lastname"
+            id="lastname"
+            placeholder="Last name"
+            required
+          />
+          <label for="lastname" class="form-label">Last name</label>
+        </div>
 
-            <div class="form-floating mb-3">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
-                <label for="email" class="form-label">Email address</label>
-            </div>
+        <div class="form-floating mb-3">
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            id="email"
+            placeholder="Email"
+            required
+          />
+          <label for="email" class="form-label">Email address</label>
+        </div>
 
-            <div class="form-floating mb-3">
-                <input type="password" class="form-control" name="password" id="password" placeholder="Password"
-                    required="required">
-                <label for="password" class="form-label">Password</label>
-            </div>
+        <div class="form-floating mb-3">
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            id="password"
+            placeholder="Password"
+            required="required"
+          />
+          <label for="password" class="form-label">Password</label>
+        </div>
 
-            <div class="form-floating mb-3">
-                <input type="password" class="form-control" name="confirm_password" id="confirm_password"
-                    placeholder="Password" required>
-                <label for="confirm_password" class="form-label">Confirm Password</label>
-            </div>
+        <div class="form-floating mb-3">
+          <input
+            type="password"
+            class="form-control"
+            name="confirm_password"
+            id="confirm_password"
+            placeholder="Password"
+            required
+          />
+          <label for="confirm_password" class="form-label"
+            >Confirm Password</label
+          >
+        </div>
 
-            <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-primary btn-block">Continue</button>
-            </div>
+        <div class="d-grid gap-2">
+          <button type="submit" class="btn btn-primary btn-block">
+            Continue
+          </button>
+        </div>
 
-            <!-- Invisible timezone input -->
-            <input type="hidden" class="form-control" name="timezoneOffset" value="">
+        <!-- Invisible timezone input -->
+        <input
+          type="hidden"
+          class="form-control"
+          name="timezoneOffset"
+          value=""
+        />
 
-            <br>
+        <br />
 
-            <div id="login">
-                Already have an account?<a href="/auth/login"> Sign in</a>
-            </div>
+        <div id="login">
+          Already have an account?<a href="/auth/login"> Sign in</a>
+        </div>
 
-            <br>
+        <br />
 
-            <div id="privacy">
-                <p>By continuing, you are setting up a WorryLess account and agree to our <a href="#">Privacy Policy</a>
-                    and <a href="#">User Agreement</a></p>
-            </div>
-
-        </form>
+        <div id="privacy">
+          <p>
+            By continuing, you are setting up a WorryLess account and agree to
+            our <a href="#">Privacy Policy</a> and
+            <a href="#">User Agreement</a>
+          </p>
+        </div>
+      </form>
     </div>
     <script>
-        function setup() {
-            const loginForm = document.querySelector("#loginForm")
-            loginForm.onsubmit = function () {
-                loginForm.timezoneOffset.value = new Date().getTimezoneOffset()
-                return true
-            }
-        }
+      function setup() {
+        const loginForm = document.querySelector("#registrationForm");
+        loginForm.onsubmit = function () {
+          loginForm.timezoneOffset.value = new Date().getTimezoneOffset();
+          return true;
+        };
+      }
 
-        document.addEventListener("DOMContentLoaded", setup)
+      document.addEventListener("DOMContentLoaded", setup);
     </script>
-
-</body>
-
+  </body>
 </html>

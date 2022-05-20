@@ -36,6 +36,7 @@ const indexController = {
       const nextWorryTimeInfo = {
         id: nextWorryTime._id,
         startTimeString,
+        duration: nextWorryTime.duration
       };
 
       // worry time page become available 5 min before the start time and remain available until the end of worry time

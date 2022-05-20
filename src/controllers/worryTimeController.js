@@ -32,7 +32,7 @@ const worryTimeController = {
     const worryTime = await WorryTime.findById(req.params.id).exec();
 
     const allWorryIDs = worryTime.worries;
-    const worries = await WorryEntry.find({ _id: { $in: allWorryIDs } }).exec();
+    const worries = await WorryEntry.find({ _id: { $in: allWorryIDs }, finished: false }).exec();
 
     const worryDuration = worryTime.duration;
 

@@ -14,7 +14,7 @@ const offsetDate = (date, offset) =>
  */
 const formatToString = rawDatetime => rawDatetime.toLocaleString("en-GB", {
     dateStyle: "medium",
-    timeStyle: "medium",
+    timeStyle: "short",
 })
 
 /**

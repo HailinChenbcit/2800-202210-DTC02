@@ -50,7 +50,7 @@
         <i class="material-symbols-outlined">close</i>
       </a>
     </nav>
-
+    <main>
     <form action="/createWorryEntry" method="post" enctype="multipart/form-data" id="worryEntryForm">
       <div class="worryInputContainer">
         <!-- TIMEPICKER -->
@@ -98,7 +98,7 @@
         </div>
         <!-- Image input -->
         <div class="journalImageSelector">
-          <label id="imageLabel" for="journalImages">Photo for today:</label>
+          <label id="imageLabel" for="journalImages">Photos:</label>
           <input type="file" name="journalImages" id="journalImages" accept=".jpg, .jpeg, .png" multiple />
         </div>
         <!-- WORRYENTRY -->
@@ -113,6 +113,7 @@
         <input type="submit" class="worrySubmitButton" value="Save" />
       </div>
     </form>
+  </main>
   </body>
 
   <%- include("./partials/footer"); %> 

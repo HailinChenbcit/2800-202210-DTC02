@@ -2,8 +2,12 @@ const User = require("../models/User");
 const WorryTime = require("../models/WorryTime");
 const WorryEntry = require("../models/WorryEntry");
 const fs = require("fs").promises;
-const { offsetDate, formatToString, formatToURLString } = require("../utility/timezones")
-const { emojis } = require("../utility/moods")
+const {
+  offsetDate,
+  formatToString,
+  formatToURLString,
+} = require("../utility/timezones");
+const { emojis } = require("../utility/moods");
 
 const indexController = {
   homePage: async (req, res) => {
@@ -25,13 +29,9 @@ const indexController = {
 
     // format next worry time
     if (nextWorryTime) {
-      const startTimeString = offsetDate(
-        nextWorryTime.startTime,
-        -req.session.timezoneOffset
-      ).toLocaleString("en-GB", {
-        dateStyle: "medium",
-        timeStyle: "medium",
-      });
+      const startTimeString = formatToString(
+        offsetDate(nextWorryTime.startTime, -req.session.timezoneOffset)
+      );
 
       const nextWorryTimeInfo = {
         id: nextWorryTime._id,
@@ -41,7 +41,10 @@ const indexController = {
       // worry time page become available 5 min before the start time and remain available until the end of worry time
       if (
         new Date() <
-          new Date(nextWorryTime.startTime.getTime() + nextWorryTime.duration * 60 * 1000) &&
+          new Date(
+            nextWorryTime.startTime.getTime() +
+              nextWorryTime.duration * 60 * 1000
+          ) &&
         new Date() > new Date(nextWorryTime.startTime.getTime() - 5 * 60 * 1000)
       ) {
         nextWorryTimeInfo.available = true;
@@ -49,7 +52,7 @@ const indexController = {
       console.log(nextWorryTimeInfo);
       res.render("home", { nextWorryTime: nextWorryTimeInfo });
     } else {
-      res.render("home", {nextWorryTime: null});
+      res.render("home", { nextWorryTime: null });
     }
   },
   accountsPage: async (req, res) => {
@@ -68,15 +71,24 @@ const indexController = {
   editPage: (req, res) => {
     WorryEntry.findById(req.params.id, (err, resp) => {
       if (err) {
-        res.json(err)
+        res.json(err);
       } else {
-        const rawDatetime = offsetDate(new Date(resp.datetime), -req.session.timezoneOffset)
-        const modifiedDatetime = formatToString(rawDatetime)
-        const fmtedDatetime = formatToURLString(rawDatetime)
+        const rawDatetime = offsetDate(
+          new Date(resp.datetime),
+          -req.session.timezoneOffset
+        );
+        const modifiedDatetime = formatToString(rawDatetime);
+        const fmtedDatetime = formatToURLString(rawDatetime);
 
-        res.render("edit", { id: resp.id, datetimeDisplay: modifiedDatetime, datetimeLink: fmtedDatetime, moodIcon: emojis[resp.moodLevel], worryDescription: resp.worryDescription })
+        res.render("edit", {
+          id: resp.id,
+          datetimeDisplay: modifiedDatetime,
+          datetimeLink: fmtedDatetime,
+          moodIcon: emojis[resp.moodLevel],
+          worryDescription: resp.worryDescription,
+        });
       }
-    })
+    });
   },
 
   dailyViewPage: (req, res) => {

@@ -9,7 +9,6 @@ body {
   /* border: 2px solid #ff5757; */
   border-radius: 5px;
   background: linear-gradient(180deg, #9062ea 35%, #ceb5ff 0%);
-
 }
 
 .name-wrapper {
@@ -22,7 +21,7 @@ body {
   margin-bottom: 2.5rem;
 }
 
-.name-wrapper h3{
+.name-wrapper h3 {
   font-weight: bold;
 }
 
@@ -42,8 +41,8 @@ body {
   align-items: center;
 }
 
-
-#avatar-label, #avatar {
+#avatar-label,
+#avatar {
   background-color: #92a1d1;
   padding: 5px 10px;
   border-radius: 5px;
@@ -54,12 +53,12 @@ body {
 }
 
 #avatar-label:hover {
-  background-color: #2D5BA3;
+  background-color: #2d5ba3;
   color: white;
 }
 
 #avatar-label:active {
-  background-color: #0D3F8F;
+  background-color: #0d3f8f;
   color: white;
 }
 
@@ -123,7 +122,6 @@ h1 {
   text-align: center;
 }
 
-
 @media screen and (min-width: 1150px) {
   main {
     display: flex;
@@ -131,12 +129,19 @@ h1 {
     align-items: center;
   }
 
-  .moodgraph_container, .summaryBarGraph_container {
+  .moodgraph_container,
+  .summaryBarGraph_container {
     width: 65%;
     margin-top: 2rem;
   }
 
   .user-info-wrapper {
     width: 55%;
+  }
+
+  .LogOutButton,
+  .AdminButton {
+    margin-top: 2rem;
+    width: 50%;
   }
 }

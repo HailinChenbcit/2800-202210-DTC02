@@ -17,29 +17,24 @@ function initDotMenuBtn(btnID, users_container) {
     });
 }
 
-/**
- * Initializes the admin slider functionality.
- * @param {*} btnID the id of the slider
- * @param {*} usercell the DOM element of this user account
- * @param {*} user the JSON object of this user
- */
-function initSlider(btnID, usercell, user) {
-    let btn = document.querySelector(`#${btnID}`);
 
-    btn.querySelector(`.form-check-input`).addEventListener("click", () => {
-        if (user.admin) {
-            let admin_sect = usercell.querySelector(".admin-sect");
-            admin_sect.classList.remove("badge");
-            admin_sect.innerHTML = ``;
-            user.admin = false;
-        } else {
-            let admin_sect = usercell.querySelector(".admin-sect");
-            // console.log(btnID   )
-            admin_sect.classList.add("badge");
-            admin_sect.innerHTML = `Admin`;
-            user.admin = true;
-        }
-    });
+function initSlider(row) {
+    const toggle = row.querySelector(".form-check-input")
+    const email = row.querySelector(".email").innerHTML.trim()
+
+    console.log(toggle);
+
+    toggle.addEventListener("click", () => {
+        console.log("CLICK")
+
+        $.ajax({
+           url: `/admin/toggleStatus/${email}`,
+           method: "get", 
+           success: () => {
+               window.location.href = "/accounts"
+           }
+        })
+    })
 }
 
 /**
@@ -51,6 +46,7 @@ function setupUserOptions() {
 
     accountsList.forEach((userElement, i) => {
         initDotMenuBtn(`dotted${i}`, accounts);
+        initSlider(userElement)
     })
 
     const backBtn = document.querySelector("#back");

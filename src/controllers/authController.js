@@ -35,6 +35,23 @@ const authController = {
     req.session.destroy();
     res.redirect("/auth/login");
   },
+
+  toggleAdminStatus: (req, res) => {
+    const { email } = req.params
+    if (email != req.user.email) {
+      User.findOneAndUpdate({
+        email: email
+      }, [{
+        $set: { admin: {$not: "$admin"} }
+      }], (err, resp) => {
+        if (err) {
+          res.send(err)
+        } else {
+          res.send("OK")
+        }
+      })
+    }
+  }
 };
 
 module.exports = authController;

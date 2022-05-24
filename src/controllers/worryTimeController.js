@@ -35,6 +35,7 @@ const worryTimeController = {
     const worries = await WorryEntry.find({ _id: { $in: allWorryIDs }, finished: false }).exec();
 
     const worryDuration = worryTime.duration;
+    const worryTimeNotes = worryTime.notes;
 
     const worryEntries = worries.map((entry) => {
       const worryEntry = {
@@ -45,7 +46,7 @@ const worryTimeController = {
       return worryEntry;
     });
 
-    res.render("duringWorryTime", { worryEntries, worryDuration });
+    res.render("duringWorryTime", { worryEntries, worryDuration, worryTimeNotes });
   },
   // Update selected worry time
   updateWorryTime: async (req, res) => {

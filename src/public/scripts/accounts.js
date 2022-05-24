@@ -1,29 +1,4 @@
 /**
- * Initializes the reset password button of a user account element.
- * @param {*} btnID the id of the reset password button
- * @param {*} user the JSON object of the user to reset the password of 
- */
-function initResetBtn(btnID, user) {
-    document.querySelector(`#${btnID}`).addEventListener("click", () => {
-        console.log(`This function is doing something`)
-    });
-}
-
-/**
- * Initializes the delete button of a user account element.
- * @param {*} btnID the id of the delete button
- * @param {*} toRemove the DOM element of the user account element to remove
- * @param {*} removeFrom the parent DOM element of the user account to remove
- */
-function initDelBtn(btnID, toRemove, removeFrom) {
-    let index = btnID.substr(-1, 1);
-    document.querySelector(`#${btnID}`).addEventListener("click", () => {
-        userArr.splice(index, 1);
-        removeFrom.removeChild(toRemove);
-    });
-}
-
-/**
  * Initializes the kebab button functionality.
  * @param {*} btnID the id of the kebab button
  * @param {*} users_container the DOM element containing all of the user account elements

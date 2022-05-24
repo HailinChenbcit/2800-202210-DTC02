@@ -10,7 +10,7 @@ main h1 {
 
 /* Calendar */
 button {
-  width: 30vw;
+  width: 20vw;
   cursor: pointer;
   padding: 5px;
   border-radius: 5px;
@@ -31,6 +31,7 @@ button {
   display: flex;
   justify-content: space-between;
   padding: 10px;
+  margin-bottom: 10px;
   color: #d36c6c;
   font-size: 1rem;
   font-family: sans-serif;
@@ -86,7 +87,7 @@ a {
 }
 
 #monthDisplayTitle {
-  font-size: small;
+  padding: 0.3rem;
 }
 
 /* Worry button */

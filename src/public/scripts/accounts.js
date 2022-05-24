@@ -1,7 +1,7 @@
 /**
  * Initializes the kebab button functionality.
- * @param {*} btnID the id of the kebab button
- * @param {*} users_container the DOM element containing all of the user account elements
+ * @param {String} btnID the id of the kebab button as a String
+ * @param {Object} users_container the DOM element containing all of the user account elements
  */
 function initDotMenuBtn(btnID, users_container) {
     let btn = document.querySelector(`#${btnID}`);
@@ -17,12 +17,13 @@ function initDotMenuBtn(btnID, users_container) {
     });
 }
 
-
+/**
+ * Initializes the toggle admin functionality of a row.
+ * @param {Object} row the HTML DOM element representing the row of a single user account
+ */
 function initSlider(row) {
     const toggle = row.querySelector(".form-check-input")
     const email = row.querySelector(".email").innerHTML.trim()
-
-    console.log(toggle);
 
     toggle.addEventListener("click", () => {
         console.log("CLICK")

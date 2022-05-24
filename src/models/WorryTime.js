@@ -23,6 +23,10 @@ const worryTimeSchema = new Schema(
     notes: {
       type: String,
     },
+    finished: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     _id: true,

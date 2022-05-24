@@ -125,10 +125,10 @@ app.get(
   ensureAuthenticated,
   worryTimeController.displayWorryTime
 );
-app.post(
-  "/duringWorryTime/update/:id",
+app.get(
+  "/finishWorryEntry/:id",
   ensureAuthenticated,
-  worryTimeController.updateWorryTime
+  worryEntryController.finishWorryEntry
 );
 
 // worry time

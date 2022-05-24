@@ -48,18 +48,6 @@ const worryTimeController = {
 
     res.render("duringWorryTime", { worryEntries, worryDuration, worryTimeNotes });
   },
-  // Update selected worry time
-  updateWorryTime: async (req, res) => {
-    const { id } = req.params;
-    try {
-      const updatedDuringTime = await WorryEntry.findByIdAndUpdate(id, {
-        finished: true,
-      }).exec();
-      res.json(updatedDuringTime);
-    } catch (e) {
-      res.json(e);
-    }
-  },
 
   worryTimeSetupPage: (req, res) => {
     const userId = req.user._id;

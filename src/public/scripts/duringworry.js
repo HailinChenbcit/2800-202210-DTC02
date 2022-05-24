@@ -58,8 +58,10 @@ $(".form-check-input").change(function () {
   if (allSelected) $("#selectall").prop("checked", true);
 });
 
-function exitWorryTime() {
+async function exitWorryTime() {
   // make sure that the timer and other stuffs are stopped before exiting worry time
+  // const resp = await fetch("/exitWorryTime");
+
   window.location.href = "/home";
 }
 
@@ -111,8 +113,8 @@ $(document).ready(function () {
       $(`#${worryIds[i]}`).remove();
       // remove entry in DB
       $.ajax({
-        url: `https://aqueous-brook-37004.herokuapp.com/duringWorryTime/update/${worryIds[i]}`,
-        type: "POST",
+        url: `/finishWorryEntry/${worryIds[i]}`,
+        type: "GET",
         success: function () {
           console.log(`Successful updated id: ${worryIds[i]}`);
         },

@@ -125,6 +125,18 @@ const worryEntryController = {
     }
   },
 
+  finishWorryEntry: async (req, res) => {
+    const { id } = req.params;
+    try {
+      const finishedWorryEntry = await WorryEntry.findByIdAndUpdate(id, {
+        finished: true,
+      }).exec();
+      res.json(finishedWorryEntry);
+    } catch (e) {
+      res.json(e);
+    }
+  },
+
 
 };
 

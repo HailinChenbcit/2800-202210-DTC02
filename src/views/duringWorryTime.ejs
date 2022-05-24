@@ -51,54 +51,58 @@
 
     <!-- Display worry times -->
     <main>
-      <h3>Worry time left:</h3>
-      <div class="row justify-content-center" id="countdown"></div>
+      <div class="timer-wrapper">
+        <h3>Worry time left:</h3>
+        <div class="row justify-content-center" id="countdown"></div>
+  
+        <p id="totalworrytime" style="display: none;"><%= worryDuration%> minutes</p>
+        
+      </div>
+      <div class="notes-wrapper">
+        <h3>Notes:</h3>
+        <p> <%= worryTimeNotes %> </p>
+      </div>
 
-      <p id="totalworrytime" style="display: none;"><%= worryDuration%> minutes</p>
-      
-      <div class="row justify-content-center mt-5 mb-2"></div>
-      <h3>Your Worries:</h3>
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <span>Select all</span>
-            <input type="checkbox" id="selectall" name="selectall" />
-          </div>
-          <div class="col">
-            <button class="btn trash-btn" id="deleteWorry" name="deleteWorry">
-              <i class="fa fa-trash" aria-hidden="true"></i>
-            </button>
+      <div class="worries-wrapper">
+        <h3>Your Worries:</h3>
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <span>Select all</span>
+              <input type="checkbox" id="selectall" name="selectall" />
+            </div>
+            <div class="col">
+              <button class="btn trash-btn" id="deleteWorry" name="deleteWorry">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              </button>
+            </div>
           </div>
         </div>
+  
+        <% if (worryEntries.length === 0) { %>
+        <p>There is nothing to worry about!</p>
+        <% } %>
+        <ul class="list-group container">
+          <% worryEntries.forEach(entry=> { %>
+  
+          <li class="list-group-item" id="<%= entry.id %>">
+            <div class="form-check">
+              <label class="form-check-label" for="unfinishedWorry">
+                <%= entry.description %>
+              </label>
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="unfinishedWorry"
+              />
+            </div>
+          </li>
+  
+          <% }) %>
+        </ul>
+        <br />
       </div>
-      <% if (worryEntries.length === 0) { %>
-      <p>There is nothing to worry about!</p>
-      <% } %>
-      <ul class="list-group container">
-        <% worryEntries.forEach(entry=> { %>
-
-        <li class="list-group-item" id="<%= entry.id %>">
-          <div class="form-check">
-            <label class="form-check-label" for="unfinishedWorry">
-              <%= entry.description %>
-            </label>
-            <input
-              class="form-check-input"
-              type="checkbox"
-              value=""
-              id="unfinishedWorry"
-            />
-          </div>
-        </li>
-
-        <% }) %>
-      </ul>
-      <br />
-      <!-- <div class="row justify-content-center mt-2">
-        <button type="button" class="btn btn-primary" id="btnId2">
-          Start worry time
-        </button>
-      </div> -->
 
       <div class="row justify-content-center mt-2">
         <button type="button" class="btn btn-primary" id="exitWorryTimeBtn">

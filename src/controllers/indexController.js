@@ -58,7 +58,7 @@ const indexController = {
   },
   accountsPage: async (req, res) => {
     const users = await User.find({});
-    res.render("accounts", { users });
+    res.render("accounts", { users, currentUser: req.user.email });
   },
   profilePage: (req, res) => {
     res.render("profile", {

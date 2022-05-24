@@ -140,6 +140,9 @@ app.get(
 
 app.post("/worryTime/create", ensureAuthenticated, worryTimeController.createWorryTime)
 
+// admin
+app.get("/admin/toggleStatus/:email", ensureAuthenticated, isAdmin, authController.toggleAdminStatus)
+
 // Starts the server
 app.listen(port, () =>
   console.log(`App listening on port ${port}. | ${__dirname}!`)

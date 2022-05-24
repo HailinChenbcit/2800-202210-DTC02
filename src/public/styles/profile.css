@@ -6,7 +6,6 @@ body {
 /* Avatar title section */
 .user-info-wrapper {
   display: flex;
-  height: 12rem;
   /* border: 2px solid #ff5757; */
   border-radius: 5px;
   background: linear-gradient(180deg, #9062ea 35%, #ceb5ff 0%);
@@ -38,7 +37,11 @@ body {
 .avatar-wrapper {
   width: 35%;
   border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
 
 #avatar-label, #avatar {
   background-color: #92a1d1;
@@ -62,6 +65,10 @@ body {
 
 .icon-file-selector {
   margin-top: 1rem;
+  display: flex;
+  padding: 0rem 2rem;
+  flex-direction: column;
+  width: 90%;
 }
 
 /* Mood Graph */
@@ -114,4 +121,22 @@ body {
 
 h1 {
   text-align: center;
+}
+
+
+@media screen and (min-width: 1150px) {
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .moodgraph_container, .summaryBarGraph_container {
+    width: 65%;
+    margin-top: 2rem;
+  }
+
+  .user-info-wrapper {
+    width: 55%;
+  }
 }

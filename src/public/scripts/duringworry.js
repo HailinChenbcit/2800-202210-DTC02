@@ -22,8 +22,8 @@ function counter() {
     var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
     if (seconds < 10) seconds = "0" + seconds;
 
-    document.getElementById("countdown").innerHTML = 
-    hours + "h " + minutes + "m " + seconds + "s";
+    document.getElementById("countdown").innerHTML =
+      hours + "h " + minutes + "m " + seconds + "s";
     if (timeLeft <= 0) {
       clearInterval(timing);
       document.getElementById("countdown").innerHTML =
@@ -60,8 +60,10 @@ $(".form-check-input").change(function () {
 
 async function exitWorryTime() {
   // make sure that the timer and other stuffs are stopped before exiting worry time
-  // const resp = await fetch("/exitWorryTime");
-
+  const resp = await fetch(
+    location.pathname.replace("duringWorryTime", "finishWorryTime")
+  );
+  // const data = await resp.json();
   window.location.href = "/home";
 }
 
@@ -71,7 +73,7 @@ document
 
 // delete selected checboxes and delete all
 $(document).ready(function () {
-  counter()
+  counter();
   var worryIds = [];
   // select each checkbox
   $(document).on("change", ".form-check-input", function () {

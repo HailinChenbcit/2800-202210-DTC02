@@ -80,7 +80,12 @@ app.get("/auth/logout", authController.logout);
 // Routes for ejs views
 app.get("/home", ensureAuthenticated, indexController.homePage);
 app.get("/profile", ensureAuthenticated, indexController.profilePage);
-app.post("/avatarUpload", ensureAuthenticated, upload.single("avatar"), indexController.uploadAvatar);
+app.post(
+  "/avatarUpload",
+  ensureAuthenticated,
+  upload.single("avatar"),
+  indexController.uploadAvatar
+);
 app.get(
   "/accounts",
   ensureAuthenticated,
@@ -109,8 +114,12 @@ app.get(
   ensureAuthenticated,
   worryEntryController.dailyWorryEntries
 );
-// Update 
-app.post("/update/:id", ensureAuthenticated, worryEntryController.updateWorryEntries);
+// Update
+app.post(
+  "/update/:id",
+  ensureAuthenticated,
+  worryEntryController.updateWorryEntries
+);
 
 // Delete daily view
 app.delete(
@@ -138,10 +147,15 @@ app.get(
   worryTimeController.worryTimeSetupPage
 );
 
-app.post("/worryTime/create", ensureAuthenticated, worryTimeController.createWorryTime)
+app.post(
+  "/worryTime/create",
+  ensureAuthenticated,
+  worryTimeController.createWorryTime
+);
+
+app.get("/finishWorryTime/:id", ensureAuthenticated, worryTimeController.finishWorryTime);
 
 // Starts the server
 app.listen(port, () =>
   console.log(`App listening on port ${port}. | ${__dirname}!`)
 );
-

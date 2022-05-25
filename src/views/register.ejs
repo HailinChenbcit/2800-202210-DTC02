@@ -122,6 +122,14 @@
           </button>
         </div>
 
+        <br />
+
+        <% if (errorMessage) { %>
+        <div class="errorMessage">
+          <p><%= errorMessage %></p>
+        </div>
+        <% } %>
+
         <!-- Invisible timezone input -->
         <input
           type="hidden"
@@ -130,21 +138,11 @@
           value=""
         />
 
-        <br />
-
         <div id="login">
           Already have an account?<a href="/auth/login"> Sign in</a>
         </div>
 
         <br />
-
-        <div id="privacy">
-          <p>
-            By continuing, you are setting up a WorryLess account and agree to
-            our <a href="#">Privacy Policy</a> and
-            <a href="#">User Agreement</a>
-          </p>
-        </div>
       </form>
     </div>
 

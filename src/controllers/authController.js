@@ -7,7 +7,7 @@ const authController = {
   },
 
   registerPage: (req, res) => {
-    res.render("register");
+    res.render("register", { errorMessage: null });
   },
 
   registerUser: async (req, res, next) => {
@@ -28,8 +28,14 @@ const authController = {
 
       next();
     } catch (err) {
-      console.log(err.message);
-      res.redirect("/auth/register");
+      if (err.code === 11000) {
+        const errorMessage =
+          "Registration unsuccessful: the email is already linked to a user account.";
+        res.render("register", { errorMessage });
+      } else {
+        const errorMessage = "Registration unsuccessful: unknown error.";
+        res.render("register", { errorMessage });
+      }
     }
   },
 
@@ -40,21 +46,27 @@ const authController = {
   },
 
   toggleAdminStatus: (req, res) => {
-    const { email } = req.params
+    const { email } = req.params;
     if (email != req.user.email) {
-      User.findOneAndUpdate({
-        email: email
-      }, [{
-        $set: { admin: {$not: "$admin"} }
-      }], (err, resp) => {
-        if (err) {
-          res.send(err)
-        } else {
-          res.send("OK")
+      User.findOneAndUpdate(
+        {
+          email: email,
+        },
+        [
+          {
+            $set: { admin: { $not: "$admin" } },
+          },
+        ],
+        (err, resp) => {
+          if (err) {
+            res.send(err);
+          } else {
+            res.send("OK");
+          }
         }
-      })
+      );
     }
-  }
+  },
 };
 
 module.exports = authController;

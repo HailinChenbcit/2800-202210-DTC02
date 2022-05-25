@@ -1,103 +1,102 @@
 /* GOOGLE FONTS Library */
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500&display=swap");
 
 body {
-    background-color: #ceb5ff;
-    display: flex;
-    align-content: center;
-    justify-content: center
+  background-color: #ceb5ff;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 
 .form--hidden {
-    display: none;
+  display: none;
 }
 
 .login_form {
-    width: 400px;
-    max-width: 400px;
-    margin: 2rem;
-    padding: 1.5rem;
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
-    border-radius: 12px;
-    background-color: #e7daff;
+  width: 400px;
+  max-width: 400px;
+  margin: 2rem;
+  padding: 1.5rem;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  background-color: #e7daff;
 }
 
 .form-title {
-    font: 500 1rem;
-    font-family: 'Nunito', sans-serif;
-    text-align: center;
+  font: 500 1rem;
+  font-family: "Nunito", sans-serif;
+  text-align: center;
 }
 
 .btn {
-    font: 500 1rem;
-    font-family: 'Nunito', sans-serif;
+  font: 500 1rem;
+  font-family: "Nunito", sans-serif;
 }
 
 .btn:active {
-    transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .social_login {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    grid-template-rows: 1;
-    justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: 1;
+  justify-content: space-evenly;
 }
 
 .social_login a {
-    font-size: 1.8em;
-    padding: 1rem;
+  font-size: 1.8em;
+  padding: 1rem;
 }
 
-#forgot>a,
-#signup>a,
-#login>a,
-#privacy>a {
-    text-decoration: none;
+#forgot > a,
+#signup > a,
+#login > a,
+#privacy > a {
+  text-decoration: none;
 }
 
 #forgot a:hover,
 #signup a:hover,
 #login a:hover,
 #privacy a:hover {
-    color: #84d4ff;
+  color: #84d4ff;
 }
 
 .fa-facebook {
-    color: #3b5998;
+  color: #3b5998;
 }
 
 .fa-google-plus-g {
-    color: #dd4b39;
+  color: #dd4b39;
 }
 
 .fa-linkedin-in {
-    color: #2575b6;
+  color: #2575b6;
 }
 
 .fa-github {
-    color: #000000;
+  color: #000000;
 }
 
 .fa-facebook:hover,
 .fa-google-plus-g:hover,
 .fa-linkedin-in:hover,
 .fa-github:hover {
-    color: #9062ea;
+  color: #9062ea;
 }
 
-.btn-primary{
-    background-color:#6545a4;
-    border-color:#9062ea;
+.btn-primary {
+  background-color: #6545a4;
+  border-color: #9062ea;
 }
 
-.btn-primary:hover{
-    background-color: #9062ea;
-    border-color:#9062ea;
+.btn-primary:hover {
+  background-color: #9062ea;
+  border-color: #9062ea;
 }
 
-.errordiv{
-    color: #dd4b39;
-    font-size: x-small;
+.errorMessage {
+  color: #dd4b39;
+  font-size: small;
 }

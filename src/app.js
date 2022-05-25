@@ -158,6 +158,10 @@ app.get("/finishWorryTime/:id", ensureAuthenticated, worryTimeController.finishW
 // admin
 app.get("/admin/toggleStatus/:email", ensureAuthenticated, isAdmin, authController.toggleAdminStatus)
 
+app.get('/*', (req,res) => {
+  res.render("notFound");
+});
+
 // Starts the server
 app.listen(port, () =>
   console.log(`App listening on port ${port}. | ${__dirname}!`)

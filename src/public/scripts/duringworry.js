@@ -11,7 +11,6 @@ function counter() {
   var timing = setInterval(function () {
     var currentDate = new Date().getTime();
     var timeLeft = yourDateToGo - currentDate;
-    var hours = Math.floor(totalTime / 60);
 
     var hours = Math.floor(
       (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
@@ -22,8 +21,8 @@ function counter() {
     var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
     if (seconds < 10) seconds = "0" + seconds;
 
-    document.getElementById("countdown").innerHTML = 
-    hours + "h " + minutes + "m " + seconds + "s";
+    document.getElementById("countdown").innerHTML =
+      hours + "h " + minutes + "m " + seconds + "s";
     if (timeLeft <= 0) {
       clearInterval(timing);
       document.getElementById("countdown").innerHTML =
@@ -58,18 +57,22 @@ $(".form-check-input").change(function () {
   if (allSelected) $("#selectall").prop("checked", true);
 });
 
-function exitWorryTime() {
+async function exitWorryTime() {
   // make sure that the timer and other stuffs are stopped before exiting worry time
+  const resp = await fetch(
+    location.pathname.replace("duringWorryTime", "finishWorryTime")
+  );
+  // const data = await resp.json();
   window.location.href = "/home";
 }
 
 document
-  .querySelector("#exitWorryTimeBtn")
+  .querySelector("#confirmExitWorryTime")
   .addEventListener("click", exitWorryTime);
 
 // delete selected checboxes and delete all
 $(document).ready(function () {
-  counter()
+  counter();
   var worryIds = [];
   // select each checkbox
   $(document).on("change", ".form-check-input", function () {
@@ -111,8 +114,8 @@ $(document).ready(function () {
       $(`#${worryIds[i]}`).remove();
       // remove entry in DB
       $.ajax({
-        url: `https://aqueous-brook-37004.herokuapp.com/duringWorryTime/update/${worryIds[i]}`,
-        type: "POST",
+        url: `/finishWorryEntry/${worryIds[i]}`,
+        type: "GET",
         success: function () {
           console.log(`Successful updated id: ${worryIds[i]}`);
         },

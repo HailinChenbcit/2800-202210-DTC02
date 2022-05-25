@@ -1,6 +1,6 @@
 const WorryTime = require("../models/WorryTime");
 const WorryEntry = require("../models/WorryEntry");
-const { offsetDate, formatToString } = require("../utility/timezones")
+const { offsetDate, formatToString } = require("../utility/timezones");
 
 const worryTimeController = {
   duringWorryTimePage: (req, res) => {
@@ -9,7 +9,8 @@ const worryTimeController = {
     });
   },
   createWorryTime: async (req, res) => {
-    const { time, duration, worries, notes } = req.body;
+    let { time, duration, worries, notes } = req.body;
+    notes = notes.trim();
     const startTime = offsetDate(new Date(time), req.session.timezoneOffset);
     const worryTime = WorryTime({
       startTime,
@@ -32,9 +33,13 @@ const worryTimeController = {
     const worryTime = await WorryTime.findById(req.params.id).exec();
 
     const allWorryIDs = worryTime.worries;
-    const worries = await WorryEntry.find({ _id: { $in: allWorryIDs }, finished: false }).exec();
+    const worries = await WorryEntry.find({
+      _id: { $in: allWorryIDs },
+      finished: false,
+    }).exec();
 
     const worryDuration = worryTime.duration;
+    const worryTimeNotes = worryTime.notes;
 
     const worryEntries = worries.map((entry) => {
       const worryEntry = {
@@ -45,19 +50,11 @@ const worryTimeController = {
       return worryEntry;
     });
 
-    res.render("duringWorryTime", { worryEntries, worryDuration });
-  },
-  // Update selected worry time
-  updateWorryTime: async (req, res) => {
-    const { id } = req.params;
-    try {
-      const updatedDuringTime = await WorryEntry.findByIdAndUpdate(id, {
-        finished: true,
-      }).exec();
-      res.json(updatedDuringTime);
-    } catch (e) {
-      res.json(e);
-    }
+    res.render("duringWorryTime", {
+      worryEntries,
+      worryDuration,
+      worryTimeNotes,
+    });
   },
 
   worryTimeSetupPage: (req, res) => {
@@ -67,16 +64,15 @@ const worryTimeController = {
       { owner: req.session.passport.user, finished: false },
       (err, resp) => {
         if (err) {
-          res.json(err)
+          res.json(err);
         }
 
         const worryDatum = resp.map((entry) => {
           const modifiedEntry = {
             id: entry.id,
-            datetime: formatToString(offsetDate(
-              new Date(entry.datetime),
-              -req.session.timezoneOffset
-            )),
+            datetime: formatToString(
+              offsetDate(new Date(entry.datetime), -req.session.timezoneOffset)
+            ),
             moodLevel: entry.moodLevel,
             worryDescription: entry.worryDescription,
             finished: entry.finished,
@@ -94,6 +90,20 @@ const worryTimeController = {
         });
       }
     );
+  },
+
+  finishWorryTime: async (req, res) => {
+    const { id } = req.params;
+    try {
+      const updatedWorryTime = await WorryTime.findByIdAndUpdate(
+        id,
+        { finished: true },
+        { new: true }
+      ).exec();
+      res.json(updatedWorryTime);
+    } catch (err) {
+      res.json(err);
+    }
   },
 };
 

@@ -20,7 +20,7 @@ const indexController = {
       .filter(
         (worryTime) =>
           new Date(worryTime.startTime.getTime() + worryTime.duration * 60000) >
-          new Date()
+            new Date() && !worryTime.finished
       )
       .sort((a, b) => a.startTime - b.startTime);
 
@@ -36,10 +36,11 @@ const indexController = {
       const nextWorryTimeInfo = {
         id: nextWorryTime._id,
         startTimeString,
-        duration: nextWorryTime.duration
+        duration: nextWorryTime.duration,
       };
 
-      // worry time page become available 5 min before the start time and remain available until the end of worry time
+      // worry time page become available 5 min before the start time
+      // and remain available until the end of worry time
       if (
         new Date() <
           new Date(
@@ -58,7 +59,7 @@ const indexController = {
   },
   accountsPage: async (req, res) => {
     const users = await User.find({});
-    res.render("accounts", { users });
+    res.render("accounts", { users, currentUser: req.user.email });
   },
   profilePage: (req, res) => {
     res.render("profile", {

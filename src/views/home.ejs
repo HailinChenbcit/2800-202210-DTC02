@@ -45,7 +45,7 @@
       <div id="calendar-container">
         <div id="calendar-header">
           <div id="monthDisplayTitle"></div>
-          <div>
+          <div class="monthcontrol">
             <button id="backButton">Back</button>
             <button id="nextButton">Next</button>
           </div>
@@ -61,7 +61,11 @@
             <div><span>Sa</span></div>
           </div>
 
-          <div id="calendar"></div>
+          <div id="calendar">
+            <div class="spinner-border loading" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
         </div>
       </div>
 

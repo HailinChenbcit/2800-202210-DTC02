@@ -7,11 +7,14 @@ const authController = {
   },
 
   registerPage: (req, res) => {
-    res.render("register");
+    res.render("register", { errorMessage: null });
   },
 
   registerUser: async (req, res, next) => {
-    const { firstname, lastname, email, password } = req.body;
+    let { firstname, lastname, email, password } = req.body;
+    firstname = firstname.trim();
+    lastname = lastname.trim();
+    email = email.trim();
     const buffer = await identicon.generate(email, 64);
     try {
       const newUser = new User({
@@ -25,8 +28,14 @@ const authController = {
 
       next();
     } catch (err) {
-      console.log(err.message);
-      res.redirect("/auth/register");
+      if (err.code === 11000) {
+        const errorMessage =
+          "Registration unsuccessful: the email is already linked to a user account.";
+        res.render("register", { errorMessage });
+      } else {
+        const errorMessage = "Registration unsuccessful: unknown error.";
+        res.render("register", { errorMessage });
+      }
     }
   },
 
@@ -34,6 +43,29 @@ const authController = {
     req.logout();
     req.session.destroy();
     res.redirect("/auth/login");
+  },
+
+  toggleAdminStatus: (req, res) => {
+    const { email } = req.params;
+    if (email != req.user.email) {
+      User.findOneAndUpdate(
+        {
+          email: email,
+        },
+        [
+          {
+            $set: { admin: { $not: "$admin" } },
+          },
+        ],
+        (err, resp) => {
+          if (err) {
+            res.send(err);
+          } else {
+            res.send("OK");
+          }
+        }
+      );
+    }
   },
 };
 

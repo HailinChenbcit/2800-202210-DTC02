@@ -27,7 +27,7 @@
 
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.4/jquery.validate.min.js"></script>
     <!-- Local Library -->
     <link rel="stylesheet" href="/styles/login.css" />
 
@@ -39,7 +39,7 @@
     <!-- SINGUP FORM -->
     <div class="login_form">
       <form
-        class="needs-validation"
+        class="needs-vaklidation"
         action="/auth/register"
         method="POST"
         id="registrationForm"
@@ -60,6 +60,7 @@
           />
           <label for="firstname" class="form-label">First name</label>
         </div>
+        <div id="fname_err" class="errordiv"></div>
 
         <div class="form-floating mb-3">
           <input
@@ -72,6 +73,7 @@
           />
           <label for="lastname" class="form-label">Last name</label>
         </div>
+        <div id="lname_err" class="errordiv"></div>
 
         <div class="form-floating mb-3">
           <input
@@ -84,6 +86,7 @@
           />
           <label for="email" class="form-label">Email address</label>
         </div>
+        <div id="email_err" class="errordiv"></div>
 
         <div class="form-floating mb-3">
           <input
@@ -96,6 +99,7 @@
           />
           <label for="password" class="form-label">Password</label>
         </div>
+        <div id="pwd_err" class="errordiv"></div>
 
         <div class="form-floating mb-3">
           <input
@@ -110,12 +114,21 @@
             >Confirm Password</label
           >
         </div>
+        <div id="cpwd_err" class="errordiv"></div>
 
         <div class="d-grid gap-2">
           <button type="submit" class="btn btn-primary btn-block">
             Continue
           </button>
         </div>
+
+        <br />
+
+        <% if (errorMessage) { %>
+        <div class="errorMessage">
+          <p><%= errorMessage %></p>
+        </div>
+        <% } %>
 
         <!-- Invisible timezone input -->
         <input
@@ -125,23 +138,15 @@
           value=""
         />
 
-        <br />
-
         <div id="login">
           Already have an account?<a href="/auth/login"> Sign in</a>
         </div>
 
         <br />
-
-        <div id="privacy">
-          <p>
-            By continuing, you are setting up a WorryLess account and agree to
-            our <a href="#">Privacy Policy</a> and
-            <a href="#">User Agreement</a>
-          </p>
-        </div>
       </form>
     </div>
+
+    <script src="/scripts/register.js"></script>
     <script>
       function setup() {
         const loginForm = document.querySelector("#registrationForm");

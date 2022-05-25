@@ -14,6 +14,9 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/styles/layout.css">
     <link rel="stylesheet" href="/styles/edit.css">
+
+    <!-- FAVICON -->
+  <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
 </head>
 
 <body>
@@ -29,17 +32,6 @@
         </a>
     </nav>
 
-    <!-- <div class="mainContent card text-center worry-card">
-        <legend>Worry Edit Form</legend>
-        <p>Created: <span><%#= datetime %></span></p> 
-        <span style="font-weight: bold;">Your Worry:</span>
-        <form action="/update/<%#= id %>" method="POST">
-            <textarea name="worryDescription" id="worryEdit" cols="45" rows="19"></textarea>
-            <br>
-            <input type="submit" class="editSaveButton" value="Save">
-        </form>
-    </div> -->
-
     <form class="mainContent" action="/update/<%= id %>" method="POST">
         <legend>Worry Edit Form</legend>
         <div class="card text-center worry-card" id="<%= id %>">
@@ -51,7 +43,7 @@
                     <%- moodIcon %>
                 </div>
             </div>
-            <textarea class="card-body" name="worryDescription" id="worryEdit" cols="45" rows="19"
+            <textarea class="card-body" name="worryDescription" id="worryEdit" cols="43.5" rows="20"
                 autofocus><%= worryDescription %></textarea>
 
         </div>

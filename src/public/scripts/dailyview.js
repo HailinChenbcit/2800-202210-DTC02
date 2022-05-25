@@ -3,17 +3,22 @@ const worryCards = document.querySelectorAll(".worry-card");
 
 const handleDelete = async (worryCard) => {
   worryCard.parentElement.removeChild(worryCard);
-  await fetch(`${deleteEntryUrl}${worryCard.id}`, {
+  await fetch(`/dailyView/remove/${worryCard.id}`, {
     method: "DELETE",
   });
 };
 
 worryCards.forEach((worryCard) => {
   worryCard.addEventListener("click", (e) => {
-    console.log(e.target.className);
     switch (e.target.className) {
-      case "deleteEntry btn secondary-primary":
-        handleDelete(worryCard);
+      case "btn btn-primary confirmDeletion":
+        let worryCardModal = worryCard.querySelector(".modal");
+        let worryCardModalComponent = new bootstrap.Modal(worryCardModal);
+
+        worryCardModal.addEventListener('hidden.bs.modal', () => {
+          handleDelete(worryCard);
+        });
+        worryCardModalComponent.hide();
         break;
     }
   });

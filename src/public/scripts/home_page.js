@@ -14,6 +14,24 @@ const weekdays = [
   "Saturday",
 ];
 
+const emojis = {
+  1: "&#128549;",
+  2: "&#128542;",
+  3: "&#128563;",
+  4: "&#128522;",
+  5: "&#128513;",
+  6: "&#9675;",
+};
+
+let worryEntries;
+
+function hideLoading() {
+  const loadingWheel = document.querySelector(".loading");
+  if (loadingWheel) {
+    loadingWheel.classList.add("hidden");
+  }
+}
+
 function load() {
   const dt = new Date();
 
@@ -49,19 +67,50 @@ function load() {
   // Refresh the page for different month (so it doesn't append a different calendar to the current one)
   calendar.innerHTML = "";
 
+  const addOneDay = (date) =>
+    new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1);
+
+  let today = firstDayOfMonth;
+
   for (let i = 1; i <= paddingDays + daysInMonth; i++) {
     const dayLink = document.createElement("a");
-    dayLink.href = `/dailyView/${year}${String(month).padStart(2, "0")}${String(i - paddingDays).padStart(2, "0")}`;
+    dayLink.href = `/dailyView/${year}${String(month).padStart(2, "0")}${String(
+      i - paddingDays
+    ).padStart(2, "0")}`;
 
     const daySquare = document.createElement("div");
     daySquare.classList.add("day");
 
     if (i > paddingDays) {
-      daySquare.innerText = i - paddingDays;
+      const oneDayAhead = addOneDay(today);
+      const entriesOfTheDay = worryEntries.filter(
+        (entry) =>
+          new Date(entry.datetime) > today &&
+          new Date(entry.datetime) < oneDayAhead
+      );
+
+      if (entriesOfTheDay.length > 0) {
+        const avgMoodLevel = entriesOfTheDay.reduce(
+          (avg, entry, _, { length }) => {
+            return avg + entry.moodLevel / length;
+          },
+          0
+        );
+        const roundedMoodLevel = Math.round(avgMoodLevel);
+        daySquare.innerHTML = `<div> ${i - paddingDays} </div> <div> ${
+          emojis[roundedMoodLevel]
+        } </div>`;
+      } else {
+        daySquare.innerHTML = `<div> ${
+          i - paddingDays
+        } </div> <div> &#9675; </div>`;
+      }
+
       daySquare.id = `${year}${month}${String(i).padStart(2, "0")}`;
       if (i - paddingDays === day && nav === 0) {
         daySquare.classList.add("currentDay");
       }
+      today = oneDayAhead;
     } else {
       daySquare.classList.add("padding");
     }
@@ -70,7 +119,10 @@ function load() {
   }
 }
 
-function initButtons() {
+async function init() {
+  const resp = await fetch("/worryEntriesAll");
+  worryEntries = await resp.json();
+
   document.getElementById("nextButton").addEventListener("click", () => {
     nav++;
     load();
@@ -80,7 +132,9 @@ function initButtons() {
     nav--;
     load();
   });
+
+  hideLoading();
+  load();
 }
 
-initButtons();
-load();
+init();

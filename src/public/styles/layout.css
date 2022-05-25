@@ -21,7 +21,7 @@ body {
 main {
   padding: 1rem;
   text-align: center;
-  padding-bottom: 10rem;
+  padding-bottom: 3rem;
 }
 
 /* Bottom Navbar */
@@ -57,4 +57,8 @@ main {
 
 .navbar-brand span {
   color: #6545a4;
+}
+
+.modal-header {
+  background-color: #e7daff;
 }

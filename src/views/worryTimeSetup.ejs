@@ -118,5 +118,12 @@
       </form>
     </main>
     <%- include("./partials/footer"); %> 
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        console.log(document.querySelector("#time"))
+        document.querySelector("#time").setAttribute("MIN", new Date().toISOString().slice(0,16))
+      })
+    </script>
 </body>
 </html>

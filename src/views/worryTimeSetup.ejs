@@ -120,9 +120,11 @@
     <%- include("./partials/footer"); %> 
 
     <script>
+      const offsetDate = (date, offset) => new Date(date.getTime() + offset * 60 * 1000);
       document.addEventListener("DOMContentLoaded", () => {
-        console.log(document.querySelector("#time"))
-        document.querySelector("#time").setAttribute("MIN", new Date().toISOString().slice(0,16))
+        const currentTimeString = offsetDate(new Date(), -1 * new Date().getTimezoneOffset()).toISOString().slice(0,16);
+         // console.log(currentTimeString);
+        document.querySelector("#time").setAttribute("MIN", currentTimeString);
       })
     </script>
 </body>

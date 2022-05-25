@@ -58,3 +58,7 @@ main {
 .navbar-brand span {
   color: #6545a4;
 }
+
+.modal-header {
+  background-color: #e7daff;
+}

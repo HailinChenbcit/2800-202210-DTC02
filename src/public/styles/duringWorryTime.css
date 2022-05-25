@@ -49,9 +49,11 @@
 }
 /* Buttons */
 .btn-primary {
-  margin-top: 1rem;
   background-color: #6545a4;
   border-color: #9062ea;
+}
+.exitBtn {
+  margin-top: 1rem;
   width: 45%;
 }
 .trash-btn {

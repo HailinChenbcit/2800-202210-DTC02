@@ -68,7 +68,7 @@ async function exitWorryTime() {
 }
 
 document
-  .querySelector("#exitWorryTimeBtn")
+  .querySelector("#confirmExitWorryTime")
   .addEventListener("click", exitWorryTime);
 
 // delete selected checboxes and delete all

@@ -11,7 +11,10 @@ const authController = {
   },
 
   registerUser: async (req, res, next) => {
-    const { firstname, lastname, email, password } = req.body;
+    let { firstname, lastname, email, password } = req.body;
+    firstname = firstname.trim();
+    lastname = lastname.trim();
+    email = email.trim();
     const buffer = await identicon.generate(email, 64);
     try {
       const newUser = new User({

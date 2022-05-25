@@ -9,7 +9,8 @@ const worryTimeController = {
     });
   },
   createWorryTime: async (req, res) => {
-    const { time, duration, worries, notes } = req.body;
+    let { time, duration, worries, notes } = req.body;
+    notes = notes.trim();
     const startTime = offsetDate(new Date(time), req.session.timezoneOffset);
     const worryTime = WorryTime({
       startTime,

@@ -57,7 +57,8 @@ const worryEntryController = {
   // Edit worry card
   updateWorryEntries: async (req, res) => {
     const { id } = req.params;
-    const { worryDescription } = req.body;
+    let { worryDescription } = req.body;
+    worryDescription = worryDescription.trim();
     WorryEntry.findByIdAndUpdate(id, { worryDescription }, { new: true }, (err, resp) => {
       if (err) {
         res.json(err)
@@ -87,6 +88,7 @@ const worryEntryController = {
 
   createWorryEntry: async (req, res) => {
     let { time, mood, worryDescription } = req.body;
+    worryDescription = worryDescription.trim();
     const offsettedTime = offsetDate(
       new Date(time),
       req.session.timezoneOffset

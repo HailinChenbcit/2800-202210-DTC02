@@ -21,25 +21,25 @@
 
   <link rel="stylesheet"
     href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  </head>
-  <!-- FAVICON -->
-  <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
+</head>
+<!-- FAVICON -->
+<link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
 
-  <style>
-    .card {
-      margin: 10px 10px;
-    }
+<style>
+  .card {
+    margin: 10px 10px;
+  }
 
-    .btn-primary {
-      background-color: #6545a4;
-      border-color: #9062ea;
-    }
+  .btn-primary {
+    background-color: #6545a4;
+    border-color: #9062ea;
+  }
 
-    .btn-primary:hover {
-      background-color: #9062ea;
-      border-color: #9062ea;
-    }
-  </style>
+  .btn-primary:hover {
+    background-color: #9062ea;
+    border-color: #9062ea;
+  }
+</style>
 </head>
 
 <body>
@@ -58,11 +58,11 @@
 
     <!-- CARDS DISPLAY -->
 
-    <% if (worryEntries.length === 0) { %>
+    <% if (worryEntries.length===0) { %>
       <p>You have no entry this day.</p>
       <% } %>
 
-        <% worryEntries.forEach(entry=> { %>
+        <% worryEntries.forEach((entry, index)=> { %>
 
           <div class="card text-center worry-card" id="<%= entry.id %> ">
             <div class="card-header">
@@ -85,21 +85,43 @@
                   <% } else { %>
                     <p>No Description.</p>
                     <% } %>
-                <div class="images">
-                  
-                  <% entry.images.forEach(image => { %>
-                    <div class="image-wrapper">
-                      <img src="data:image/<%=image.contentType%>;base64,<%=image.data.toString('base64')%>" alt="journal image" />
-                    </div>
-                  <% }) %>
-                </div>
+                      <div class="images">
+
+                        <% entry.images.forEach(image=> { %>
+                          <div class="image-wrapper">
+                            <img src="data:image/<%=image.contentType%>;base64,<%=image.data.toString('base64')%>"
+                              alt="journal image" />
+                          </div>
+                          <% }) %>
+                      </div>
               </div>
               <div class="buttons">
                 <button class="btn btn-primary editBtn" type="button" id="<%= entry.id %>">
                   Edit
                 </button>
 
-                <input type="button" name="deleteEntry" class="deleteEntry btn secondary-primary" value="Delete" />
+                <input type="button" name="deleteEntry" class="deleteEntry btn secondary-primary" value="Delete"
+                  data-bs-toggle="modal" data-bs-target="#modal<%= index %>" />
+
+                <!-- Modal -->
+                <div class="modal fade" id="modal<%= index %>" tabindex="-1" aria-labelledby="exampleModalLabel"
+                  aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        This entry will be lost forever!
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" data-bs-dismiss="modal" class="btn btn-primary confirmDeletion">Delete!</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
               </div>
 
@@ -107,12 +129,12 @@
           </div>
 
           <% }) %>
-          
-          <div class="text-center py-5">
-          </div>
+
+            <div class="text-center py-5">
+            </div>
 
   </main>
-  <%- include("./partials/footer"); %> 
+  <%- include("./partials/footer"); %>
 </body>
 <!-- JAVASCRIPT -->
 <script src="/scripts/dailyview.js"></script>

@@ -5,7 +5,21 @@ body {
 
 main h1 {
   margin-bottom: 2rem;
-  color: #6545a4;;
+  color: #6545a4;
+}
+
+/* Loading */
+.loading {
+  grid-column: 1 / span 7;
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 3rem; height: 3rem;
+  color: #6545a4;
+}
+
+.hidden {
+  display: none;
 }
 
 /* Calendar */

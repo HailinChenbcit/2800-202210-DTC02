@@ -25,6 +25,13 @@ const emojis = {
 
 let worryEntries;
 
+function hideLoading() {
+  const loadingWheel = document.querySelector(".loading");
+  if (loadingWheel) {
+    loadingWheel.classList.add("hidden");
+  }
+}
+
 function load() {
   const dt = new Date();
 
@@ -126,6 +133,7 @@ async function init() {
     load();
   });
 
+  hideLoading();
   load();
 }
 

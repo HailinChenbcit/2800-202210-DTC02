@@ -11,7 +11,6 @@ function counter() {
   var timing = setInterval(function () {
     var currentDate = new Date().getTime();
     var timeLeft = yourDateToGo - currentDate;
-    var hours = Math.floor(totalTime / 60);
 
     var hours = Math.floor(
       (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)

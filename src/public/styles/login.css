@@ -96,3 +96,8 @@ body {
     background-color: #9062ea;
     border-color:#9062ea;
 }
+
+.errordiv{
+    color: #dd4b39;
+    font-size: x-small;
+}

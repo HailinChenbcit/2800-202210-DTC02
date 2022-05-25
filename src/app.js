@@ -65,7 +65,7 @@ app.post(
   authController.registerUser,
   passport.authenticate("local", {
     successRedirect: "/home",
-    failureRedirect: "/login",
+    failureRedirect: "/auth/login",
   })
 );
 app.post(

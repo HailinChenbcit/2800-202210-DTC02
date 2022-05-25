@@ -153,12 +153,21 @@ app.post(
   worryTimeController.createWorryTime
 );
 
-app.get("/finishWorryTime/:id", ensureAuthenticated, worryTimeController.finishWorryTime);
+app.get(
+  "/finishWorryTime/:id",
+  ensureAuthenticated,
+  worryTimeController.finishWorryTime
+);
 
 // admin
-app.get("/admin/toggleStatus/:email", ensureAuthenticated, isAdmin, authController.toggleAdminStatus)
+app.get(
+  "/admin/toggleStatus/:email",
+  ensureAuthenticated,
+  isAdmin,
+  authController.toggleAdminStatus
+);
 
-app.get('/*', (req,res) => {
+app.get("/*", (req, res) => {
   res.render("notFound");
 });
 

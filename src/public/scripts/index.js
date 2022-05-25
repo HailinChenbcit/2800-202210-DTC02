@@ -24,12 +24,12 @@ const highlightMenu = () => {
         aboutMenu.classList.remove('highlight')
         teamMenu.classList.remove('highlight')
         return 
-    } else if (window.innerWidth > 960 && scrollPos < 1400) {
+    } else if (window.innerWidth > 960 && scrollPos < 750) {
         teamMenu.classList.add('highlight')
         homeMenu.classList.remove('highlight')
         aboutMenu.classList.remove("highlight")
         return
-    } else if (window.innerWidth > 960 && scrollPos < 2345) {
+    } else if (window.innerWidth > 960 && scrollPos < 1200) {
         aboutMenu.classList.add("highlight")
         homeMenu.classList.remove('highlight')
         teamMenu.classList.remove('highlight')

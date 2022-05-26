@@ -9,11 +9,12 @@
 
 ## General Info
 
-** Project Title **
+### Project Title 
 WorryLess
-** Project Description**
+### Project Description
 Our team, Copium, is developing a journaling app, Worryless, to help people who struggle with anxiety to manage their worries with an allotted time to worry about their personal conflicts
 
+### The Team
 - Hailin(Adam) Chen - github: https://github.com/HailinChenbcit
 - Bosco Chan - github: https://github.com/BoscoCHW
 - Jose Alfonso Clarito - github: https://github.com/FonseLULW

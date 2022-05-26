@@ -4,6 +4,9 @@
 - [Content](#content)
 - [Technologies](#technologies)
 - [Resources](#resources)
+- [Installation](#installation)
+- [Features](#features)
+- [Contribution](#contribution)
 - [Contact](#contact)
 - [Acknowledgements](#acknowledgements)
 
@@ -178,7 +181,7 @@ npm install express
 
 ## Contribution
 
-- W3School: https://www.w3schools.com/
+- W3School: https://www.w3schools.com/howto/howto_js_countdown.asp
 - Eggonomics: https://eggonomics-35c2b.web.app/
 - Stack Overflow: https://stackoverflow.com/questions/439630/create-a-date-with-a-set-timezone-without-using-a-string-representation
 - Brian Design: https://www.youtube.com/channel/UCsKsymTY_4BYR-wytLjex7A

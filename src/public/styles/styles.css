@@ -286,7 +286,7 @@
 }
 
 .team_card:nth-child(4) {
-    background-image: url("../img/adamProfile.png");
+    background-image: url("../img/adamProfile.PNG");
     background-size: 350px 300px;
     background-repeat: no-repeat;
   }

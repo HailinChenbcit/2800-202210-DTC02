@@ -4,9 +4,9 @@
 - [Content](#content)
 - [Technologies](#technologies)
 - [Resources](#resources)
-- [How To Run WorryLess Locally](#how-to-run-worrless-locally)
+- [How To Run WorryLess Locally](#how-to-run-worryless-locally)
 - [Features](#features)
-- [Contribution](#contribution)
+- [Attribution](#attribution)
 - [Contact](#contact)
 - [Acknowledgements](#acknowledgements)
 
@@ -141,7 +141,7 @@ Technologies used for this project:
 - Hosted on Heroku
 - Google fonts for text
 
-## How to run WorrLess locally
+## How to run WorryLess locally
 
 1. Install the most recent LTS version of Node.js
 

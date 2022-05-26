@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+// Connects to MongoDB using the given uri
 const connectToMongo = (uri) =>
   mongoose.connect(
     uri,

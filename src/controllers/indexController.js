@@ -10,12 +10,13 @@ const {
 const { emojis } = require("../utility/moods");
 
 const indexController = {
+  // Displays current user calendar in homepage
   homePage: async (req, res) => {
-    // find next worry time for user
+    // Find next worry time for user
     const worryTimes = await WorryTime.find({
       user: req.user._id,
     }).exec();
-
+    // Add
     const activeWorryTime = worryTimes
       .filter(
         (worryTime) =>
@@ -27,7 +28,7 @@ const indexController = {
     const nextWorryTime =
       activeWorryTime.length > 0 ? activeWorryTime[0] : null;
 
-    // format next worry time
+    // Format next worry time
     if (nextWorryTime) {
       const startTimeString = formatToString(
         offsetDate(nextWorryTime.startTime, -req.session.timezoneOffset)
@@ -57,19 +58,22 @@ const indexController = {
       res.render("home", { nextWorryTime: null });
     }
   },
+  // Display accounts page for admins, including all registered users
   accountsPage: async (req, res) => {
     const users = await User.find({});
     res.render("accounts", { users, currentUser: req.user.email });
   },
+  // Display profile page with current logged-in user information
   profilePage: (req, res) => {
     res.render("profile", {
       user: req.user,
     });
   },
+  // Display worryform page
   worryFormPage: (req, res) => {
     res.render("worryForm");
   },
-
+  // Edit worry entry in duringworry page
   editPage: (req, res) => {
     WorryEntry.findById(req.params.id, (err, resp) => {
       if (err) {
@@ -92,11 +96,11 @@ const indexController = {
       }
     });
   },
-
+  // Display dailyview page
   dailyViewPage: (req, res) => {
     res.render("dailyView");
   },
-
+  // Change user avatar in profile page
   uploadAvatar: async (req, res) => {
     const file = req.file;
     try {

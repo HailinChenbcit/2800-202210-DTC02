@@ -1,3 +1,5 @@
+// Followed this video to implement the JS navbar and the smooth scrolling on the index.html
+// https://www.youtube.com/watch?v=3-2Pj5hxwrw&t=135s&ab_channel=BrianDesign
 const menu = document.querySelector('#mobile-menu');
 const menuLinks = document.querySelector(".navbar_menu");
 const navLogo = document.querySelector('#navbar_logo');
@@ -10,7 +12,7 @@ const mobileMenu = () => {
 
 menu.addEventListener('click', mobileMenu);
 
-// Show active menu when scrolling //
+// Show active menu when scrolling
 const highlightMenu = () => {
     const elem = document.querySelector('.highlight');
     const homeMenu = document.querySelector('#home-page');

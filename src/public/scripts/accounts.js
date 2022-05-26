@@ -1,8 +1,4 @@
-/**
- * Initializes the kebab button functionality.
- * @param {String} btnID the id of the kebab button as a String
- * @param {Object} users_container the DOM element containing all of the user account elements
- */
+// Initializes the kebab button functionality
 function initDotMenuBtn(btnID, users_container) {
     let btn = document.querySelector(`#${btnID}`);
 
@@ -16,10 +12,7 @@ function initDotMenuBtn(btnID, users_container) {
     });
 }
 
-/**
- * Initializes the toggle admin functionality of a row.
- * @param {Object} row the HTML DOM element representing the row of a single user account
- */
+// Initializes the toggle admin functionality of a row
 function initSlider(row) {
     const toggle = row.querySelector(".form-check-input");
     const email = row.querySelector(".email").innerHTML.trim();
@@ -35,9 +28,7 @@ function initSlider(row) {
     });
 }
 
-/**
- * Sets up event listeners of every user account displayed.
- */
+// Sets up event listeners of every user account displayed
 function setupUserOptions() {
     const accounts = document.querySelector("#accounts-target");
     const accountsList = [...accounts.children];
@@ -53,9 +44,7 @@ function setupUserOptions() {
     });
 }
 
-/**
- * Gets called when the frontend display has finished loading.
- */
+// Runs when the page has finished loading
 function setup() {
     setupUserOptions();
 }

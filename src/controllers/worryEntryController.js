@@ -4,6 +4,7 @@ const { offsetDate, formatToString, formatToURLString } = require("../utility/ti
 const { emojis } = require("../utility/moods");
 
 const worryEntryController = {
+  // Finds all worry entries from this user
   userWorryEntries: (req, res) => {
     WorryEntry.find(
       { owner: req.session.passport.user },
@@ -14,7 +15,7 @@ const worryEntryController = {
     );
   },
 
-  // Show all worry cards
+  // Finds all worry entries by this user at a certain date, then render the daily view
   dailyWorryEntries: async (req, res) => {
     const dateString = req.params.date;
 
@@ -35,6 +36,7 @@ const worryEntryController = {
       },
     }).exec();
 
+    // Maps the raw worry entries data into a renderable format
     const worryEntries = worryEntriesRaw.map((entry) => {
       const worryEntry = {
         id: entry._id,
@@ -52,7 +54,7 @@ const worryEntryController = {
     res.render("dailyView", { worryEntries, dayview: req.params.date });
   },
 
-  // Edit worry card
+  // Updates the worry entry by its id
   updateWorryEntries: async (req, res) => {
     const { id } = req.params;
     let { worryDescription } = req.body;
@@ -68,7 +70,7 @@ const worryEntryController = {
     });
   },
 
-  // Delete worry card
+  // Deletes a worry entry by its id
   deleteWorryEntries: (req, res) => {
     WorryEntry.deleteOne(
       {
@@ -84,6 +86,7 @@ const worryEntryController = {
     );
   },
 
+  // Creates a new worry entry given a time, mood, and a description
   createWorryEntry: async (req, res) => {
     let { time, mood, worryDescription } = req.body;
     worryDescription = worryDescription.trim();
@@ -94,6 +97,7 @@ const worryEntryController = {
 
     mood = Number(mood);
 
+    // Processes uploaded images and saves it to the worry entry
     const images = [];
     const files = req.files;
     if (files && files.length > 0) {
@@ -125,6 +129,7 @@ const worryEntryController = {
     }
   },
 
+  // Sets the finished attribute of a worry entry to true
   finishWorryEntry: async (req, res) => {
     const { id } = req.params;
     try {

@@ -3,9 +3,15 @@ const WorryEntry = require("../models/WorryEntry");
 const { offsetDate, formatToString } = require("../utility/timezones");
 
 const worryTimeController = {
+  /**
+   * Handles POST request to create a worry time.
+   * @param {Request} req 
+   * @param {Response} res 
+   */
   createWorryTime: async (req, res) => {
+    // Parses request body to get form inputs
     let { time, duration, worries, notes } = req.body;
-    notes = notes.trim();
+    notes = notes.trim();  // remove trailing white spaces in notes
     const startTime = offsetDate(new Date(time), req.session.timezoneOffset);
     const worryTime = WorryTime({
       startTime,
@@ -22,10 +28,17 @@ const worryTimeController = {
     }
     res.redirect("/home");
   },
-  // display total worry time
+  
+  /**
+   * Handles GET request to render and serve the during worry time page.
+   * @param {Request} req 
+   * @param {Response} res 
+   */
   displayWorryTime: async (req, res) => {
+    // finds the worry time record with the id from the params
     const worryTime = await WorryTime.findById(req.params.id).exec();
 
+    // finds all worry entries associated with the worry time
     const allWorryIDs = worryTime.worries;
     const worries = await WorryEntry.find({
       _id: { $in: allWorryIDs },
@@ -44,6 +57,7 @@ const worryTimeController = {
       return worryEntry;
     });
 
+    // renders the during worry time page with worry entries, duration and notes
     res.render("duringWorryTime", {
       worryEntries,
       worryDuration,
@@ -51,6 +65,11 @@ const worryTimeController = {
     });
   },
 
+  /**
+   * Handles GET request to serve the worry time setup form.
+   * @param {Request} req 
+   * @param {Response} res 
+   */
   worryTimeSetupPage: (req, res) => {
     const userId = req.user._id;
     // query the database for worry entries whose owner is `userId` and is not finished
@@ -60,7 +79,7 @@ const worryTimeController = {
         if (err) {
           res.json(err);
         }
-
+        // reformmat each worry entry
         const worryDatum = resp.map((entry) => {
           const modifiedEntry = {
             id: entry.id,
@@ -79,6 +98,7 @@ const worryTimeController = {
           return modifiedEntry;
         });
 
+        // renders the worry time setup form using worry entries
         res.render("worryTimeSetup", {
           worryData: worryDatum,
         });
@@ -86,6 +106,11 @@ const worryTimeController = {
     );
   },
 
+  /**
+   * Handles GET request to update a worry time record to be `finished`.
+   * @param {Request} req 
+   * @param {Response} res 
+   */
   finishWorryTime: async (req, res) => {
     const { id } = req.params;
     try {

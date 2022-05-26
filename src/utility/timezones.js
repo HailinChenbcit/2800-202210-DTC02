@@ -1,4 +1,9 @@
-// Offsets the given date by the given offset
+/**
+ * Offsets the given date by the given offset
+ * 
+ * Code adapted from StackOverflow:
+ * source: https://stackoverflow.com/questions/439630/create-a-date-with-a-set-timezone-without-using-a-string-representation
+ */
 const offsetDate = (date, offset) =>
     new Date(date.getTime() + offset * 60 * 1000);
 

@@ -1,3 +1,9 @@
+/**
+ *  I found this code on https://www.w3schools.com.
+ *
+ * @author contribute@w3schools
+ * @see https://www.w3schools.com/howto/howto_js_countdown.asp
+ */
 // Time counter display with hour, minute and second
 function counter() {
   var totalTime = parseInt($("#totalworrytime").text());

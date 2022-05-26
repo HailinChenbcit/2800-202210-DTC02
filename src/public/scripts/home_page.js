@@ -25,6 +25,7 @@ const emojis = {
 
 let worryEntries;
 
+// Displaying and hiding worry time button
 function hideLoading() {
   const loadingWheel = document.querySelector(".loading");
   if (loadingWheel) {
@@ -72,6 +73,7 @@ function load() {
 
   let today = firstDayOfMonth;
 
+  // Linked the day to the worries created on that day
   for (let i = 1; i <= paddingDays + daysInMonth; i++) {
     const dayLink = document.createElement("a");
     dayLink.href = `/dailyView/${year}${String(month).padStart(2, "0")}${String(
@@ -89,6 +91,7 @@ function load() {
           new Date(entry.datetime) < oneDayAhead
       );
 
+      // Average mood levels
       if (entriesOfTheDay.length > 0) {
         const avgMoodLevel = entriesOfTheDay.reduce(
           (avg, entry, _, { length }) => {
@@ -106,6 +109,7 @@ function load() {
         } </div> <div> &#9675; </div>`;
       }
 
+      // Identifying the current day
       daySquare.id = `${year}${month}${String(i).padStart(2, "0")}`;
       if (i - paddingDays === day && nav === 0) {
         daySquare.classList.add("currentDay");
@@ -119,7 +123,7 @@ function load() {
   }
 }
 
-async function init() {
+async function setup() {
   const resp = await fetch("/worryEntriesAll");
   worryEntries = await resp.json();
 
@@ -137,4 +141,4 @@ async function init() {
   load();
 }
 
-init();
+setup();

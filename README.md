@@ -181,6 +181,8 @@ npm install express
 - W3School: https://www.w3schools.com/
 - Eggonomics: https://eggonomics-35c2b.web.app/
 - Stack Overflow: https://stackoverflow.com/questions/439630/create-a-date-with-a-set-timezone-without-using-a-string-representation
+- Brian Design: https://www.youtube.com/channel/UCsKsymTY_4BYR-wytLjex7A
+- PortEXE: https://www.youtube.com/c/PortEXE
 
 ## Contact
 

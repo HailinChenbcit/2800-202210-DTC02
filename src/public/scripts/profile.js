@@ -1,5 +1,6 @@
 let worryEntries;
 
+// Initializes the user's mood bar graph
 function initMoodBar(destChild, dataArr, xAxisArr) {
   const context = destChild.getContext("2d");
   const moodGraph = new Chart(context, {
@@ -31,6 +32,7 @@ function initMoodBar(destChild, dataArr, xAxisArr) {
   });
 }
 
+// Initializes the user's mood line graph
 function initMoodLine(destChild, dataArr, xAxisArr, yAxisMap) {
   const context = destChild.getContext("2d");
   const moodGraph = new Chart(context, {
@@ -72,12 +74,14 @@ function initMoodLine(destChild, dataArr, xAxisArr, yAxisMap) {
   });
 }
 
+// Fetches all of the user's worry entries from the server
 async function getWorryEntries() {
   const resp = await fetch("../../worryEntriesAll");
   const data = await resp.json();
   return data;
 }
 
+// Runs when the page has loaded and the worry entries data has been received
 function setup() {
   const { times, moods, count } = processWorryEntries(worryEntries);
 
@@ -91,24 +95,19 @@ function setup() {
   moodLevels.set(4, "😊");
   moodLevels.set(5, "😁");
 
-  /* Note:
-   * Line graph should be able to only keep the most recent X amount of days
-   * Line graph due to day averaging may not be the most accurate, what would be more accurate
-   *      would be a very linear precise graph that tracks mood down to the minute just to represent
-   *      daily mood shifts and swings. A day's average would be misleading if the user's mood is 1 in the morning
-   *      but ends their day at 5, would be representing as an overall 3 which is arguably inaccurate.
-   * Bar graph also doesn't account for recency.
-   */
+  // Initializes both graphs
   initMoodLine(moodGraphCanvas, moods, times, moodLevels);
   initMoodBar(canvasElement, count, Array.from(moodLevels.values()));
 }
 
+// Returns the average of an array of Numbers
 function average(numArr) {
   let sum = 0;
   numArr.forEach((num) => (sum += num));
   return sum / numArr.length;
 }
 
+// Processes the data received from the server
 function processWorryEntries(data) {
   const months = [
     "Jan",
@@ -152,16 +151,16 @@ function processWorryEntries(data) {
   // Sorts the data map according to date 
   parsedData = new Map([...parsedData.entries()]
     .sort((a, b) => {
-      let parsed2A = parseInt(a[0].substr(4))
-      let parsed2B = parseInt(b[0].substr(4))
+      let parsed2A = parseInt(a[0].substr(4));
+      let parsed2B = parseInt(b[0].substr(4));
 
-      return parsed2A - parsed2B
+      return parsed2A - parsed2B;
     })
     .sort((a, b) => {
-      let parsedA = months.indexOf(a[0].slice(0, 3))
-      let parsedB = months.indexOf(b[0].slice(0, 3))
-      return parsedA - parsedB
-    }))
+      let parsedA = months.indexOf(a[0].slice(0, 3));
+      let parsedB = months.indexOf(b[0].slice(0, 3));
+      return parsedA - parsedB;
+    }));
 
   // Splits the parsed data into arrays ready for graphing
   let stamps = Array.from(parsedData.keys());
@@ -171,13 +170,15 @@ function processWorryEntries(data) {
   return { times: stamps, moods: avgMoods, count: countMoods };
 }
 
+// Runs when the page has finished loading
 document.addEventListener("DOMContentLoaded", () => {
+  // Gets worry entries data from the server
   getWorryEntries().then((data) => {
     worryEntries = data;
     setup();
   });
 
-  // avatar related;  Add event handler for image upload event
+  // Adds event handler for image upload event
   const avatarInput = document.querySelector("#avatar");
   avatarInput.style.opacity = 0;
   avatarInput.addEventListener("change", () => {

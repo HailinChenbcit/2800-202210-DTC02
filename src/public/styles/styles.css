@@ -286,7 +286,7 @@
 }
 
 .team_card:nth-child(4) {
-    background-image: url("../img/adamProfile.png");
+    background-image: url("../img/adamProfile.PNG");
     background-size: 350px 300px;
     background-repeat: no-repeat;
   }
@@ -368,11 +368,6 @@
   font-size: 2rem;
 }
 
-.social_media {
-  max-width: 1000px;
-  width: 100%;
-}
-
 .social_media-wrap {
   display: flex;
   justify-content: space-between;
@@ -390,9 +385,6 @@
   .footer_container {
       padding: 0%;
   }
-  .footer_links {
-    padding-top: 2rem;
-  }
 
   #footer_logo {
     margin-bottom: 2rem;
@@ -402,19 +394,7 @@
     margin-bottom: 2rem;
   }
 
-  .footer_link-wrapper {
-    flex-direction: column;
-  }
-
   .social_media-wrap {
     flex-direction: column;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .footer_link-items {
-    margin: 0;
-    padding: 10px;
-    width: 100%;
   }
 }

@@ -1,5 +1,5 @@
 // Require libraries
-require("dotenv").config();
+require("dotenv").config();   // enable the use of .env file to store sensitive info
 
 const express = require("express");
 const path = require("path");
@@ -18,7 +18,6 @@ const {
 } = require("./middleware/checkAuth");
 const db = require("../config/database");
 const passport = require("./middleware/passport");
-const { editPage } = require("./controllers/indexController");
 const port = process.env.PORT || 3000;
 
 const app = express();
@@ -46,16 +45,9 @@ app.use(
     store: store,
   })
 );
-
+// declare the use of passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
-
-app.use((req, _, next) => {
-  console.log(req.url);
-  console.log(req.session);
-  console.log(req.body);
-  next();
-});
 
 // Routes for ejs views regarding logging in
 app.get("/auth/register", forwardAuthenticated, authController.registerPage);
@@ -77,15 +69,12 @@ app.post(
 );
 app.get("/auth/logout", authController.logout);
 
-// Routes for ejs views
+
+/**
+ * Routes for serving server-side rendered pages
+ */
 app.get("/home", ensureAuthenticated, indexController.homePage);
 app.get("/profile", ensureAuthenticated, indexController.profilePage);
-app.post(
-  "/avatarUpload",
-  ensureAuthenticated,
-  upload.single("avatar"),
-  indexController.uploadAvatar
-);
 app.get(
   "/accounts",
   ensureAuthenticated,
@@ -93,73 +82,86 @@ app.get(
   indexController.accountsPage
 );
 app.get("/worryForm", ensureAuthenticated, indexController.worryFormPage);
+app.get(
+  "/dailyView/:date",
+  ensureAuthenticated,
+  worryEntryController.dailyWorryEntries
+);
+app.get("/editWorryEntry/:id", ensureAuthenticated, indexController.editPage);
+app.get(
+  "/setWorryTime",
+  ensureAuthenticated,
+  worryTimeController.worryTimeSetupPage
+);
+app.get(
+  "/duringWorryTime/:id",
+  ensureAuthenticated,
+  worryTimeController.displayWorryTime
+);
 
-// Worry entry
+/**
+ * API endpoints for front-end to access and update resouces
+ */
+// update user avatar
+app.post(
+  "/avatarUpload",
+  ensureAuthenticated,
+  upload.single("avatar"),
+  indexController.uploadAvatar
+);
+
+// -------------------------- Worry Entries --------------------------
+// Get all worry entries of the logged-in user
 app.get(
   "/worryEntriesAll",
   ensureAuthenticated,
   worryEntryController.userWorryEntries
 );
+// create a worry entrry
 app.post(
   "/createWorryEntry",
   ensureAuthenticated,
   upload.array("journalImages", 5),
   worryEntryController.createWorryEntry
 );
-app.get("/edit/:id", ensureAuthenticated, editPage);
 
-// Routes for daily view
-app.get(
-  "/dailyView/:date",
-  ensureAuthenticated,
-  worryEntryController.dailyWorryEntries
-);
-// Update
+// Update a worry entry
 app.post(
   "/update/:id",
   ensureAuthenticated,
   worryEntryController.updateWorryEntries
 );
-
-// Delete daily view
+// Delete a worry entry
 app.delete(
   "/dailyView/remove/:id",
   ensureAuthenticated,
   worryEntryController.deleteWorryEntries
 );
-
-// Worry Time routes
-app.get(
-  "/duringWorryTime/:id",
-  ensureAuthenticated,
-  worryTimeController.displayWorryTime
-);
+// Update a worry entry to `finished`
 app.get(
   "/finishWorryEntry/:id",
   ensureAuthenticated,
   worryEntryController.finishWorryEntry
 );
 
-// worry time
-app.get(
-  "/setWorryTime",
-  ensureAuthenticated,
-  worryTimeController.worryTimeSetupPage
-);
 
+// -------------------------- Worry Time --------------------------
+// create a worry time
 app.post(
   "/worryTime/create",
   ensureAuthenticated,
   worryTimeController.createWorryTime
 );
 
+// update a worry time to `finished`
 app.get(
   "/finishWorryTime/:id",
   ensureAuthenticated,
   worryTimeController.finishWorryTime
 );
 
-// admin
+// -------------------------- Admin --------------------------
+// granting admin privilege to a user
 app.get(
   "/admin/toggleStatus/:email",
   ensureAuthenticated,
@@ -167,11 +169,12 @@ app.get(
   authController.toggleAdminStatus
 );
 
+// Serve 404 not found page
 app.get("/*", (req, res) => {
   res.render("notFound");
 });
 
 // Starts the server
 app.listen(port, () =>
-  console.log(`App listening on port ${port}. | ${__dirname}!`)
+  console.log(`App listening on port ${port}!`)
 );

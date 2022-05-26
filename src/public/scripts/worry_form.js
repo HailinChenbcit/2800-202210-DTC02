@@ -9,6 +9,7 @@ $.fn.setNow = function (onlyBlank) {
     seconds,
     formattedDateTime;
 
+  // Converting the date to string
   year = now.getFullYear();
   month =
     now.getMonth().toString().length === 1
@@ -31,6 +32,7 @@ $.fn.setNow = function (onlyBlank) {
       ? "0" + now.getSeconds().toString()
       : now.getSeconds();
 
+  // Format for date time
   formattedDateTime =
     year +
     "-" +
@@ -57,53 +59,56 @@ $(function () {
   $('input[type="datetime-local"]').setNow();
 });
 
+// Global variable
 var timer = 0;
 
-var textarea = document.getElementById('worryDescription');
+var textarea = document.getElementById("worryDescription");
 
-document.getElementById('worryDescription').onkeyup = function(){
-  
-  var text_value = document.getElementById('worryDescription').value;
+// Detect what is being inputted in the worryDescription textarea
+document.getElementById("worryDescription").onkeyup = function () {
+  var text_value = document.getElementById("worryDescription").value;
 
+  // Triggers the "I love myself" Easter Egg if phrase is detected
   if (text_value.includes("I love myself") === true) {
-    var repeater = setInterval(function() {
-      const container = document.querySelector('.worryInputContainer');
-      const generate = document.createElement('div');
-      generate.classList.add('emoji');
-      generate.innerHTML = '💜';
+    var repeater = setInterval(function () {
+      const container = document.querySelector(".worryInputContainer");
+      const generate = document.createElement("div");
+      generate.classList.add("emoji");
+      generate.innerHTML = "💜";
       container.appendChild(generate);
       timer++;
-      console.log(timer)
-      generate.style.left = Math.random() * 100 + 'vw';
+      generate.style.left = Math.random() * 100 + "vw";
       generate.style.animationDuration = Math.random() * 3 + 4 + "s";
-      container.appendChild(generate)
-        setTimeout(() => {
+      container.appendChild(generate);
+      setTimeout(() => {
         generate.remove();
-      }, 3000); 
-    
+      }, 3000);
+
+      // Stop appending emojis, when ten are created on the page
       if (timer >= 10) {
-        window.clearInterval(repeater)
+        window.clearInterval(repeater);
       }
-    })
+    });
+    // Triggers the "It is my birthday" Easter Egg if phrase is detected and "I love myself" Easter Egg is not active
   } else if (text_value.includes("It is my birthday") === true) {
-    var repeater = setInterval(function() {
-      const container = document.querySelector('.worryInputContainer');
-      const generate = document.createElement('div');
-      generate.classList.add('emoji');
-      generate.innerHTML = '✨';
+    var repeater = setInterval(function () {
+      const container = document.querySelector(".worryInputContainer");
+      const generate = document.createElement("div");
+      generate.classList.add("emoji");
+      generate.innerHTML = "✨";
       container.appendChild(generate);
       timer++;
-      console.log(timer)
-      generate.style.left = Math.random() * 100 + 'vw';
+      generate.style.left = Math.random() * 100 + "vw";
       generate.style.animationDuration = Math.random() * 3 + 4 + "s";
-      container.appendChild(generate)
-        setTimeout(() => {
+      container.appendChild(generate);
+      setTimeout(() => {
         generate.remove();
-      }, 3000); 
-    
+      }, 3000);
+
+      // Stop appending emojis, when ten are created on the page
       if (timer >= 10) {
-        window.clearInterval(repeater)
+        window.clearInterval(repeater);
       }
-    })
+    });
   }
 };

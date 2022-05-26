@@ -1,6 +1,7 @@
 const deleteEntryUrl = "https://aqueous-brook-37004.herokuapp.com/dailyView/remove/";
 const worryCards = document.querySelectorAll(".worry-card");
 
+// Handles the deletion of the given worryCard
 const handleDelete = async (worryCard) => {
   worryCard.parentElement.removeChild(worryCard);
   await fetch(`/dailyView/remove/${worryCard.id}`, {
@@ -8,10 +9,13 @@ const handleDelete = async (worryCard) => {
   });
 };
 
+// Adds delete button functionalities for each worry card in the daily view page
 worryCards.forEach((worryCard) => {
   worryCard.addEventListener("click", (e) => {
     switch (e.target.className) {
       case "btn btn-primary confirmDeletion":
+
+        // Closes the Bootstrap modal using JS
         let worryCardModal = worryCard.querySelector(".modal");
         let worryCardModalComponent = new bootstrap.Modal(worryCardModal);
 
@@ -24,35 +28,9 @@ worryCards.forEach((worryCard) => {
   });
 });
 
+// Adds edit button functionalities for each worry card in the daily view page
 document.querySelectorAll(".editBtn").forEach((editBtn) => {
   editBtn.addEventListener("click", () => {
-    window.location.href = `/edit/${editBtn.id}`
-  })
-})
-
-// async function deleteEntry(e) {
-//   e.preventDefault();
-//   entry_id = this.id.slice(11);
-//   const resp = await fetch(
-//     `http://localhost:3000/dailyView/remove/${entry_id}`
-//   );
-//   console.log(this)
-//   this.parentElement.parentElement.removeChild(this.parentElement);
-// }
-
-// async function saveEntry() {
-//   entry_id = this.id.slice(4);
-//   await $.ajax({
-//     url: `http://localhost:3000/dailyView/update/${entry_id}`,
-//     type: "get",
-//     success: (e) => {
-//       console.log(e);
-//     },
-//   });
-//   // refresh div
-// }
-
-// $(document).ready(function () {
-//   $("body").on("click", ".deleteEntry", deleteEntry);
-//   $("body").on("click", ".saveEntry", saveEntry);
-// });
+    window.location.href = `/editWorryEntry/${editBtn.id}`;
+  });
+});

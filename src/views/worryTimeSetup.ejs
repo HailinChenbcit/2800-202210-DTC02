@@ -16,14 +16,12 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/styles/layout.css" />
-  <!-- <link rel="stylesheet" href="/styles/home_page.css" /> -->
   <link rel="stylesheet" href="/styles/worryTimeSetup.css">
 
   <link rel="stylesheet"
     href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-</head>
-<!-- FAVICON -->
-<link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
+  <!-- FAVICON -->
+  <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
 </head>
 
 <body>
@@ -108,7 +106,10 @@
   <%- include("./partials/footer"); %>
 
     <script>
+      // Offsets the given date by the given offset 
       const offsetDate = (date, offset) => new Date(date.getTime() + offset * 60 * 1000);
+
+      // Runs when the page has loaded
       document.addEventListener("DOMContentLoaded", () => {
         const currentTimeString = offsetDate(new Date(), -1 * new Date().getTimezoneOffset()).toISOString().slice(0, 16);
         document.querySelector("#time").setAttribute("MIN", currentTimeString);

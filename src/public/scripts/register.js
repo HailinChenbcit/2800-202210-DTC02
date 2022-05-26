@@ -1,5 +1,7 @@
 $(document).ready(function () {
+  // Registration form validation using JQuery-validate 
   $("#registrationForm").validate({
+    // Set up the rules for each input box
     rules: {
       firstname: "required",
       lastname: "required",
@@ -30,6 +32,7 @@ $(document).ready(function () {
         equalTo: "Please enter the same password",
       },
     },
+    // Set up error messages for each input box
     errorPlacement: function (error, element) {
       if (element.attr("name") == "email") error.appendTo("#email_err");
       else if (element.attr("name") == "firstname")

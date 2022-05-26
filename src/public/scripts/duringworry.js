@@ -1,4 +1,4 @@
-// time counter
+// Time counter display with hour, minute and second
 function counter() {
   var totalTime = parseInt($("#totalworrytime").text());
   var hrs = Math.floor(totalTime / 60);
@@ -31,7 +31,7 @@ function counter() {
   }, 1000);
 }
 
-// select and delete all entries
+// Select and delete all worry entries
 $("#selectall").change(function () {
   if ($(this).is(":checked")) {
     $(".form-check-input").each(function () {
@@ -43,7 +43,8 @@ $("#selectall").change(function () {
     });
   }
 });
-// if all checked, will uncheck again
+
+// If all worries are checked, will be unchecked
 $(".form-check-input").change(function () {
   var allSelected = true;
 
@@ -57,8 +58,8 @@ $(".form-check-input").change(function () {
   if (allSelected) $("#selectall").prop("checked", true);
 });
 
+// Exiting worry time and exit worrytime and back to home page
 async function exitWorryTime() {
-  // make sure that the timer and other stuffs are stopped before exiting worry time
   const resp = await fetch(
     location.pathname.replace("duringWorryTime", "finishWorryTime")
   );
@@ -69,11 +70,11 @@ document
   .querySelector("#confirmExitWorryTime")
   .addEventListener("click", exitWorryTime);
 
-// delete selected checboxes and delete all
+// Deletes selected checboxes and delete all
 $(document).ready(function () {
   counter();
   var worryIds = [];
-  // select each checkbox
+  // Selects each checkbox
   $(document).on("change", ".form-check-input", function () {
     if (this.checked) {
       worryId = $(this).parent().parent().attr("id");
@@ -89,7 +90,7 @@ $(document).ready(function () {
       }
     }
   });
-  // check selectall checbox
+  // Checks selectall checbox
   $(document).on("change", "#selectall", function () {
     if (this.checked) {
       $(".form-check input:checked").each(function () {
@@ -101,13 +102,13 @@ $(document).ready(function () {
     }
   });
 
-  // Update selected entries to 'finished'
+  // Updates selected entries to 'finished'
   $("#deleteWorry").click(function (e) {
     e.preventDefault();
     for (i = 0; i < worryIds.length; i++) {
-      // Delete selected entries in broswer
+      // Deletes selected entries in broswer
       $(`#${worryIds[i]}`).remove();
-      // remove entry in DB
+      // Removes entry in DB
       $.ajax({
         url: `/finishWorryEntry/${worryIds[i]}`,
         type: "GET",

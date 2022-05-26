@@ -1,3 +1,4 @@
+// Embedded timezone in login page
 function setup() {
     const loginForm = document.querySelector("#loginForm");
     loginForm.onsubmit = function() {

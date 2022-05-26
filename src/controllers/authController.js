@@ -11,10 +11,12 @@ const authController = {
   },
 
   registerUser: async (req, res, next) => {
+    // Trim the inputted data that was given by the user
     let { firstname, lastname, email, password } = req.body;
     firstname = firstname.trim();
     lastname = lastname.trim();
     email = email.trim();
+    // Buffer to identify the a new or existing user
     const buffer = await identicon.generate(email, 64);
     try {
       const newUser = new User({
@@ -39,12 +41,14 @@ const authController = {
     }
   },
 
+  // Session is destroyed when logout button triggered
   logout: (req, res) => {
     req.logout();
     req.session.destroy();
     res.redirect("/auth/login");
   },
 
+  // Setting admin status to users
   toggleAdminStatus: (req, res) => {
     const { email } = req.params;
     if (email != req.user.email) {

@@ -130,21 +130,3 @@ main p {
   margin: 1rem;
 }
 
-/* @media only screen and (min-width: 1600px) {
-  main {
-    padding: 0rem 27rem;
-  }
-  #nextButton, #backButton {
-    width: 15vw;
-  }
-}
-
-@media only screen and (min-width: 1100px) {
-  main {
-    padding: 0rem 22rem;
-  }
-  #nextButton, #backButton {
-    width: 12vw;
-  }
-} */
-

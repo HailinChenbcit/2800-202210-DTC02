@@ -8,7 +8,6 @@ function initDotMenuBtn(btnID, users_container) {
 
     btn.addEventListener("click", () => {
         let users = [...users_container.getElementsByClassName("list-group-item")];
-        // console.log(users);
         users.forEach((user) => {
             if (!user.querySelector(`#${btnID}`)) {
                 user.querySelector(".collapse").classList.remove('show');

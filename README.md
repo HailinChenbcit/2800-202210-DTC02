@@ -176,11 +176,17 @@ npm install express
 - Write new worry journal
 - Set up your worry time
 
+## Contribution
+
+- W3School: https://www.w3schools.com/
+- Eggonomics: https://eggonomics-35c2b.web.app/
+- Stack Overflow: https://stackoverflow.com/questions/439630/create-a-date-with-a-set-timezone-without-using-a-string-representation
+
 ## Contact
 
 - Hailin Chen - hchen256@my.bcit.ca
 - Bosco Chan -
-- Fonse -
+- Fonse - jclarito1@my.bcit.ca
 - Jason Lui -
 
 ## Acknowledgements

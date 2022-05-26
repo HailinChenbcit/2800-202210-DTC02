@@ -62,7 +62,6 @@ async function exitWorryTime() {
   const resp = await fetch(
     location.pathname.replace("duringWorryTime", "finishWorryTime")
   );
-  // const data = await resp.json();
   window.location.href = "/home";
 }
 
@@ -76,7 +75,6 @@ $(document).ready(function () {
   var worryIds = [];
   // select each checkbox
   $(document).on("change", ".form-check-input", function () {
-    // worryId = $(".form-check input:checked").parent().parent().attr("id");
     if (this.checked) {
       worryId = $(this).parent().parent().attr("id");
       if (worryIds.includes(worryId)) {

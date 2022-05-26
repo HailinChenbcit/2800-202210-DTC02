@@ -6,7 +6,6 @@ body {
 /* Avatar title section */
 .user-info-wrapper {
   display: flex;
-  /* border: 2px solid #ff5757; */
   height: 12rem;
   border-radius: 5px;
   background: linear-gradient(180deg, #9062ea 35%, #ceb5ff 0%);

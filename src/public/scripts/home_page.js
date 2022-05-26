@@ -32,7 +32,8 @@ function hideLoading() {
     loadingWheel.classList.add("hidden");
   }
 }
-
+// Creating a Calendar
+// I found followed this video and minor adjustments https://www.youtube.com/watch?v=m9OSBJaQTlM&ab_channel=PortEXE
 function load() {
   const dt = new Date();
 

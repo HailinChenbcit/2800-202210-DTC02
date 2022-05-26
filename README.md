@@ -4,7 +4,7 @@
 - [Content](#content)
 - [Technologies](#technologies)
 - [Resources](#resources)
-- [Installation](#installation)
+- [How To Run WorryLess Locally](#how-to-run-worrless-locally)
 - [Features](#features)
 - [Contribution](#contribution)
 - [Contact](#contact)
@@ -15,7 +15,7 @@
 ### Project Title 
 WorryLess
 ### Project Description
-Our team, Copium, is developing a journaling app, Worryless, to help people who struggle with anxiety to manage their worries with an allotted time to worry about their personal conflicts
+Our team, Copium, is developing a journaling app, Worryless, to help people who struggle with anxiety to manage their worries with a time-boxed worry-time session in which they reflect on their various worries.
 
 ### The Team
 - Hailin(Adam) Chen - github: https://github.com/HailinChenbcit
@@ -141,37 +141,28 @@ Technologies used for this project:
 - Hosted on Heroku
 - Google fonts for text
 
-## Installation
+## How to run WorrLess locally
 
-- install node
+1. Install the most recent LTS version of Node.js
 
-```
-npm init
-```
+2. Clone this repo with 
+    ```
+    git clone git@github.com:HailinChenbcit/2800-202210-DTC02.git
+    ```
+3. Install the required dependencies using `npm install`
+    ```
+    npm install
+    ```
+4. Add a `.env` file in the root directory of the repo with the following line in the file
+    ```
+    MONGO_URI=<YOUR_MONGODB_CONNECTION_STRING>
+    ```
+5. Start the app by running `npm start`
+    ```
+    npm start
+    ```
+6. Visit `http://localhost:3000/` in your web browser of choice
 
-- install express
-
-```
-npm install express
-```
-
-- install Mongoose for MongoDB
-
-```
-npm install mongoose
-```
-
-- install dotenv
-
-```
-npm install dotenv
-```
-
-- install passport.js
-
-```
-npm install express
-```
 
 ## Features
 
@@ -179,7 +170,7 @@ npm install express
 - Write new worry journal
 - Set up your worry time
 
-## Contribution
+## Attribution
 
 - W3School: https://www.w3schools.com/howto/howto_js_countdown.asp
 - Eggonomics: https://eggonomics-35c2b.web.app/
@@ -190,9 +181,9 @@ npm install express
 ## Contact
 
 - Hailin Chen - hchen256@my.bcit.ca
-- Bosco Chan -
+- Bosco Chan - hchan183@my.bcit.ca
 - Fonse - jclarito1@my.bcit.ca
-- Jason Lui -
+- Jason Lui - jlui40@my.bcit.ca
 
 ## Acknowledgements
 

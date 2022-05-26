@@ -106,7 +106,10 @@
   <%- include("./partials/footer"); %>
 
     <script>
+      // Offsets the given date by the given offset 
       const offsetDate = (date, offset) => new Date(date.getTime() + offset * 60 * 1000);
+
+      // Runs when the page has loaded
       document.addEventListener("DOMContentLoaded", () => {
         const currentTimeString = offsetDate(new Date(), -1 * new Date().getTimezoneOffset()).toISOString().slice(0, 16);
         document.querySelector("#time").setAttribute("MIN", currentTimeString);

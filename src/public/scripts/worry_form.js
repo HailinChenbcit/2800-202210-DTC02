@@ -73,18 +73,17 @@ document.getElementById('worryDescription').onkeyup = function(){
       generate.innerHTML = '💜';
       container.appendChild(generate);
       timer++;
-      console.log(timer)
       generate.style.left = Math.random() * 100 + 'vw';
       generate.style.animationDuration = Math.random() * 3 + 4 + "s";
-      container.appendChild(generate)
+      container.appendChild(generate);
         setTimeout(() => {
         generate.remove();
       }, 3000); 
     
       if (timer >= 10) {
-        window.clearInterval(repeater)
+        window.clearInterval(repeater);
       }
-    })
+    });
   } else if (text_value.includes("It is my birthday") === true) {
     var repeater = setInterval(function() {
       const container = document.querySelector('.worryInputContainer');
@@ -93,17 +92,16 @@ document.getElementById('worryDescription').onkeyup = function(){
       generate.innerHTML = '✨';
       container.appendChild(generate);
       timer++;
-      console.log(timer)
       generate.style.left = Math.random() * 100 + 'vw';
       generate.style.animationDuration = Math.random() * 3 + 4 + "s";
-      container.appendChild(generate)
+      container.appendChild(generate);
         setTimeout(() => {
         generate.remove();
       }, 3000); 
     
       if (timer >= 10) {
-        window.clearInterval(repeater)
+        window.clearInterval(repeater);
       }
-    })
+    });
   }
 };

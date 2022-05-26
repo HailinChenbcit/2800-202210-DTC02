@@ -12,7 +12,7 @@ function initDotMenuBtn(btnID, users_container) {
             if (!user.querySelector(`#${btnID}`)) {
                 user.querySelector(".collapse").classList.remove('show');
             }
-        })
+        });
     });
 }
 
@@ -21,20 +21,18 @@ function initDotMenuBtn(btnID, users_container) {
  * @param {Object} row the HTML DOM element representing the row of a single user account
  */
 function initSlider(row) {
-    const toggle = row.querySelector(".form-check-input")
-    const email = row.querySelector(".email").innerHTML.trim()
+    const toggle = row.querySelector(".form-check-input");
+    const email = row.querySelector(".email").innerHTML.trim();
 
     toggle.addEventListener("click", () => {
-        console.log("CLICK")
-
         $.ajax({
            url: `/admin/toggleStatus/${email}`,
            method: "get", 
            success: () => {
-               window.location.href = "/accounts"
+               window.location.href = "/accounts";
            }
-        })
-    })
+        });
+    });
 }
 
 /**
@@ -46,13 +44,13 @@ function setupUserOptions() {
 
     accountsList.forEach((userElement, i) => {
         initDotMenuBtn(`dotted${i}`, accounts);
-        initSlider(userElement)
-    })
+        initSlider(userElement);
+    });
 
     const backBtn = document.querySelector("#back");
     backBtn.addEventListener('click', () => {
-        window.location.href = '/profile'
-    })
+        window.location.href = '/profile';
+    });
 }
 
 /**

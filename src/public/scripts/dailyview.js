@@ -26,6 +26,6 @@ worryCards.forEach((worryCard) => {
 
 document.querySelectorAll(".editBtn").forEach((editBtn) => {
   editBtn.addEventListener("click", () => {
-    window.location.href = `/edit/${editBtn.id}`
-  })
-})
+    window.location.href = `/editWorryEntry/${editBtn.id}`;
+  });
+});

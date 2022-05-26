@@ -15,7 +15,7 @@ const offsetDate = (date, offset) =>
 const formatToString = rawDatetime => rawDatetime.toLocaleString("en-GB", {
     dateStyle: "medium",
     timeStyle: "short",
-})
+});
 
 /**
  * Formats the given rawDatetime into a URL String for routes.
@@ -23,7 +23,7 @@ const formatToString = rawDatetime => rawDatetime.toLocaleString("en-GB", {
  * @returns a String
  */
 const formatToURLString = rawDatetime =>
-    `${String(rawDatetime.getFullYear()).padStart(4, "0")}${String(rawDatetime.getMonth()).padStart(2, "0")}${String(rawDatetime.getDate()).padStart(2, "0")}`
+    `${String(rawDatetime.getFullYear()).padStart(4, "0")}${String(rawDatetime.getMonth()).padStart(2, "0")}${String(rawDatetime.getDate()).padStart(2, "0")}`;
 
 
-module.exports = { offsetDate, formatToString, formatToURLString }
+module.exports = { offsetDate, formatToString, formatToURLString };

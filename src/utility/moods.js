@@ -9,4 +9,4 @@ const emojis = {
     5: "&#128513;",
 };
 
-module.exports = {emojis}
+module.exports = {emojis};

@@ -88,7 +88,6 @@ $(document).ready(function () {
       } else {
       }
     }
-    console.log(worryIds);
   });
   // check selectall checbox
   $(document).on("change", "#selectall", function () {
@@ -100,13 +99,11 @@ $(document).ready(function () {
     } else {
       worryIds = [];
     }
-    console.log(worryIds);
   });
 
   // Update selected entries to 'finished'
   $("#deleteWorry").click(function (e) {
     e.preventDefault();
-    console.log(worryIds.length);
     for (i = 0; i < worryIds.length; i++) {
       // Delete selected entries in broswer
       $(`#${worryIds[i]}`).remove();

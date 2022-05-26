@@ -1,7 +1,7 @@
 const WorryEntry = require("../models/WorryEntry");
 const fs = require("fs").promises;
-const { offsetDate, formatToString, formatToURLString } = require("../utility/timezones")
-const { emojis } = require("../utility/moods")
+const { offsetDate, formatToString, formatToURLString } = require("../utility/timezones");
+const { emojis } = require("../utility/moods");
 
 const worryEntryController = {
   userWorryEntries: (req, res) => {
@@ -26,8 +26,6 @@ const worryEntryController = {
     const dateOffsetted = offsetDate(date, req.session.timezoneOffset);
     const nextDay = new Date(year, month, day + 1);
     const nextDayOffsetted = offsetDate(nextDay, req.session.timezoneOffset);
-
-    console.log(dateString, date, nextDay);
 
     const worryEntriesRaw = await WorryEntry.find({
       owner: req.user._id,
@@ -61,13 +59,13 @@ const worryEntryController = {
     worryDescription = worryDescription.trim();
     WorryEntry.findByIdAndUpdate(id, { worryDescription }, { new: true }, (err, resp) => {
       if (err) {
-        res.json(err)
+        res.json(err);
       } else {
-        const rawDatetime = offsetDate(new Date(resp.datetime), -req.session.timezoneOffset)
-        const fmtedDatetime = formatToURLString(rawDatetime)
-        res.redirect(`/dailyView/${fmtedDatetime}`)
+        const rawDatetime = offsetDate(new Date(resp.datetime), -req.session.timezoneOffset);
+        const fmtedDatetime = formatToURLString(rawDatetime);
+        res.redirect(`/dailyView/${fmtedDatetime}`);
       }
-    })
+    });
   },
 
   // Delete worry card
@@ -138,7 +136,6 @@ const worryEntryController = {
       res.json(e);
     }
   },
-
 
 };
 

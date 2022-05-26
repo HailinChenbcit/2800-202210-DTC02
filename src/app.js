@@ -18,7 +18,6 @@ const {
 } = require("./middleware/checkAuth");
 const db = require("../config/database");
 const passport = require("./middleware/passport");
-const { editPage } = require("./controllers/indexController");
 const port = process.env.PORT || 3000;
 
 const app = express();
@@ -106,7 +105,7 @@ app.post(
   upload.array("journalImages", 5),
   worryEntryController.createWorryEntry
 );
-app.get("/edit/:id", ensureAuthenticated, editPage);
+app.get("/editWorryEntry/:id", ensureAuthenticated, indexController.editPage);
 
 // Routes for daily view
 app.get(
@@ -173,5 +172,5 @@ app.get("/*", (req, res) => {
 
 // Starts the server
 app.listen(port, () =>
-  console.log(`App listening on port ${port}. | ${__dirname}!`)
+  console.log(`App listening on port ${port}!`)
 );

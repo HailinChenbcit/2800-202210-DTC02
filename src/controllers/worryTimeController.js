@@ -3,11 +3,6 @@ const WorryEntry = require("../models/WorryEntry");
 const { offsetDate, formatToString } = require("../utility/timezones");
 
 const worryTimeController = {
-  duringWorryTimePage: (req, res) => {
-    WorryTime.find({ user: req.session.passport.user }, (err, resp) => {
-      res.render("duringWorryTime", { worryTime: resp });
-    });
-  },
   createWorryTime: async (req, res) => {
     let { time, duration, worries, notes } = req.body;
     notes = notes.trim();
@@ -15,7 +10,6 @@ const worryTimeController = {
     const worryTime = WorryTime({
       startTime,
       duration: Number(duration),
-      //   notificationEnabled,
       worries,
       notes,
       user: req.user._id,
@@ -59,7 +53,7 @@ const worryTimeController = {
 
   worryTimeSetupPage: (req, res) => {
     const userId = req.user._id;
-    // query the database for worry entries whose owner is `userId`
+    // query the database for worry entries whose owner is `userId` and is not finished
     WorryEntry.find(
       { owner: req.session.passport.user, finished: false },
       (err, resp) => {

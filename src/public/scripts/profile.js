@@ -91,14 +91,6 @@ function setup() {
   moodLevels.set(4, "😊");
   moodLevels.set(5, "😁");
 
-  /* Note:
-   * Line graph should be able to only keep the most recent X amount of days
-   * Line graph due to day averaging may not be the most accurate, what would be more accurate
-   *      would be a very linear precise graph that tracks mood down to the minute just to represent
-   *      daily mood shifts and swings. A day's average would be misleading if the user's mood is 1 in the morning
-   *      but ends their day at 5, would be representing as an overall 3 which is arguably inaccurate.
-   * Bar graph also doesn't account for recency.
-   */
   initMoodLine(moodGraphCanvas, moods, times, moodLevels);
   initMoodBar(canvasElement, count, Array.from(moodLevels.values()));
 }
@@ -152,16 +144,16 @@ function processWorryEntries(data) {
   // Sorts the data map according to date 
   parsedData = new Map([...parsedData.entries()]
     .sort((a, b) => {
-      let parsed2A = parseInt(a[0].substr(4))
-      let parsed2B = parseInt(b[0].substr(4))
+      let parsed2A = parseInt(a[0].substr(4));
+      let parsed2B = parseInt(b[0].substr(4));
 
-      return parsed2A - parsed2B
+      return parsed2A - parsed2B;
     })
     .sort((a, b) => {
-      let parsedA = months.indexOf(a[0].slice(0, 3))
-      let parsedB = months.indexOf(b[0].slice(0, 3))
-      return parsedA - parsedB
-    }))
+      let parsedA = months.indexOf(a[0].slice(0, 3));
+      let parsedB = months.indexOf(b[0].slice(0, 3));
+      return parsedA - parsedB;
+    }));
 
   // Splits the parsed data into arrays ready for graphing
   let stamps = Array.from(parsedData.keys());
